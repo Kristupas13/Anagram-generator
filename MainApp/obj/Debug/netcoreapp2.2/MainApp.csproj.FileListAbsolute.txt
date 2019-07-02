@@ -32,7 +32,6 @@ C:\Users\Manager\Source\Repos\MainApp\obj\Debug\netcoreapp2.2\MainApp.AssemblyIn
 C:\Users\Manager\Source\Repos\MainApp\obj\Debug\netcoreapp2.2\MainApp.csproj.CopyComplete
 C:\Users\Manager\Source\Repos\MainApp\obj\Debug\netcoreapp2.2\MainApp.dll
 C:\Users\Manager\Source\Repos\MainApp\obj\Debug\netcoreapp2.2\MainApp.pdb
-C:\Users\kristupas\Desktop\DataManipulation\MainApp\bin\Debug\netcoreapp2.2\MainApp.dll.config
 C:\Users\kristupas\Desktop\DataManipulation\MainApp\bin\Debug\netcoreapp2.2\MainApp.deps.json
 C:\Users\kristupas\Desktop\DataManipulation\MainApp\bin\Debug\netcoreapp2.2\MainApp.runtimeconfig.json
 C:\Users\kristupas\Desktop\DataManipulation\MainApp\bin\Debug\netcoreapp2.2\MainApp.runtimeconfig.dev.json

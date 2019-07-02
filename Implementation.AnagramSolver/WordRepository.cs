@@ -9,11 +9,11 @@ namespace Implementation.AnagramSolver
     public class WordRepository : IWordRepository
     {
         private Dictionary<string, HashSet<string>> wordsByPart;
-        public WordRepository(LoadRespository LoadRespository)
+        public WordRepository(IFileRepository LoadRespository)
         {
             wordsByPart = LoadRespository.Load();
         }
-        public Dictionary<string, HashSet<string>> getWordRepository()
+        public Dictionary<string, HashSet<string>> GetWords()
         {
             return wordsByPart;
         }

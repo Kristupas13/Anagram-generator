@@ -6,11 +6,11 @@ using Interfaces.AnagramSolver;
 
 namespace Implementation.AnagramSolver
 {
-    public class TextLoadRespository : LoadRespository
+    public class TextFileRepository : IFileRepository
     {
         string path;
         Dictionary<string, HashSet<string>> words = new Dictionary<string, HashSet<string>>();
-        public TextLoadRespository(string path)
+        public TextFileRepository(string path)
         {
             this.path = path;
         }
@@ -20,12 +20,11 @@ namespace Implementation.AnagramSolver
             StreamReader file = new StreamReader(path);
             while ((line = file.ReadLine()) != null)
             {
-                char[] delimiterChars = { ' ', '\t'};
+                char[] delimiterChars = {'\t'};
                 string[] seperatedWords = line.Split(delimiterChars); // 0 - vardininkas, 1 - kalbos dalis, 2 - linksnis, 3 - skaicius
                 if (words.ContainsKey(seperatedWords[1]))             
                 {
           
-
 
                     words[seperatedWords[1]].Add(seperatedWords[0]);
                     words[seperatedWords[1]].Add(seperatedWords[2]);

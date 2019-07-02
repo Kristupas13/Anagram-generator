@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Interfaces.AnagramSolver
 {
-    public interface LoadRespository
+    public interface IFileRepository
     {
         Dictionary<string, HashSet<string>> Load();
     }
