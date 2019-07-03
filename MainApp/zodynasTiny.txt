@@ -1,0 +1,4 @@
+﻿labas	dkt	laba	1
+labas	dkt	laba diena	1
+Neda	dkt	Neda	1
+laiba	dkt	laiba	1

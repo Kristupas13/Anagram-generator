@@ -8,11 +8,16 @@ namespace Implementation.AnagramSolver
 {
     public class WordRepository : IWordRepository
     {
-        private Dictionary<string, HashSet<string>> wordsByPart;
-        public WordRepository(IFileRepository LoadRespository)
+        private readonly Dictionary<string, HashSet<string>> wordsByPart;
+        private readonly IFileRepository _fileRepository;
+
+        public WordRepository(IFileRepository fileRepository)
         {
-            wordsByPart = LoadRespository.Load();
+            _fileRepository = fileRepository;
+            wordsByPart = _fileRepository.Load();
         }
+
+
         public Dictionary<string, HashSet<string>> GetWords()
         {
             return wordsByPart;

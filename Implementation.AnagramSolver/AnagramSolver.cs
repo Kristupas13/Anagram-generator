@@ -2,32 +2,111 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Configuration;
 using Interfaces.AnagramSolver;
 
 namespace Implementation.AnagramSolver
 {
     public class AnagramSolver : IAnagramSolver
     {
-        private IWordRepository _wordRepository;
-        private Dictionary<string, HashSet<string>> words;
-
-
+        readonly List<string> anagramList = new List<string>();
+        private readonly IWordRepository _wordRepository;
+        bool endOfRecursion = false;
+        private readonly Dictionary<string, HashSet<string>> words;
 
         public AnagramSolver(IWordRepository wordRepository)
         {
             _wordRepository = wordRepository;
             words = _wordRepository.GetWords();
-            /* temporary
+
+        }
+        public IList<string> GetAnagramsSeperated(string myWords) // only checks word by word  O(n)
+        {
+            IList<string> anagramWords = new List<string>();
+            bool matchFound = false;
+            string[] myWordsSplited = myWords.Split(" ");
+            foreach (var item in myWordsSplited)
+            {
+                matchFound = false;
+                foreach (var contents in words.Keys)
+                {
+                    foreach (var listMember in words[contents])
+                    {
+                        bool isAnagram = CheckIfEqual(SymbolFrequency(listMember), SymbolFrequency(item));
+                        bool areNotEqual = !(item.Equals(listMember));
+
+                        if (isAnagram && areNotEqual)
+                        {
+                            matchFound = true;
+                            anagramWords.Add(listMember);
+                            break;
+                        }
+                    }
+                    if (matchFound) // after first find break
+                        break;
+                }
+                if (!matchFound) // if one of the words didint have anagram return empty
+                return new List<string>();
+            }
+
+         return anagramWords;
+               
+        }
+        public IList<string> GetAnagrams(string myWords)    // checks connected words  (not working properly)
+        {
+            int minSymbols = 4; // temp
+            int maxWords = 5;   // temp
+
+
+            IList<string> anagramList = RecursiveCheck(SymbolFrequency(myWords), minSymbols, maxWords);
+
+            return anagramList;
+        }
+
+
+        private IList<string> RecursiveCheck(Dictionary<char, int> frequency, int minimumLength, int maxWords)
+        {
+            Dictionary<char, int> currentWordFrequency = new Dictionary<char, int>();
             foreach (var contents in words.Keys)
             {
-
                 foreach (var listMember in words[contents])
                 {
-                    Console.WriteLine("Key : " + contents + " member :" + listMember);
+                    if (listMember.Length >= minimumLength)
+                    {
+                        currentWordFrequency = SymbolFrequency(listMember);
+
+                        if (CheckIfContains(currentWordFrequency, frequency))
+                        {
+                            // word counter ++
+
+                            var copied = new Dictionary<char, int>(frequency);
+
+                            foreach (var key in currentWordFrequency.Keys.ToList())
+                            {
+                                copied[key] -= currentWordFrequency[key];
+                            }
+
+                            anagramList.Add(listMember);
+                            var allLetersUsed = copied.All(x => x.Value == 0);
+                            if (allLetersUsed || endOfRecursion)
+                            {
+                                endOfRecursion = true;
+                                return anagramList;
+                            }
+                            RecursiveCheck(copied, minimumLength, maxWords);
+                            anagramList.Remove(listMember);
+                            // word counter --
+                        }
+                    }
+
+
+
                 }
             }
-            */
+
+            return anagramList;
         }
+
         public Dictionary<char, int> SymbolFrequency(string inputText)
         {
             Dictionary<char, int> frequency = new Dictionary<char, int>();
@@ -40,73 +119,21 @@ namespace Implementation.AnagramSolver
                 else
                     frequency[c] = 1;
             }
-            /*
-           foreach(var s in symbolCount)
-            {
-                Console.WriteLine(s.Key + " has a value of " + s.Value);
-            }*/
             return frequency;
         }
-        //public IList<string> GetAnagrams(string myWords)    // checks connected words
-        //{
-        //    int minSymbols = 3; // temporary
-        //    int maxWords = 3;   // temporary
-        //    Dictionary<char, int> currentWordFrequency = SymbolFrequency(myWords);
 
-        //    SymbolFrequency(myWords);
-
-        //    double total = symbolCount.Sum(x => x.Value);
-        //    int totalWords = words.Values.Sum(x => x.Count);
-        //    Console.WriteLine("Total amount of symbols in phrase: {0} ", total);
-
-        //    Console.WriteLine("Total amount of words in dictionary: {0}", totalWords);
-
-        //    /*
-        //     * while symbolCount = 0 or end of words values
-        //     * SymbolFrequency(Word from dictionary);
-        //     * CheckIfSubString(currentWordFrequency, symbolCount) 
-        //     * 
-        //     * 
-        //     * 
-        //     * 
-        //     */
-
-        //    return new List<string>();
-        //}
-
-        public IList<string> GetAnagramsSimple(string myWords) // only checks word by word
-        {
-            List<string> wordsThatMatch = new List<string>();
-            string[] myWordsSplited = myWords.Split(" ");
-            foreach(var item in myWordsSplited)
-            {
-                Dictionary<char, int> currentWordFrequency = SymbolFrequency(item);
-
-               
-                foreach (var contents in words.Keys)
-                {
-                    foreach (var listMember in words[contents])
-                    {
-                        Dictionary<char, int> symbolCount = SymbolFrequency(listMember);
-                        if (CheckIfSubString(symbolCount, currentWordFrequency))
-                        {
-                            wordsThatMatch.Add(listMember);
-                        }
-
-                    }
-                }
-            }
-            return wordsThatMatch;
-
-        }
-
-        public bool CheckIfSubString(Dictionary<char, int> currentWord, Dictionary<char, int> inputWords)
+        private bool CheckIfEqual(Dictionary<char, int> currentWord, Dictionary<char, int> inputWords)
         {
             if (currentWord.Count == inputWords.Count && !currentWord.Except(inputWords).Any())
             {
                 return true;
             }
             return false;
+        }
+        private bool CheckIfContains(Dictionary<char, int> currentWord, Dictionary<char, int> inputWords)
+        {
+            var allexist = currentWord.All(x => inputWords.ContainsKey(x.Key) && x.Value <= inputWords[x.Key]);
+            return allexist;
         }
     }
 }

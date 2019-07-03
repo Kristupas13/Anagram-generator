@@ -1,0 +1,7 @@
+/.vs
+AnagramGenerator.Tests/obj
+AnagramGenerator.Tests/bin
+Implementation.AnagramSolver/bin
+Implementation.AnagramSolver/obj
+Interfaces.AnagramSolver/bin
+Interfaces.AnagramSolver/obj

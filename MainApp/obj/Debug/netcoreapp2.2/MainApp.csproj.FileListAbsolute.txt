@@ -48,3 +48,4 @@ C:\Users\kristupas\Desktop\DataManipulation\MainApp\obj\Debug\netcoreapp2.2\Main
 C:\Users\kristupas\Desktop\DataManipulation\MainApp\obj\Debug\netcoreapp2.2\MainApp.csproj.CopyComplete
 C:\Users\kristupas\Desktop\DataManipulation\MainApp\obj\Debug\netcoreapp2.2\MainApp.dll
 C:\Users\kristupas\Desktop\DataManipulation\MainApp\obj\Debug\netcoreapp2.2\MainApp.pdb
+C:\Users\kristupas\Desktop\DataManipulation\MainApp\bin\Debug\netcoreapp2.2\MainApp.dll.config

@@ -12,18 +12,30 @@ namespace MainApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Type your phrase: ");
-            string phrase = Console.ReadLine();
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            if (args.Length < 1)
+                throw new ArgumentOutOfRangeException("arguments");
+            if (args.Length > 10)
+                throw new ArgumentOutOfRangeException("arguments");
 
 
-            IFileRepository loader = new TextFileRepository(@"C:\Users\kristupas\Desktop\DataManipulation\MainApp\zodynas.txt");      // testing
-            IWordRepository repository = new WordRepository(loader);
-            IAnagramSolver solver = new AnagramSolver(repository);
-            IList<string> anagrams = solver.GetAnagramsSimple(phrase);   // works for seperate words
+            string phrase = string.Join(" ", args);
 
+            IFileRepository textFileLoader = new TextFileRepository(@"C:\Users\kristupas\Desktop\DataManipulation\MainApp\zodynas.txt");      // testing
+            IWordRepository wordRepository = new WordRepository(textFileLoader);
+            IAnagramSolver anagramSolver = new AnagramSolver(wordRepository);
+
+            IList<string> anagrams = anagramSolver.GetAnagramsSeperated(phrase);
+
+
+
+            
+
+            Console.WriteLine("Anagram: ");
             foreach(var item in anagrams)
             {
-               Console.WriteLine("Anagram: {0}", item);
+               Console.Write("{0} ", item);
             }
           
         }

@@ -1,4 +1,13 @@
-﻿alus	dktv	sula	1
+﻿labas rytas	jst	labas rytas	1
+labas vakaras	jst	labas vakaras	3
+labas	bdv	labas	3
+labas	bdv	labiausi	1
+labas	bdv	labos	1
+labas	dkt	labą	1
+labas	dkt	labo	1
+labas	dkt	labui	21
+labas	jst	labas	11
+alus	dktv	sula	1
 lekiau	dktv	kiaule	1
 vaka	dktv	kava	1
 1000-as	sktv	1000-ajam	1
