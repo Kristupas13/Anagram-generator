@@ -1,4 +1,10 @@
-﻿labas	dkt	laba	1
-labas	dkt	laba diena	1
-Neda	dkt	Neda	1
-laiba	dkt	laiba	1
+﻿a	dkt	ar	1
+um	dkt	aš	1
+ei	dkt	em	1
+en	dkt	r	1
+l	dkt	kis	1
+be	dkt	bu	1
+ku	dkt	ku	1
+mis	dkt	kie	1
+mo	dkt	r	1
+en	dkt	u	1

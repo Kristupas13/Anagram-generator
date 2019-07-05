@@ -40,8 +40,10 @@ namespace AnagramSolverSeperated.Tests
         {
             // arrange
             Word = "storas";
-            List<string> expectedList = new List<string>();
-            expectedList.AddRange(new string[] { "trasos"});
+            List<string> expectedList = new List<string>()
+            {
+                "trasos"
+            };
 
             // act
             var actualList = solver.GetAnagramsSeperated(Word);
@@ -55,8 +57,11 @@ namespace AnagramSolverSeperated.Tests
         {
             // arrange
             Word = "storas dievas";
-            List<string> expectedList = new List<string>();
-            expectedList.AddRange(new string[] { "trasos", "veidas"});
+            List<string> expectedList = new List<string>()
+            {
+                "trasos",
+                "veidas"
+            };
 
             // act
             var actualList = solver.GetAnagramsSeperated(Word);

@@ -22,15 +22,16 @@ namespace MainApp
 
             string phrase = string.Join(" ", args);
 
-            IFileRepository textFileLoader = new TextFileRepository(@"C:\Users\kristupas\Desktop\DataManipulation\MainApp\zodynas.txt");      // testing
+            IFileRepository textFileLoader = new TextFileRepository(@"C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Data_Manipulation-master\MainApp\zodynas.txt");      // testing
             IWordRepository wordRepository = new WordRepository(textFileLoader);
             IAnagramSolver anagramSolver = new AnagramSolver(wordRepository);
 
-            IList<string> anagrams = anagramSolver.GetAnagramsSeperated(phrase);
+            IList<string> anagrams = anagramSolver.GetAnagrams(phrase);
 
 
 
-            
+
+
 
             Console.WriteLine("Anagram: ");
             foreach(var item in anagrams)

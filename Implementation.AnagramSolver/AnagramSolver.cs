@@ -10,14 +10,20 @@ namespace Implementation.AnagramSolver
     public class AnagramSolver : IAnagramSolver
     {
         readonly List<string> anagramList = new List<string>();
-        private readonly IWordRepository _wordRepository;
-        bool endOfRecursion = false;
+
         private readonly Dictionary<string, HashSet<string>> words;
+        private readonly List<string> allWords;
+        private readonly IWordRepository _wordRepository;
+
+
+        bool endOfRecursion;
 
         public AnagramSolver(IWordRepository wordRepository)
         {
             _wordRepository = wordRepository;
-            words = _wordRepository.GetWords();
+            words = _wordRepository.GetDictionary();
+            allWords = _wordRepository.GetAllWords();
+            endOfRecursion = false;
 
         }
         public IList<string> GetAnagramsSeperated(string myWords) // only checks word by word  O(n)
@@ -46,62 +52,65 @@ namespace Implementation.AnagramSolver
                         break;
                 }
                 if (!matchFound) // if one of the words didint have anagram return empty
-                return new List<string>();
+                    return new List<string>();
             }
 
-         return anagramWords;
-               
+            return anagramWords;
+
         }
         public IList<string> GetAnagrams(string myWords)    // checks connected words  (not working properly)
         {
             int minSymbols = 4; // temp
             int maxWords = 5;   // temp
+            int startIndex = 0;
 
-
-            IList<string> anagramList = RecursiveCheck(SymbolFrequency(myWords), minSymbols, maxWords);
+            Console.WriteLine("Please wait");
+            IList<string> anagramList = RecursiveCheck(SymbolFrequency(myWords), minSymbols, maxWords, startIndex);
 
             return anagramList;
         }
 
 
-        private IList<string> RecursiveCheck(Dictionary<char, int> frequency, int minimumLength, int maxWords)
+        private IList<string> RecursiveCheck(Dictionary<char, int> frequency, int minimumLength, int maxWords, int currentIndex)
         {
             Dictionary<char, int> currentWordFrequency = new Dictionary<char, int>();
-            foreach (var contents in words.Keys)
+            for(int i = currentIndex; i < allWords.Count; i++)
             {
-                foreach (var listMember in words[contents])
+
+                if (CheckIfLengthNotLower(allWords[i].Length, minimumLength))
                 {
-                    if (listMember.Length >= minimumLength)
+                    currentWordFrequency = SymbolFrequency(allWords[i]);
+
+                    if (CheckIfContains(currentWordFrequency, frequency))
                     {
-                        currentWordFrequency = SymbolFrequency(listMember);
 
-                        if (CheckIfContains(currentWordFrequency, frequency))
+                        var copied = new Dictionary<char, int>(frequency);
+
+                        foreach (var key in currentWordFrequency.Keys.ToList())
                         {
-                            // word counter ++
-
-                            var copied = new Dictionary<char, int>(frequency);
-
-                            foreach (var key in currentWordFrequency.Keys.ToList())
-                            {
-                                copied[key] -= currentWordFrequency[key];
-                            }
-
-                            anagramList.Add(listMember);
-                            var allLetersUsed = copied.All(x => x.Value == 0);
-                            if (allLetersUsed || endOfRecursion)
-                            {
-                                endOfRecursion = true;
-                                return anagramList;
-                            }
-                            RecursiveCheck(copied, minimumLength, maxWords);
-                            anagramList.Remove(listMember);
-                            // word counter --
+                            copied[key] -= currentWordFrequency[key];
                         }
+
+
+                        anagramList.Add(allWords[i]);
+                        var allLetersUsed = copied.All(x => x.Value == 0);
+                        if (allLetersUsed)
+                        {
+                            endOfRecursion = true;
+                            return anagramList;
+                        }
+                            else
+                                RecursiveCheck(copied, minimumLength, maxWords, i + 1);
+                        if (endOfRecursion)
+                        {
+                            return anagramList;
+                        }
+
+                        anagramList.Remove(allWords[i]);
+                        // word counter --
                     }
-
-
-
                 }
+    
             }
 
             return anagramList;
@@ -134,6 +143,10 @@ namespace Implementation.AnagramSolver
         {
             var allexist = currentWord.All(x => inputWords.ContainsKey(x.Key) && x.Value <= inputWords[x.Key]);
             return allexist;
+        }
+        private bool CheckIfLengthNotLower(int wordLength, int minimumLength)
+        {
+            return (wordLength >= minimumLength);
         }
     }
 }

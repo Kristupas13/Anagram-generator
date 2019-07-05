@@ -2,7 +2,7 @@
   "profiles": {
     "MainApp": {
       "commandName": "Project",
-      "commandLineArgs": "storas kiaulė aavk "
+      "commandLineArgs": "kiaulė voras kiaulė voras"
     }
   }
 }

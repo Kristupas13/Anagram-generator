@@ -958,11 +958,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\DataManipulation\\Implementation.AnagramSolver\\Implementation.AnagramSolver.csproj",
+      "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Data_Manipulation-master\\Data_Manipulation-master\\Implementation.AnagramSolver\\Implementation.AnagramSolver.csproj",
       "projectName": "Implementation.AnagramSolver",
-      "projectPath": "C:\\Users\\kristupas\\Desktop\\DataManipulation\\Implementation.AnagramSolver\\Implementation.AnagramSolver.csproj",
+      "projectPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Data_Manipulation-master\\Data_Manipulation-master\\Implementation.AnagramSolver\\Implementation.AnagramSolver.csproj",
       "packagesPath": "C:\\Users\\kristupas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kristupas\\Desktop\\DataManipulation\\Implementation.AnagramSolver\\obj\\",
+      "outputPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Data_Manipulation-master\\Data_Manipulation-master\\Implementation.AnagramSolver\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -981,8 +981,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\kristupas\\Desktop\\DataManipulation\\Interfaces.AnagramSolver\\Interfaces.AnagramSolver.csproj": {
-              "projectPath": "C:\\Users\\kristupas\\Desktop\\DataManipulation\\Interfaces.AnagramSolver\\Interfaces.AnagramSolver.csproj"
+            "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Data_Manipulation-master\\Data_Manipulation-master\\Interfaces.AnagramSolver\\Interfaces.AnagramSolver.csproj": {
+              "projectPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Data_Manipulation-master\\Data_Manipulation-master\\Interfaces.AnagramSolver\\Interfaces.AnagramSolver.csproj"
             }
           }
         }

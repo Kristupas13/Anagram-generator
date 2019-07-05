@@ -18,10 +18,23 @@ namespace Implementation.AnagramSolver
         }
 
 
-        public Dictionary<string, HashSet<string>> GetWords()
+        public Dictionary<string, HashSet<string>> GetDictionary()
         {
             return wordsByPart;
         }
 
+        public List<string> GetAllWords()
+        {
+            List<string> allWords = new List<string>();
+            foreach (var contents in wordsByPart.Keys)
+            {
+                foreach (var listMember in wordsByPart[contents])
+                {
+                    allWords.Add(listMember);
+                }
+            }
+
+            return allWords;
+        }
     }
 }

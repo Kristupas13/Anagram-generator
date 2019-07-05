@@ -1,0 +1,14 @@
+﻿@model PageNumber
+
+
+<ol>
+    <font size="4">
+        @foreach (var anagram in ViewBag.Words)
+        {
+            <il><font color="grey">@Model.Page.</font> @anagram</il>
+            <br />
+            Model.Page++;
+           
+        }
+    </font>
+    <ol>

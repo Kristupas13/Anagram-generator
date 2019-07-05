@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces.AnagramSolver", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Implementation.AnagramSolver", "Implementation.AnagramSolver\Implementation.AnagramSolver.csproj", "{F3AA0D92-7605-4CA9-BAB7-FF031440E861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnagramGenerator.Tests", "AnagramGenerator.Tests\AnagramGenerator.Tests.csproj", "{FFFA34DB-D8D6-4C98-9E3F-4B3AB654A14B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnagramGenerator.Tests", "AnagramGenerator.Tests\AnagramGenerator.Tests.csproj", "{FFFA34DB-D8D6-4C98-9E3F-4B3AB654A14B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnagramGenerator.WebApp", "AnagramGenerator.WebApp\AnagramGenerator.WebApp.csproj", "{491A41A7-B068-4A48-A7F9-85281056CE06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnagramGenerator.HttpRequest", "HttpRequest\AnagramGenerator.HttpRequest.csproj", "{4557C380-9DE6-4668-8BAD-C4759B7830EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{FFFA34DB-D8D6-4C98-9E3F-4B3AB654A14B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFFA34DB-D8D6-4C98-9E3F-4B3AB654A14B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFFA34DB-D8D6-4C98-9E3F-4B3AB654A14B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{491A41A7-B068-4A48-A7F9-85281056CE06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{491A41A7-B068-4A48-A7F9-85281056CE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{491A41A7-B068-4A48-A7F9-85281056CE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{491A41A7-B068-4A48-A7F9-85281056CE06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4557C380-9DE6-4668-8BAD-C4759B7830EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4557C380-9DE6-4668-8BAD-C4759B7830EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4557C380-9DE6-4668-8BAD-C4759B7830EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4557C380-9DE6-4668-8BAD-C4759B7830EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
