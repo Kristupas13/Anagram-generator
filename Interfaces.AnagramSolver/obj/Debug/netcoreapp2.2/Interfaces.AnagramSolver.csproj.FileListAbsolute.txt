@@ -43,3 +43,12 @@ C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Data
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Data_Manipulation-master\Interfaces.AnagramSolver\obj\Debug\netcoreapp2.2\Interfaces.AnagramSolver.AssemblyInfo.cs
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Data_Manipulation-master\Interfaces.AnagramSolver\obj\Debug\netcoreapp2.2\Interfaces.AnagramSolver.dll
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Data_Manipulation-master\Interfaces.AnagramSolver\obj\Debug\netcoreapp2.2\Interfaces.AnagramSolver.pdb
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Interfaces.AnagramSolver\bin\Debug\netcoreapp2.2\Interfaces.AnagramSolver.deps.json
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Interfaces.AnagramSolver\bin\Debug\netcoreapp2.2\Interfaces.AnagramSolver.dll
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Interfaces.AnagramSolver\bin\Debug\netcoreapp2.2\Interfaces.AnagramSolver.pdb
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Interfaces.AnagramSolver\obj\Debug\netcoreapp2.2\Interfaces.AnagramSolver.csprojAssemblyReference.cache
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Interfaces.AnagramSolver\obj\Debug\netcoreapp2.2\Interfaces.AnagramSolver.csproj.CoreCompileInputs.cache
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Interfaces.AnagramSolver\obj\Debug\netcoreapp2.2\Interfaces.AnagramSolver.AssemblyInfoInputs.cache
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Interfaces.AnagramSolver\obj\Debug\netcoreapp2.2\Interfaces.AnagramSolver.AssemblyInfo.cs
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Interfaces.AnagramSolver\obj\Debug\netcoreapp2.2\Interfaces.AnagramSolver.dll
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Interfaces.AnagramSolver\obj\Debug\netcoreapp2.2\Interfaces.AnagramSolver.pdb
