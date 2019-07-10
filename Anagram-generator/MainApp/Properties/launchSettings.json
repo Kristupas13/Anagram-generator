@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "MainApp": {
-      "commandName": "Project",
-      "commandLineArgs": "dievas pilkas"
-    }
-  }
-}
