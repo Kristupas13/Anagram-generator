@@ -12,8 +12,8 @@ namespace Implementation.AnagramSolver
         private readonly string connectionString;
         public string IpAddress { get; set; }
         public DateTime Date { get; set; }
-        public string SearchedWord { get; set; }
-        public IList<string> Anagrams { get; set; }
+        public HashSet<string> SearchedWord { get; set; }
+        public HashSet<string> Anagrams { get; set; }
 
         public SQLUserLog()
         {
@@ -39,7 +39,30 @@ namespace Implementation.AnagramSolver
         }
         public IUserLog GetUserLog(string ip)
         {
-            throw new NotImplementedException();
+            IUserLog userLog = new SQLUserLog() { SearchedWord = new HashSet<string>(), Anagrams = new HashSet<string>() };
+            using (SqlConnection cn = new SqlConnection(connectionString))
+            {
+
+                cn.Open();
+                SqlCommand cmd = new SqlCommand(
+                    "SELECT UserIp, Date, cw.SearchedWord, Word FROM Words w inner join CachedWords cw on w.Id = cw.AnagramID inner join UserLog u on u.UserIP = @word",
+                    cn);
+                cmd.Parameters.Add("@word", SqlDbType.NVarChar);
+                cmd.Parameters["@word"].Value = ip;
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    userLog.IpAddress = (string)reader["UserIp"];
+                    userLog.Date = (DateTime)reader["Date"];
+                    userLog.SearchedWord.Add((string)reader["SearchedWord"]);
+                    userLog.Anagrams.Add((string)reader["Word"]);
+                //    wordsByPart.Add((string)reader["Word"]);
+                }
+                cn.Close();
+            }
+
+            return userLog;
         }
 
     }

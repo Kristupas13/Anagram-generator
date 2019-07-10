@@ -23,7 +23,7 @@ namespace AnagramGenerator.WebApp.Controllers
         private readonly IUserLog _userLog;
         private readonly string connectionString;
           
-        public HomeController(IAnagramSolver anagramSolver,ICacheRepository cacheRepository, IUserLog userLog ,IConfiguration config)
+        public HomeController(IAnagramSolver anagramSolver, ICacheRepository cacheRepository, IUserLog userLog ,IConfiguration config)
         {
             configuration = config;
             connectionString = configuration.GetConnectionString("connectionString");
@@ -59,6 +59,7 @@ namespace AnagramGenerator.WebApp.Controllers
                 }
 
                 _userLog.InsertToUserLog(phrase, HttpContext.Connection.LocalIpAddress.ToString());
+               IUserLog useris =_userLog.GetUserLog(HttpContext.Connection.LocalIpAddress.ToString());
             }
 
             else
