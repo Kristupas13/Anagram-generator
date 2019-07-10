@@ -1,13 +1,11 @@
 ﻿@model AnagramList
-@{
-    ViewData["Title"] = "Welcome";
-}
 
     <ol>
         <font size="6">
             @foreach (var anagram in Model.Anagrams)
             {
                 <il>@anagram</il>
+                <br />
             }
         </font>
     <ol>

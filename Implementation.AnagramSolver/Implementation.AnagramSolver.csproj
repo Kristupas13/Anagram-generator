@@ -9,6 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="..\AnagramGenerator.WebApp\appsettings.json" Link="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\MainApp\App.config" Link="App.config" />
   </ItemGroup>
 

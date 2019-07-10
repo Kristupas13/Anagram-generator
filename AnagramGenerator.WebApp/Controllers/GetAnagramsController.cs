@@ -22,7 +22,7 @@ namespace AnagramGenerator.WebApp.Controllers
         [HttpGet("{name}")]
         public IList<string> Get(string name)
         {
-            IList<string> anagrams = _anagramSolver.GetAnagrams(name);
+            IList<string> anagrams = _anagramSolver.GetAnagramsSeperated(name);
             return anagrams;
 
         }

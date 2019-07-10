@@ -23,11 +23,10 @@ namespace MainApp
             string phrase = string.Join(" ", args);
 
             //    IFileRepository textFileLoader = new TextFileRepository();      // testing
-            IFileRepository textFileLoader = new SQLFileRepository();
-            IWordRepository wordRepository = new WordRepository(textFileLoader);
+            IWordRepository wordRepository = new SQLWordRepository();
             IAnagramSolver anagramSolver = new AnagramSolver(wordRepository);
 
-            IList<string> anagrams = anagramSolver.GetAnagrams(phrase);
+            IList<string> anagrams = anagramSolver.GetAnagramsSeperated(phrase);
 
 
             Console.WriteLine("Anagram: ");

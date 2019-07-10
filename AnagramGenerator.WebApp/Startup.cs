@@ -21,6 +21,7 @@ namespace AnagramGenerator.WebApp
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+          
         }
 
         public IConfiguration Configuration { get; }
@@ -48,9 +49,9 @@ namespace AnagramGenerator.WebApp
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-         
-            services.AddScoped<IWordRepository, WordRepository>();
-            services.AddScoped<IFileRepository, SQLFileRepository>();
+            services.AddScoped<ICacheRepository, SQLCacheRepository>();
+            services.AddScoped<IUserLog, SQLUserLog>();
+            services.AddScoped<IWordRepository, SQLWordRepository>();
             services.AddScoped<IAnagramSolver, AnagramSolver>();
 
         }

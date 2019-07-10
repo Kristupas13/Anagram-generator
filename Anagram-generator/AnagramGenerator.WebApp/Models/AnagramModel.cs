@@ -9,13 +9,11 @@ namespace AnagramGenerator.WebApp.Models
 {
     public class AnagramModel
     {
-        private readonly IFileRepository _fileRepository;
         private readonly IWordRepository _wordRepository;
         private readonly IAnagramSolver _anagramSolver;
 
-        public AnagramModel(IFileRepository fileRepository, IWordRepository wordRepository, IAnagramSolver anagramSolver)
+        public AnagramModel(IWordRepository wordRepository, IAnagramSolver anagramSolver)
         {
-            _fileRepository = fileRepository;
             _wordRepository = wordRepository;
             _anagramSolver = anagramSolver;
 
