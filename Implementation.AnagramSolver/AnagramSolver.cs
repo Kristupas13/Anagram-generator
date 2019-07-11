@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Configuration;
-using Interfaces.AnagramSolver;
+using AnagramGenerator.Contracts;
 
-namespace Implementation.AnagramSolver
+namespace AnagramGenerator.Implementations
 {
     public class AnagramSolver : IAnagramSolver
     {
@@ -14,17 +14,17 @@ namespace Implementation.AnagramSolver
         public AnagramSolver(IWordRepository wordRepository)
         {
             _wordRepository = wordRepository;
-
         }
 
-        public IList<string> GetAnagramsSeperated(string myWords)
+        public IList<WordModel> GetAnagramsSeperated(string myWords)
         {
             var seperatedWords = myWords.ToLower().Split(" ");
-            List<string> anagrams = new List<string>();
+            List<WordModel> anagrams = new List<WordModel>();
             foreach (var item in seperatedWords)
             {
                 string sortedWord = String.Concat(item.ToLower().OrderBy(c => c));
-                var wordAnagrams = _wordRepository.GetAnagrams(sortedWord);
+
+                IList<WordModel> wordAnagrams = _wordRepository.GetAnagrams(sortedWord);
                 if (wordAnagrams != null)
                 {
                     anagrams.AddRange(wordAnagrams);

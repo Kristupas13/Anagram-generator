@@ -1,4 +1,4 @@
-﻿using Interfaces.AnagramSolver;
+﻿using AnagramGenerator.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Text;
 
-namespace Implementation.AnagramSolver
+namespace AnagramGenerator.Implementations
 {
     public class SQLWordRepository : IWordRepository
     {
@@ -44,19 +44,24 @@ namespace Implementation.AnagramSolver
 
             return wordsByPart;
         }
-        public IList<string> GetAnagrams(string sortedWord)
+        public IList<WordModel> GetAnagrams(string sortedWord)
         {
-            List<string> anagrams = new List<string>();
+            List<WordModel> anagrams = new List<WordModel>();
             using (SqlConnection cn = new SqlConnection(connectionString))
             {
                 cn.Open();
-                SqlCommand cmd = new SqlCommand("Select Word FROM Words WHERE SortedWord = @sortedWord ", cn);
+                SqlCommand cmd = new SqlCommand("Select ID, Word FROM Words WHERE SortedWord = @sortedWord ", cn);
                 cmd.Parameters.Add("@sortedWord", SqlDbType.NVarChar);
                 cmd.Parameters["@sortedWord"].Value = sortedWord;
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    anagrams.Add(((string)reader["Word"]));
+                    WordModel wm = new WordModel()
+                    {
+                        ID = (int)reader["ID"],
+                        Word = (string)reader["Word"]
+                    };
+                     anagrams.Add(wm);
                 }
 
             }

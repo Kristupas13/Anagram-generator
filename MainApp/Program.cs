@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using Interfaces.AnagramSolver;
-using Implementation.AnagramSolver;
 using System.Configuration;
 using System.Collections.Specialized;
 using System.Collections.Generic;
@@ -22,7 +20,7 @@ namespace MainApp
 
             string phrase = string.Join(" ", args);
 
-            //    IFileRepository textFileLoader = new TextFileRepository();      // testing
+   /*         //    IFileRepository textFileLoader = new TextFileRepository();      // testing
             IWordRepository wordRepository = new SQLWordRepository();
             IAnagramSolver anagramSolver = new AnagramSolver(wordRepository);
 
@@ -34,7 +32,7 @@ namespace MainApp
             {
                Console.Write("{0} ", item);
             }
-          
+          */
         }
 
     }

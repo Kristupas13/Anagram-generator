@@ -31,3 +31,14 @@ C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\Http
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\HttpRequest\obj\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.AssemblyInfo.cs
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\HttpRequest\obj\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.dll
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Data_Manipulation-master\HttpRequest\obj\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.pdb
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\HttpRequest\bin\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.deps.json
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\HttpRequest\bin\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.runtimeconfig.json
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\HttpRequest\bin\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.runtimeconfig.dev.json
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\HttpRequest\bin\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.dll
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\HttpRequest\bin\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.pdb
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\HttpRequest\obj\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.csprojAssemblyReference.cache
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\HttpRequest\obj\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.csproj.CoreCompileInputs.cache
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\HttpRequest\obj\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.AssemblyInfoInputs.cache
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\HttpRequest\obj\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.AssemblyInfo.cs
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\HttpRequest\obj\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.dll
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\HttpRequest\obj\Debug\netcoreapp2.2\AnagramGenerator.HttpRequest.pdb

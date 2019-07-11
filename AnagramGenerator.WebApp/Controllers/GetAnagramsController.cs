@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Implementation.AnagramSolver;
-using Interfaces.AnagramSolver;
+using AnagramGenerator.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,9 +19,9 @@ namespace AnagramGenerator.WebApp.Controllers
         }
 
         [HttpGet("{name}")]
-        public IList<string> Get(string name)
+        public IList<WordModel> Get(string name)
         {
-            IList<string> anagrams = _anagramSolver.GetAnagramsSeperated(name);
+            IList<WordModel> anagrams = _anagramSolver.GetAnagramsSeperated(name);
             return anagrams;
 
         }

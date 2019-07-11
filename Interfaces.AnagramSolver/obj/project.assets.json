@@ -692,9 +692,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\Interfaces.AnagramSolver\\Interfaces.AnagramSolver.csproj",
-      "projectName": "Interfaces.AnagramSolver",
-      "projectPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\Interfaces.AnagramSolver\\Interfaces.AnagramSolver.csproj",
+      "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj",
+      "projectName": "AnagramGenerator.Contracts",
+      "projectPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj",
       "packagesPath": "C:\\Users\\kristupas\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\Interfaces.AnagramSolver\\obj\\",
       "projectStyle": "PackageReference",

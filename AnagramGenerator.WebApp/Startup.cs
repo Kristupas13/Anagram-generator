@@ -11,8 +11,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using AnagramGenerator.WebApp.Models;
-using Interfaces.AnagramSolver;
-using Implementation.AnagramSolver;
+using AnagramGenerator.Contracts;
+using AnagramGenerator.Implementations;
+using AnagramGenerator.DataAccess;
+using AnagramGenerator.WebApp.Services;
 
 namespace AnagramGenerator.WebApp
 {
@@ -49,10 +51,12 @@ namespace AnagramGenerator.WebApp
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddScoped<ICacheRepository, SQLCacheRepository>();
-            services.AddScoped<IUserLog, SQLUserLog>();
+            services.AddScoped<ICacheRepository, CacheRepository>();
+            services.AddScoped<IUserLogRepository, UserLogRepository>();
             services.AddScoped<IWordRepository, SQLWordRepository>();
             services.AddScoped<IAnagramSolver, AnagramSolver>();
+            services.AddScoped<IAnagramRepository, AnagramRepository>();
+            services.AddScoped<WordServices>();
 
         }
 

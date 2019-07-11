@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -22,8 +22,10 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\Implementation.AnagramSolver\Implementation.AnagramSolver.csproj" />
-    <ProjectReference Include="..\Interfaces.AnagramSolver\Interfaces.AnagramSolver.csproj" />
+    <ProjectReference Include="..\AnagramGenerator.DataAccess\AnagramGenerator.DataAccess.csproj" />
+    <ProjectReference Include="..\AnagramGenerator.EntityFramework\AnagramGenerator.EF.DatabaseFirst.csproj" />
+    <ProjectReference Include="..\Implementation.AnagramSolver\AnagramGenerator.Implementations.csproj" />
+    <ProjectReference Include="..\Interfaces.AnagramSolver\AnagramGenerator.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,6 @@
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\bin\Debug\netcoreapp2.2\AnagramGenerator.EntityFramework.deps.json
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\bin\Debug\netcoreapp2.2\AnagramGenerator.EntityFramework.dll
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\obj\Debug\netcoreapp2.2\AnagramGenerator.EntityFramework.csprojAssemblyReference.cache
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\obj\Debug\netcoreapp2.2\AnagramGenerator.EntityFramework.csproj.CoreCompileInputs.cache
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\obj\Debug\netcoreapp2.2\AnagramGenerator.EntityFramework.AssemblyInfoInputs.cache
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\obj\Debug\netcoreapp2.2\AnagramGenerator.EntityFramework.AssemblyInfo.cs

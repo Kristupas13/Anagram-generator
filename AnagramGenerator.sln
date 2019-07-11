@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainApp", "MainApp\MainApp.csproj", "{7C23518A-886E-4286-A9EA-6BEEE630D45F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces.AnagramSolver", "Interfaces.AnagramSolver\Interfaces.AnagramSolver.csproj", "{85DED481-A752-4BBD-9DC9-78FA5DFDBA70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnagramGenerator.Contracts", "Interfaces.AnagramSolver\AnagramGenerator.Contracts.csproj", "{85DED481-A752-4BBD-9DC9-78FA5DFDBA70}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Implementation.AnagramSolver", "Implementation.AnagramSolver\Implementation.AnagramSolver.csproj", "{F3AA0D92-7605-4CA9-BAB7-FF031440E861}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnagramGenerator.Implementations", "Implementation.AnagramSolver\AnagramGenerator.Implementations.csproj", "{F3AA0D92-7605-4CA9-BAB7-FF031440E861}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnagramGenerator.Tests", "AnagramGenerator.Tests\AnagramGenerator.Tests.csproj", "{FFFA34DB-D8D6-4C98-9E3F-4B3AB654A14B}"
 EndProject
@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnagramGenerator.WebApp", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnagramGenerator.HttpRequest", "HttpRequest\AnagramGenerator.HttpRequest.csproj", "{4557C380-9DE6-4668-8BAD-C4759B7830EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnagramGenerator.Sql", "AnagramGenerator.Sql\AnagramGenerator.Sql.csproj", "{155A3C9C-1472-441D-89CC-2FC37E82741C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnagramGenerator.Sql", "AnagramGenerator.Sql\AnagramGenerator.Sql.csproj", "{155A3C9C-1472-441D-89CC-2FC37E82741C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnagramGenerator.DataAccess", "AnagramGenerator.DataAccess\AnagramGenerator.DataAccess.csproj", "{DB8FFBB2-81A3-41D0-B8E5-371FE5B5E942}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnagramGenerator.EF.DatabaseFirst", "AnagramGenerator.EntityFramework\AnagramGenerator.EF.DatabaseFirst.csproj", "{1574D8B1-8E1C-44F9-8AD9-FDECADD42F97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{155A3C9C-1472-441D-89CC-2FC37E82741C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{155A3C9C-1472-441D-89CC-2FC37E82741C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{155A3C9C-1472-441D-89CC-2FC37E82741C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB8FFBB2-81A3-41D0-B8E5-371FE5B5E942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB8FFBB2-81A3-41D0-B8E5-371FE5B5E942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB8FFBB2-81A3-41D0-B8E5-371FE5B5E942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB8FFBB2-81A3-41D0-B8E5-371FE5B5E942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1574D8B1-8E1C-44F9-8AD9-FDECADD42F97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1574D8B1-8E1C-44F9-8AD9-FDECADD42F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1574D8B1-8E1C-44F9-8AD9-FDECADD42F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1574D8B1-8E1C-44F9-8AD9-FDECADD42F97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

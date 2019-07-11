@@ -2,16 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Interfaces.AnagramSolver
+namespace AnagramGenerator.Contracts
 {
-    public interface IUserLog
+    public interface IUserLogRepository
     {
-         string IpAddress { get; set; }
-         DateTime Date { get; set; }
-         HashSet<string> SearchedWord { get; set; }
-         HashSet<string> Anagrams { get; set; }
-
-        void InsertToUserLog(string searchedWord, string IpAddress);
-        IUserLog GetUserLog(string ip);
+        void InsertToUserLog(WordModel searchedWord, string IpAddress);
+        IList<UserLogModel> GetUserLog(string ip);
     }
 }

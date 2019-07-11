@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Interfaces.AnagramSolver;
+using AnagramGenerator.Contracts;
 
-namespace Implementation.AnagramSolver
+namespace AnagramGenerator.Implementations
 {
     public class TextWordRepository : IWordRepository
     {
@@ -80,9 +80,9 @@ namespace Implementation.AnagramSolver
         {
             throw new System.NotImplementedException();
         }
-        public IList<string> GetAnagrams(string sortedWord)
+        public IList<WordModel> GetAnagrams(string sortedWord)
         {
-            IList<string> anagrams = new List<string>();
+            IList<WordModel> anagrams = new List<WordModel>();
             foreach(var content in wordsByPart.Keys)
             {
                 foreach(var item in wordsByPart[content])
@@ -90,7 +90,14 @@ namespace Implementation.AnagramSolver
                     bool same = sortedWord.OrderBy(c => c)
                         .SequenceEqual(item.OrderBy(c => c));
                     if (same)
-                        anagrams.Add(item);
+                    {
+                        WordModel wm = new WordModel()
+                        {
+                            ID = 0,
+                            Word = item
+                        };
+                        anagrams.Add(wm);
+                    }
                 }
             }
 

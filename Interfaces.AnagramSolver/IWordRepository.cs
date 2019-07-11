@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Interfaces.AnagramSolver
+namespace AnagramGenerator.Contracts
 {
     public interface IWordRepository
 
@@ -12,7 +12,7 @@ namespace Interfaces.AnagramSolver
         Dictionary<string, HashSet<string>> GetDictionary();
         List<string> GetAllWords();
         List<string> FindByWordPart(string wordPart);
-        IList<string> GetAnagrams(string sortedWord);
+        IList<WordModel> GetAnagrams(string sortedWord);
         IList<string> LoadWords(int page);
 
     }

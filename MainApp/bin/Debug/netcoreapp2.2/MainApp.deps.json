@@ -8,8 +8,8 @@
     ".NETCoreApp,Version=v2.2": {
       "MainApp/1.0.0": {
         "dependencies": {
-          "Implementation.AnagramSolver": "1.0.0",
-          "Interfaces.AnagramSolver": "1.0.0",
+          "AnagramGenerator.Contracts": "1.0.0",
+          "AnagramGenerator.Implementations": "1.0.0",
           "System.Configuration.ConfigurationManager": "4.5.0"
         },
         "runtime": {
@@ -183,19 +183,19 @@
           }
         }
       },
-      "Implementation.AnagramSolver/1.0.0": {
+      "AnagramGenerator.Contracts/1.0.0": {
+        "runtime": {
+          "AnagramGenerator.Contracts.dll": {}
+        }
+      },
+      "AnagramGenerator.Implementations/1.0.0": {
         "dependencies": {
-          "Interfaces.AnagramSolver": "1.0.0",
+          "AnagramGenerator.Contracts": "1.0.0",
           "System.Configuration.ConfigurationManager": "4.5.0",
           "System.Data.SqlClient": "4.6.1"
         },
         "runtime": {
-          "Implementation.AnagramSolver.dll": {}
-        }
-      },
-      "Interfaces.AnagramSolver/1.0.0": {
-        "runtime": {
-          "Interfaces.AnagramSolver.dll": {}
+          "AnagramGenerator.Implementations.dll": {}
         }
       }
     }
@@ -297,12 +297,12 @@
       "path": "system.text.encoding.codepages/4.5.0",
       "hashPath": "system.text.encoding.codepages.4.5.0.nupkg.sha512"
     },
-    "Implementation.AnagramSolver/1.0.0": {
+    "AnagramGenerator.Contracts/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Interfaces.AnagramSolver/1.0.0": {
+    "AnagramGenerator.Implementations/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

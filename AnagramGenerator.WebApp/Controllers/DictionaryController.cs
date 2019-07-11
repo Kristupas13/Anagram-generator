@@ -4,15 +4,15 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AnagramGenerator.WebApp.Models;
-using Interfaces.AnagramSolver;
+using AnagramGenerator.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using AnagramGenerator.WebApp.Services;
 
 namespace AnagramGenerator.WebApp.Controllers
 {
     public class DictionaryController : Controller
     {
         private readonly IWordRepository _wordRepository;
-
         public DictionaryController(IWordRepository wordRepository)
         {
             _wordRepository = wordRepository;

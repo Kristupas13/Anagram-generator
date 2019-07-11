@@ -1,0 +1,14 @@
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.deps.json
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.dll
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.csprojAssemblyReference.cache
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.csproj.CoreCompileInputs.cache
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.AssemblyInfoInputs.cache
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.AssemblyInfo.cs
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.pdb
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.dll
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.pdb
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.runtimeconfig.json
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.runtimeconfig.dev.json
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.dll
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.pdb
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\AnagramGenerator.EntityFramework\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.csproj.CopyComplete

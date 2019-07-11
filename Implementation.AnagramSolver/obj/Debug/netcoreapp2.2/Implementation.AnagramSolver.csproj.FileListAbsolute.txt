@@ -76,8 +76,6 @@ C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Impl
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\bin\Debug\netcoreapp2.2\Implementation.AnagramSolver.deps.json
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\bin\Debug\netcoreapp2.2\Implementation.AnagramSolver.dll
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\bin\Debug\netcoreapp2.2\Implementation.AnagramSolver.pdb
-C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\bin\Debug\netcoreapp2.2\Interfaces.AnagramSolver.dll
-C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\bin\Debug\netcoreapp2.2\Interfaces.AnagramSolver.pdb
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\obj\Debug\netcoreapp2.2\Implementation.AnagramSolver.csprojAssemblyReference.cache
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\obj\Debug\netcoreapp2.2\Implementation.AnagramSolver.csproj.CoreCompileInputs.cache
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\obj\Debug\netcoreapp2.2\Implementation.AnagramSolver.AssemblyInfoInputs.cache
@@ -85,3 +83,5 @@ C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Impl
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\obj\Debug\netcoreapp2.2\Implementation.AnagramSolver.csproj.CopyComplete
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\obj\Debug\netcoreapp2.2\Implementation.AnagramSolver.dll
 C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\obj\Debug\netcoreapp2.2\Implementation.AnagramSolver.pdb
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.dll
+C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\Implementation.AnagramSolver\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.pdb

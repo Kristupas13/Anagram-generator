@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Interfaces.AnagramSolver
+namespace AnagramGenerator.Contracts
 {
     public interface ICacheRepository
     {
-        IList<string> CheckCached(string word);
-        void InsertWordToCache(string word, IList<string> anagrams);
+        IList<WordModel> CheckCached(WordModel word);
+        void InsertWordToCache(WordModel word, IList<WordModel> anagrams);
     }
 }

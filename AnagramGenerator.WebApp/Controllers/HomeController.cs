@@ -5,13 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AnagramGenerator.WebApp.Models;
-using Implementation.AnagramSolver;
-using Interfaces.AnagramSolver;
+using AnagramGenerator.Contracts;
 using Microsoft.AspNetCore.Http;
 using System.Data.SqlClient;
 using System.Data;
 using Microsoft.Extensions.Configuration;
-
+using AnagramGenerator.WebApp.Services;
 
 namespace AnagramGenerator.WebApp.Controllers
 {
@@ -19,59 +18,58 @@ namespace AnagramGenerator.WebApp.Controllers
     {
         private readonly IConfiguration configuration;
         private readonly IAnagramSolver _anagramSolver;
-        private readonly ICacheRepository _cacheRepository;
-        private readonly IUserLog _userLog;
+        private readonly WordServices wordServices;
         private readonly string connectionString;
           
-        public HomeController(IAnagramSolver anagramSolver, ICacheRepository cacheRepository, IUserLog userLog ,IConfiguration config)
+        public HomeController(IAnagramSolver anagramSolver, WordServices wordServices, IConfiguration config)
         {
             configuration = config;
             connectionString = configuration.GetConnectionString("connectionString");
-     
-           
+
+            this.wordServices = wordServices;  
             _anagramSolver = anagramSolver;         
-            _cacheRepository = cacheRepository;
-            _userLog = userLog;
+
         }
         public IActionResult Index(string phrase = "")
         {
-            AnagramList AnagramModel;
-
+            AnagramList anagramModel = new AnagramList();
             if (!String.IsNullOrWhiteSpace(phrase))
             {
-                IList<string> anagrams = _cacheRepository.CheckCached(phrase);
+               IList<WordModel> wm = wordServices.GetWordModel(phrase);
+
+                IList<WordModel> anagrams = wordServices.CheckCached(wm);
+
                 if(anagrams.Any())
                 {
-                    AnagramModel = new AnagramList() { Anagrams = anagrams };
+                    anagramModel.Anagrams = anagrams;
+                    wordServices.InsertToUserLog(wm, HttpContext.Connection.LocalIpAddress.ToString());
+                    return View(anagramModel);
                 }
                 else
                 {
                     anagrams = _anagramSolver.GetAnagramsSeperated(phrase);
                     if(anagrams.Any())
                     {
-                        _cacheRepository.InsertWordToCache(phrase, anagrams);
-                        AnagramModel = new AnagramList() { Anagrams = anagrams};
+                        wordServices.InsertWordToCache(wm, anagrams);
+                        wordServices.InsertToUserLog(wm, HttpContext.Connection.LocalIpAddress.ToString());
+                        anagramModel.Anagrams = anagrams;
+                        return View(anagramModel);
 
                     }
                     else
-                    AnagramModel = new AnagramList() { Anagrams = new List<string>() };
+                        anagramModel = new AnagramList() { Anagrams = new List<WordModel>() };
 
                 }
 
-                _userLog.InsertToUserLog(phrase, HttpContext.Connection.LocalIpAddress.ToString());
-               IUserLog useris =_userLog.GetUserLog(HttpContext.Connection.LocalIpAddress.ToString());
             }
 
             else
             {
-                AnagramModel = new AnagramList() { Anagrams = new List<string>() }; // bad
+                anagramModel = new AnagramList() { Anagrams = new List<WordModel>() };
             }
-            return View(AnagramModel);
+            return View(anagramModel);
         }
-        public IActionResult GetInfo(string ip)
-        {
-            return new EmptyResult();
-        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

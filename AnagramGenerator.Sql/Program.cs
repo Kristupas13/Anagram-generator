@@ -1,5 +1,5 @@
-﻿using Implementation.AnagramSolver;
-using Interfaces.AnagramSolver;
+﻿using AnagramGenerator.Contracts;
+using AnagramGenerator.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Data;

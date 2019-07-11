@@ -24,8 +24,9 @@
     ".NETCoreApp,Version=v2.2": {
       "AnagramGenerator.WebApp/1.0.0": {
         "dependencies": {
-          "Implementation.AnagramSolver": "1.0.0",
-          "Interfaces.AnagramSolver": "1.0.0",
+          "AnagramGenerator.Contracts": "1.0.0",
+          "AnagramGenerator.DataAccess": "1.0.0",
+          "AnagramGenerator.Implementations": "1.0.0",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
@@ -460,25 +461,37 @@
           }
         }
       },
-      "Implementation.AnagramSolver/1.0.0": {
+      "AnagramGenerator.Contracts/1.0.0": {
+        "runtime": {
+          "AnagramGenerator.Contracts.dll": {}
+        },
+        "compile": {
+          "AnagramGenerator.Contracts.dll": {}
+        }
+      },
+      "AnagramGenerator.DataAccess/1.0.0": {
         "dependencies": {
-          "Interfaces.AnagramSolver": "1.0.0",
+          "AnagramGenerator.Contracts": "1.0.0",
+          "System.Data.SqlClient": "4.6.1"
+        },
+        "runtime": {
+          "AnagramGenerator.DataAccess.dll": {}
+        },
+        "compile": {
+          "AnagramGenerator.DataAccess.dll": {}
+        }
+      },
+      "AnagramGenerator.Implementations/1.0.0": {
+        "dependencies": {
+          "AnagramGenerator.Contracts": "1.0.0",
           "System.Configuration.ConfigurationManager": "4.5.0",
           "System.Data.SqlClient": "4.6.1"
         },
         "runtime": {
-          "Implementation.AnagramSolver.dll": {}
+          "AnagramGenerator.Implementations.dll": {}
         },
         "compile": {
-          "Implementation.AnagramSolver.dll": {}
-        }
-      },
-      "Interfaces.AnagramSolver/1.0.0": {
-        "runtime": {
-          "Interfaces.AnagramSolver.dll": {}
-        },
-        "compile": {
-          "Interfaces.AnagramSolver.dll": {}
+          "AnagramGenerator.Implementations.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3829,12 +3842,17 @@
       "path": "system.text.encoding.codepages/4.5.0",
       "hashPath": "system.text.encoding.codepages.4.5.0.nupkg.sha512"
     },
-    "Implementation.AnagramSolver/1.0.0": {
+    "AnagramGenerator.Contracts/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Interfaces.AnagramSolver/1.0.0": {
+    "AnagramGenerator.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AnagramGenerator.Implementations/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
