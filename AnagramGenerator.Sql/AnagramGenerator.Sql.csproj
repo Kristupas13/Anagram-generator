@@ -1,16 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Implementation.AnagramSolver\AnagramGenerator.Implementations.csproj" />
+    <ProjectReference Include="..\AnagramGenerator.Implementations\AnagramGenerator.Implementations.csproj" />
     <ProjectReference Include="..\Interfaces.AnagramSolver\AnagramGenerator.Contracts.csproj" />
   </ItemGroup>
 

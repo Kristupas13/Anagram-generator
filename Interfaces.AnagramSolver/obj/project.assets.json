@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj",
+      "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj",
       "projectName": "AnagramGenerator.Contracts",
-      "projectPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj",
+      "projectPath": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj",
       "packagesPath": "C:\\Users\\kristupas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\Interfaces.AnagramSolver\\obj\\",
+      "outputPath": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\Interfaces.AnagramSolver\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

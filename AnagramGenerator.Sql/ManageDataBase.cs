@@ -15,7 +15,7 @@ namespace AnagramGenerator.Sql
 
         }
 
-          public static void Insert(HashSet<string> allWords, string connectionString)          
+        public static void Insert(HashSet<string> allWords, string connectionString)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -28,9 +28,9 @@ namespace AnagramGenerator.Sql
                 con.Open();
                 foreach (var contents in allWords)
                 {
-                     cmd.Parameters["@existingWord"].Value = contents.ToLower();
-                     cmd.Parameters["@sortedWord"].Value = String.Concat(contents.ToLower().OrderBy(c => c));
-                     cmd.ExecuteNonQuery();
+                    cmd.Parameters["@existingWord"].Value = contents.ToLower();
+                    cmd.Parameters["@sortedWord"].Value = String.Concat(contents.ToLower().OrderBy(c => c));
+                    cmd.ExecuteNonQuery();
                 }
                 con.Close();
             }
@@ -42,44 +42,44 @@ namespace AnagramGenerator.Sql
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-               con.Open();
-               SqlCommand cmd = new SqlCommand();
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "TRUNCATE TABLE Words";
                 cmd.ExecuteNonQuery();
-               con.Close();
+                con.Close();
             }
         }
 
 
 
         //Insert with language part (linksnis)
-      /*  public static void Insert(Dictionary<string, HashSet<string>> allWords, string connectionString)          
-        {
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-            string insertStmt = "INSERT INTO Words(Word, Part, SortedWord) VALUES (@existingWord, @partOfLanguage, @sortedWord)";
-            using (SqlConnection con = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(insertStmt, con))
-            {
-                cmd.Parameters.Add("@existingWord", SqlDbType.NVarChar);
-                cmd.Parameters.Add("@partOfLanguage", SqlDbType.NVarChar);
-                cmd.Parameters.Add("@sortedWord", SqlDbType.NVarChar);
-                con.Open();
-                foreach (var contents in allWords.Keys)
-                {
-                    foreach (var listMember in allWords[contents])
-                    {
-                        cmd.Parameters["@existingWord"].Value = listMember.ToLower();
-                        cmd.Parameters["@partOfLanguage"].Value = contents;
-                        cmd.Parameters["@sortedWord"].Value = String.Concat(listMember.ToLower().OrderBy(c => c));
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                con.Close();
-            }
-            stopWatch.Stop();
-            Console.WriteLine("Time measured: {0} Miliseconds.  ({1} Seconds)", stopWatch.ElapsedMilliseconds, stopWatch.Elapsed.Seconds);
-        }*/
+        /*  public static void Insert(Dictionary<string, HashSet<string>> allWords, string connectionString)          
+          {
+              Stopwatch stopWatch = new Stopwatch();
+              stopWatch.Start();
+              string insertStmt = "INSERT INTO Words(Word, Part, SortedWord) VALUES (@existingWord, @partOfLanguage, @sortedWord)";
+              using (SqlConnection con = new SqlConnection(connectionString))
+              using (SqlCommand cmd = new SqlCommand(insertStmt, con))
+              {
+                  cmd.Parameters.Add("@existingWord", SqlDbType.NVarChar);
+                  cmd.Parameters.Add("@partOfLanguage", SqlDbType.NVarChar);
+                  cmd.Parameters.Add("@sortedWord", SqlDbType.NVarChar);
+                  con.Open();
+                  foreach (var contents in allWords.Keys)
+                  {
+                      foreach (var listMember in allWords[contents])
+                      {
+                          cmd.Parameters["@existingWord"].Value = listMember.ToLower();
+                          cmd.Parameters["@partOfLanguage"].Value = contents;
+                          cmd.Parameters["@sortedWord"].Value = String.Concat(listMember.ToLower().OrderBy(c => c));
+                          cmd.ExecuteNonQuery();
+                      }
+                  }
+                  con.Close();
+              }
+              stopWatch.Stop();
+              Console.WriteLine("Time measured: {0} Miliseconds.  ({1} Seconds)", stopWatch.ElapsedMilliseconds, stopWatch.Elapsed.Seconds);
+          }*/
     }
 }

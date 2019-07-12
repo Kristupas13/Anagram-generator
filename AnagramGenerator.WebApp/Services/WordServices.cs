@@ -1,4 +1,5 @@
 ﻿using AnagramGenerator.Contracts;
+using AnagramGenerator.Contracts.Models;
 using AnagramGenerator.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -20,18 +21,21 @@ namespace AnagramGenerator.WebApp.Services
             _anagramRepository = anagramRepository;
 
         }
-        public IList<WordModel> CheckCached(IList<WordModel> words)
+        public IList<WordModel> CheckCached(string phrase)
         {
             List<WordModel> cachedWords = new List<WordModel>();
-            foreach(var word in words)
+            var splited = phrase.Split(" ");
+            foreach(var word in splited)
             {
                 cachedWords.AddRange(_cacheRepository.CheckCached(word));
             }
             return cachedWords;
         }
-        public void InsertWordToCache(IList<WordModel> words, IList<WordModel> anagrams)
+        public void InsertWordToCache(string words, IList<WordModel> anagrams)
         {
-            foreach (var item in words)
+            var splited = words.Split(" ");
+
+            foreach (var item in splited)
             {
                 _cacheRepository.InsertWordToCache(item, anagrams);
             }
@@ -40,12 +44,10 @@ namespace AnagramGenerator.WebApp.Services
         {
             return _userLogRepository.GetUserLog(ip);
         }
-        public void InsertToUserLog(IList<WordModel> searchedWord, string IpAddress)
+        public void InsertToUserLog(string searchedWord, string IpAddress)
         {
-            foreach (var item in searchedWord)
-            {
-                _userLogRepository.InsertToUserLog(item, IpAddress);
-            }
+         _userLogRepository.InsertToUserLog(searchedWord, IpAddress);
+
         }
         public IList<WordModel> GetWordModel(string phrase)
         {
@@ -56,7 +58,7 @@ namespace AnagramGenerator.WebApp.Services
                 WordModel wordModel = _anagramRepository.GetWordModel(item);
                 if(wordModel.Word == null)
                 {
-                    wordModel.ID = 0;
+                    wordModel.Id = 0;
                     wordModel.Word = item;
                 }
                 allWords.Add(wordModel); 

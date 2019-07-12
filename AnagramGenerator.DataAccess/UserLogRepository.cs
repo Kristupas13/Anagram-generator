@@ -1,4 +1,5 @@
 ﻿using AnagramGenerator.Contracts;
+using AnagramGenerator.Contracts.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +15,7 @@ namespace AnagramGenerator.DataAccess
         {
             connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=AnagramDatabase";
         }
-        public void InsertToUserLog(WordModel searchedWord, string IpAddress)
+        public void InsertToUserLog(string searchedWord, string IpAddress)
         {
             using (SqlConnection cn = new SqlConnection(connectionString))
             {
@@ -25,7 +26,7 @@ namespace AnagramGenerator.DataAccess
                 cmd.Parameters.Add("@searchedWord", SqlDbType.NVarChar);
                 cmd.Parameters.Add("@Date", SqlDbType.SmallDateTime);
                 cmd.Parameters["@userIP"].Value = IpAddress;
-                cmd.Parameters["@searchedWord"].Value = searchedWord.Word;
+                cmd.Parameters["@searchedWord"].Value = searchedWord;
                 cmd.Parameters["@Date"].Value = DateTime.Now;
                 cmd.ExecuteNonQuery();
                 cn.Close();
@@ -41,7 +42,7 @@ namespace AnagramGenerator.DataAccess
 
                 cn.Open();
                 SqlCommand cmd = new SqlCommand(
-                    "SELECT UserIp, Date, cw.SearchedWord, Word, ID FROM Words w inner join CachedWords cw on w.Id = cw.AnagramID inner join UserLog u on u.UserIP = @word",
+                    "SELECT UserIp, Date, cw.SearchedWord, Word, w.ID FROM Words w inner join CachedWords cw on w.Id = cw.AnagramID inner join UserLog u on u.UserIP = @word",
                     cn);
                 cmd.Parameters.Add("@word", SqlDbType.NVarChar);
                 cmd.Parameters["@word"].Value = ip;
@@ -51,18 +52,11 @@ namespace AnagramGenerator.DataAccess
                 {
                     UserLogModel logModel = new UserLogModel()
                     {
-                        UserIP = ip,
+                        UserIp = ip,
                         Date = (DateTime)reader["Date"],
-                        Word = (string)reader["SearchedWord"],
+                        SearchedWord = (string)reader["SearchedWord"],
+                        Id = (int)reader["Id"]
                     };
-
-                    WordModel wordModel = new WordModel()
-                    {
-                        ID = (int)reader["ID"],
-                        Word = (string)reader["Word"]
-                    };
-
-                    logModel.Anagrams.Add(wordModel);
                     userLogs.Add(logModel);
 
                 }

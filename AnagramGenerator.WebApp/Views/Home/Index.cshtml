@@ -2,10 +2,13 @@
 
     <ol>
         <font size="6">
-            @foreach (var anagram in Model.Anagrams)
+            @if (Model.Anagrams.Any())
             {
-                <il>@anagram.Word</il>
-                <br />
+                foreach (var anagram in Model.Anagrams)
+                {
+                    <il>@anagram.Word</il>
+                    <br />
+                }
             }
         </font>
     <ol>

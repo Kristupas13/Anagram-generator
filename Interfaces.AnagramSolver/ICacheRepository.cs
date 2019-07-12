@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnagramGenerator.Contracts.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +7,7 @@ namespace AnagramGenerator.Contracts
 {
     public interface ICacheRepository
     {
-        IList<WordModel> CheckCached(WordModel word);
-        void InsertWordToCache(WordModel word, IList<WordModel> anagrams);
+        IList<WordModel> CheckCached(string word);
+        void InsertWordToCache(string word, IList<WordModel> anagrams);
     }
 }

@@ -13084,8 +13084,8 @@
     },
     "AnagramGenerator.Implementations/1.0.0": {
       "type": "project",
-      "path": "../Implementation.AnagramSolver/AnagramGenerator.Implementations.csproj",
-      "msbuildProject": "../Implementation.AnagramSolver/AnagramGenerator.Implementations.csproj"
+      "path": "../AnagramGenerator.Implementations/AnagramGenerator.Implementations.csproj",
+      "msbuildProject": "../AnagramGenerator.Implementations/AnagramGenerator.Implementations.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -13107,11 +13107,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\AnagramGenerator.WebApp\\AnagramGenerator.WebApp.csproj",
+      "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\AnagramGenerator.WebApp\\AnagramGenerator.WebApp.csproj",
       "projectName": "AnagramGenerator.WebApp",
-      "projectPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\AnagramGenerator.WebApp\\AnagramGenerator.WebApp.csproj",
+      "projectPath": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\AnagramGenerator.WebApp\\AnagramGenerator.WebApp.csproj",
       "packagesPath": "C:\\Users\\kristupas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\AnagramGenerator.WebApp\\obj\\",
+      "outputPath": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\AnagramGenerator.WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13130,17 +13130,17 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\AnagramGenerator.DataAccess\\AnagramGenerator.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\AnagramGenerator.DataAccess\\AnagramGenerator.DataAccess.csproj"
+            "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\AnagramGenerator.DataAccess\\AnagramGenerator.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\AnagramGenerator.DataAccess\\AnagramGenerator.DataAccess.csproj"
             },
-            "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\AnagramGenerator.EntityFramework\\AnagramGenerator.EF.DatabaseFirst.csproj": {
-              "projectPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\AnagramGenerator.EntityFramework\\AnagramGenerator.EF.DatabaseFirst.csproj"
+            "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\AnagramGenerator.EntityFramework\\AnagramGenerator.EF.DatabaseFirst.csproj": {
+              "projectPath": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\AnagramGenerator.EntityFramework\\AnagramGenerator.EF.DatabaseFirst.csproj"
             },
-            "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\Implementation.AnagramSolver\\AnagramGenerator.Implementations.csproj": {
-              "projectPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\Implementation.AnagramSolver\\AnagramGenerator.Implementations.csproj"
+            "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\AnagramGenerator.Implementations\\AnagramGenerator.Implementations.csproj": {
+              "projectPath": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\AnagramGenerator.Implementations\\AnagramGenerator.Implementations.csproj"
             },
-            "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj": {
-              "projectPath": "C:\\Users\\kristupas\\Desktop\\UpdatedDataManipulation\\Cloned\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj"
+            "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj": {
+              "projectPath": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj"
             }
           }
         }

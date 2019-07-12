@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Data;
 using Microsoft.Extensions.Configuration;
 using AnagramGenerator.WebApp.Services;
+using AnagramGenerator.Contracts.Models;
 
 namespace AnagramGenerator.WebApp.Controllers
 {
@@ -35,14 +36,13 @@ namespace AnagramGenerator.WebApp.Controllers
             AnagramList anagramModel = new AnagramList();
             if (!String.IsNullOrWhiteSpace(phrase))
             {
-               IList<WordModel> wm = wordServices.GetWordModel(phrase);
 
-                IList<WordModel> anagrams = wordServices.CheckCached(wm);
+                IList<WordModel> anagrams = wordServices.CheckCached(phrase);
 
                 if(anagrams.Any())
                 {
                     anagramModel.Anagrams = anagrams;
-                    wordServices.InsertToUserLog(wm, HttpContext.Connection.LocalIpAddress.ToString());
+                    wordServices.InsertToUserLog(phrase, HttpContext.Connection.LocalIpAddress.ToString());
                     return View(anagramModel);
                 }
                 else
@@ -50,8 +50,10 @@ namespace AnagramGenerator.WebApp.Controllers
                     anagrams = _anagramSolver.GetAnagramsSeperated(phrase);
                     if(anagrams.Any())
                     {
-                        wordServices.InsertWordToCache(wm, anagrams);
-                        wordServices.InsertToUserLog(wm, HttpContext.Connection.LocalIpAddress.ToString());
+                        wordServices.InsertWordToCache(phrase, anagrams);
+                        wordServices.InsertToUserLog(phrase, HttpContext.Connection.LocalIpAddress.ToString());
+
+
                         anagramModel.Anagrams = anagrams;
                         return View(anagramModel);
 
@@ -65,7 +67,7 @@ namespace AnagramGenerator.WebApp.Controllers
 
             else
             {
-                anagramModel = new AnagramList() { Anagrams = new List<WordModel>() };
+                anagramModel = new AnagramList() { Anagrams = new List<WordModel>()};
             }
             return View(anagramModel);
         }

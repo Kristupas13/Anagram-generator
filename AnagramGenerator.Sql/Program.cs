@@ -23,9 +23,9 @@ namespace AnagramGenerator.Sql
 
             string connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=AnagramDatabase";
 
-      //      ManageDataBase.DeleteAll(connectionString);
-        //    ManageDataBase.Insert(wordsToDatabase, connectionString);
-          
+            //      ManageDataBase.DeleteAll(connectionString);
+            //    ManageDataBase.Insert(wordsToDatabase, connectionString);
+
         }
     }
 }
