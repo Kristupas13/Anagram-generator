@@ -3,6 +3,8 @@ using System.IO;
 using System.Configuration;
 using System.Collections.Specialized;
 using System.Collections.Generic;
+using AnagramGenerator.EF.CodeFirst;
+using AnagramGenerator.EF.CodeFirst.Models;
 
 namespace MainApp
 {
@@ -19,6 +21,19 @@ namespace MainApp
 
 
             string phrase = string.Join(" ", args);
+
+
+            using(var db = new Solver_DBContext())
+            {
+                db.Words.Add(new WordEntity { Word = "labas", SortedWord = "aabls" });
+                db.SaveChanges();
+
+                foreach(var word in db.Words)
+                {
+                    Console.WriteLine(word.Word);
+                }
+            }
+
 
    /*         //    IFileRepository textFileLoader = new TextFileRepository();      // testing
             IWordRepository wordRepository = new SQLWordRepository();

@@ -6,10 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AnagramGenerator.EF.CodeFirst\AnagramGenerator.EF.CodeFirst.csproj" />
     <ProjectReference Include="..\Interfaces.AnagramSolver\AnagramGenerator.Contracts.csproj" />
   </ItemGroup>
 

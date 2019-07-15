@@ -8,7 +8,7 @@ using AnagramGenerator.Contracts.Models;
 
 namespace AnagramGenerator.Implementations
 {
-    public class TextWordRepository : IWordRepository
+    public class TextWordRepository : ITextRepository
     {
         private readonly Dictionary<string, HashSet<string>> wordsByPart;
         private readonly IList<string> sortedWords;
@@ -63,7 +63,7 @@ namespace AnagramGenerator.Implementations
             return wordsByPart;
         }
 
-        public List<string> GetAllWords()
+        public List<string> GetWords()
         {
             List<string> allWords = new List<string>();
             foreach (var contents in wordsByPart.Keys)
@@ -77,7 +77,7 @@ namespace AnagramGenerator.Implementations
             return allWords;
         }
 
-        public List<string> FindByWordPart(string part)
+        public List<string> Find(string part)
         {
             throw new System.NotImplementedException();
         }

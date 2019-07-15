@@ -18,57 +18,44 @@ namespace AnagramGenerator.WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly IConfiguration configuration;
-        private readonly IAnagramSolver _anagramSolver;
         private readonly WordServices wordServices;
         private readonly string connectionString;
           
-        public HomeController(IAnagramSolver anagramSolver, WordServices wordServices, IConfiguration config)
+        public HomeController(WordServices wordServices, IConfiguration config)
         {
             configuration = config;
             connectionString = configuration.GetConnectionString("connectionString");
 
-            this.wordServices = wordServices;  
-            _anagramSolver = anagramSolver;         
+            this.wordServices = wordServices;       
 
         }
         public IActionResult Index(string phrase = "")
         {
-            AnagramList anagramModel = new AnagramList();
+            AnagramList anagramModel;
+
             if (!String.IsNullOrWhiteSpace(phrase))
             {
 
-                IList<WordModel> anagrams = wordServices.CheckCached(phrase);
+                IList<CacheModel> cachedWords = wordServices.CheckCached(phrase);
 
-                if(anagrams.Any())
+                if(cachedWords.Any())
                 {
-                    anagramModel.Anagrams = anagrams;
                     wordServices.InsertToUserLog(phrase, HttpContext.Connection.LocalIpAddress.ToString());
-                    return View(anagramModel);
+
+                    anagramModel = new AnagramList() { Anagrams = wordServices.ConvertCachedToWords(cachedWords) };
                 }
                 else
                 {
-                    anagrams = _anagramSolver.GetAnagramsSeperated(phrase);
-                    if(anagrams.Any())
-                    {
-                        wordServices.InsertWordToCache(phrase, anagrams);
-                        wordServices.InsertToUserLog(phrase, HttpContext.Connection.LocalIpAddress.ToString());
+                    wordServices.InsertToUserLog(phrase, HttpContext.Connection.LocalIpAddress.ToString());
 
-
-                        anagramModel.Anagrams = anagrams;
-                        return View(anagramModel);
-
-                    }
-                    else
-                        anagramModel = new AnagramList() { Anagrams = new List<WordModel>() };
-
+                    anagramModel = new AnagramList(){ Anagrams = wordServices.FindAnagrams(phrase)};             
                 }
-
             }
 
             else
-            {
                 anagramModel = new AnagramList() { Anagrams = new List<WordModel>()};
-            }
+
+
             return View(anagramModel);
         }
 

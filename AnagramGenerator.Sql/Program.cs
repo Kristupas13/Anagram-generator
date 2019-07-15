@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace AnagramGenerator.Sql
 {
@@ -12,19 +13,15 @@ namespace AnagramGenerator.Sql
         static void Main(string[] args)
         {
             //IFileRepository textFileLoader = new TextFileRepository();
-            IWordRepository wordRepository = new TextWordRepository();
+            ITextRepository wordRepository = new TextWordRepository();
             IAnagramSolver anagramSolver = new AnagramSolver(wordRepository);
-            Dictionary<string, HashSet<string>> allWords = wordRepository.GetDictionary();
-            HashSet<string> wordsToDatabase = new HashSet<string>();
-
-            foreach (var key in allWords.Keys)
-                foreach (var item in allWords[key])
-                    wordsToDatabase.Add(item);
+            List<string> allWords = wordRepository.GetWords();
+            allWords = allWords.Distinct().ToList();
 
             string connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=AnagramDatabase";
 
-            //      ManageDataBase.DeleteAll(connectionString);
-            //    ManageDataBase.Insert(wordsToDatabase, connectionString);
+            ManageDataBase.DeleteAll(connectionString);
+            ManageDataBase.Insert(allWords, connectionString);
 
         }
     }

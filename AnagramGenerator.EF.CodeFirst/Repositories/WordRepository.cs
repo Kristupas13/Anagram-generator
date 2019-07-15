@@ -1,0 +1,37 @@
+﻿using AnagramGenerator.Contracts;
+using AnagramGenerator.Contracts.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace AnagramGenerator.EF.CodeFirst.Repositories
+{
+    public class WordRepository : IWordRepository
+    {
+        readonly Solver_DBContext db;
+        public WordRepository()
+        {
+            db = new Solver_DBContext();
+        }
+        public WordModel GetWordModel(string phrase)
+        {
+            var q = db.Words.Where(x => x.Word == phrase).Select(x => new WordModel() { Id = x.Id, SortedWord = x.SortedWord, Word = x.Word }).FirstOrDefault();
+
+            return q;
+        }
+        public WordModel GetWordModel(int ID)
+        {
+            var q = db.Words.Where(x => x.Id == ID).Select(x => new WordModel() { Id = x.Id, SortedWord = x.SortedWord, Word = x.Word }).FirstOrDefault();
+
+            return q;
+        }
+        public int GetWordID(string word)
+        {
+            int wordID = db.Words.Where(x => x.Word == word).Select(x => x.Id).FirstOrDefault();
+
+
+            return wordID;
+        }
+    }
+}

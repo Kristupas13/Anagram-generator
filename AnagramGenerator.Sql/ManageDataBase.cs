@@ -15,7 +15,7 @@ namespace AnagramGenerator.Sql
 
         }
 
-        public static void Insert(HashSet<string> allWords, string connectionString)
+        public static void Insert(List<string> allWords, string connectionString)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();

@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AnagramGenerator.DataAccess\AnagramGenerator.DataAccess.csproj" />
-    <ProjectReference Include="..\AnagramGenerator.EntityFramework\AnagramGenerator.EF.DatabaseFirst.csproj" />
+    <ProjectReference Include="..\AnagramGenerator.EF.DatabaseFirst\AnagramGenerator.EF.DatabaseFirst.csproj" />
     <ProjectReference Include="..\AnagramGenerator.Implementations\AnagramGenerator.Implementations.csproj" />
     <ProjectReference Include="..\Interfaces.AnagramSolver\AnagramGenerator.Contracts.csproj" />
   </ItemGroup>

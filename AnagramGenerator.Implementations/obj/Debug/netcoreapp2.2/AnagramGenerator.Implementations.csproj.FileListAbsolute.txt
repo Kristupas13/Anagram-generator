@@ -11,3 +11,16 @@ C:\Users\kristupas\Desktop\anagramgen\Anagram-generator-master\Anagram-generator
 C:\Users\kristupas\Desktop\anagramgen\Anagram-generator-master\Anagram-generator-master\AnagramGenerator.Implementations\obj\Debug\netcoreapp2.2\AnagramGenerator.Implementations.csprojAssemblyReference.cache
 C:\Users\kristupas\Desktop\anagramgen\Anagram-generator-master\Anagram-generator-master\AnagramGenerator.Implementations\obj\Debug\netcoreapp2.2\AnagramGenerator.Implementations.dll
 C:\Users\kristupas\Desktop\anagramgen\Anagram-generator-master\Anagram-generator-master\AnagramGenerator.Implementations\obj\Debug\netcoreapp2.2\AnagramGenerator.Implementations.pdb
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\bin\Debug\netcoreapp2.2\AnagramGenerator.Implementations.dll.config
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\bin\Debug\netcoreapp2.2\AnagramGenerator.Implementations.deps.json
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\bin\Debug\netcoreapp2.2\AnagramGenerator.Implementations.dll
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\bin\Debug\netcoreapp2.2\AnagramGenerator.Implementations.pdb
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.dll
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.pdb
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\obj\Debug\netcoreapp2.2\AnagramGenerator.Implementations.csprojAssemblyReference.cache
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\obj\Debug\netcoreapp2.2\AnagramGenerator.Implementations.csproj.CoreCompileInputs.cache
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\obj\Debug\netcoreapp2.2\AnagramGenerator.Implementations.AssemblyInfoInputs.cache
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\obj\Debug\netcoreapp2.2\AnagramGenerator.Implementations.AssemblyInfo.cs
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\obj\Debug\netcoreapp2.2\AnagramGenerator.Implementations.csproj.CopyComplete
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\obj\Debug\netcoreapp2.2\AnagramGenerator.Implementations.dll
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.Implementations\obj\Debug\netcoreapp2.2\AnagramGenerator.Implementations.pdb

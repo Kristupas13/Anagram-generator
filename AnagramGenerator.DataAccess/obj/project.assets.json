@@ -1195,11 +1195,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\AnagramGenerator.DataAccess\\AnagramGenerator.DataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.DataAccess\\AnagramGenerator.DataAccess.csproj",
       "projectName": "AnagramGenerator.DataAccess",
-      "projectPath": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\AnagramGenerator.DataAccess\\AnagramGenerator.DataAccess.csproj",
+      "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.DataAccess\\AnagramGenerator.DataAccess.csproj",
       "packagesPath": "C:\\Users\\kristupas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\AnagramGenerator.DataAccess\\obj\\",
+      "outputPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1218,8 +1218,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj": {
-              "projectPath": "C:\\Users\\kristupas\\Desktop\\anagramgen\\Anagram-generator-master\\Anagram-generator-master\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj"
+            "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj": {
+              "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj"
             }
           }
         }

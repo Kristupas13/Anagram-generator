@@ -10,9 +10,9 @@ namespace AnagramGenerator.Implementations
 {
     public class AnagramSolver : IAnagramSolver
     {
-        private readonly IWordRepository _wordRepository;
+        private readonly ITextRepository _wordRepository;
 
-        public AnagramSolver(IWordRepository wordRepository)
+        public AnagramSolver(ITextRepository wordRepository)
         {
             _wordRepository = wordRepository;
         }

@@ -10,14 +10,14 @@ using System.Text;
 
 namespace AnagramGenerator.Implementations
 {
-    public class SQLWordRepository : IWordRepository
+    public class SQLWordRepository : ITextRepository
     {
         readonly string connectionString;
         public SQLWordRepository()
         {
             connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=AnagramDatabase";
         }
-        public List<string> FindByWordPart(string wordPart)
+        public List<string> Find(string wordPart)
         {
             List<string> wordsByPart = new List<string>();
             try
@@ -99,7 +99,7 @@ namespace AnagramGenerator.Implementations
             throw new NotImplementedException();
         }
 
-        public List<string> GetAllWords()
+        public List<string> GetWords()
         {
             throw new NotImplementedException();
         }

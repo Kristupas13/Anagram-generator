@@ -12,8 +12,8 @@ namespace AnagramGenerator.WebApp.Controllers
 {
     public class DictionaryController : Controller
     {
-        private readonly IWordRepository _wordRepository;
-        public DictionaryController(IWordRepository wordRepository)
+        private readonly ITextRepository _wordRepository;
+        public DictionaryController(ITextRepository wordRepository)
         {
             _wordRepository = wordRepository;
         }
@@ -24,7 +24,7 @@ namespace AnagramGenerator.WebApp.Controllers
 
             if(!String.IsNullOrWhiteSpace(searchedWord))
 
-            ViewBag.Words = _wordRepository.FindByWordPart(searchedWord);
+            ViewBag.Words = _wordRepository.Find(searchedWord);
 
             else
 

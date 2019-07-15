@@ -14,25 +14,24 @@ namespace AnagramGenerator.DataAccess
         {
             connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=AnagramDatabase";
         }
-        public IList<WordModel> CheckCached(string word)
+        public IList<CacheModel> CheckCached(string word)
          {
 
-            IList<WordModel> anagramsFromCache = new List<WordModel>();
+            IList<CacheModel> anagramsFromCache = new List<CacheModel>();
 
             using (SqlConnection cn = new SqlConnection(connectionString))
             {
                 cn.Open();
-                SqlCommand cmd = new SqlCommand("Select w.Word, w.Id, w.SortedWord FROM Words as w, CachedWords as cw WHERE cw.SearchedWord = @word AND cw.AnagramID = w.ID", cn);
+                SqlCommand cmd = new SqlCommand("Select w.Id FROM Words as w, CachedWords as cw WHERE cw.SearchedWord = @word AND cw.AnagramID = w.ID", cn);
                 cmd.Parameters.Add("@word", SqlDbType.NVarChar);
                 cmd.Parameters["@word"].Value = word;
                 SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var v = new WordModel
-                        {
-                            Id = (int)reader["Id"],
-                            Word = (string)reader["Word"],
-                            SortedWord = (string)reader["SortedWord"]
+                    var v = new CacheModel
+                    {
+                        SearchedWord = word,
+                        AnagramId = (int)reader["w.Id"]
                         };
 
                         anagramsFromCache.Add(v);
@@ -40,7 +39,7 @@ namespace AnagramGenerator.DataAccess
             }
             return anagramsFromCache;
         }
-        public void InsertWordToCache(string phrase, IList<WordModel> anagrams)
+        public void InsertWordToCache(string phrase, IList<int> anagrams)
         {
             using (SqlConnection cn = new SqlConnection(connectionString))
             {
@@ -52,7 +51,7 @@ namespace AnagramGenerator.DataAccess
                 cmd.Parameters["@searchedWord"].Value = phrase;
                 foreach (var item in anagrams)
                 {
-                    cmd.Parameters["@anagram"].Value = item.Word;
+                    cmd.Parameters["@anagram"].Value = item; // to fix
                     cmd.ExecuteNonQuery();
                 }
                 cn.Close();
