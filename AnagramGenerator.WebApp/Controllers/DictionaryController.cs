@@ -24,7 +24,10 @@ namespace AnagramGenerator.WebApp.Controllers
 
             if(!String.IsNullOrWhiteSpace(searchedWord))
 
-            ViewBag.Words = _wordRepository.Find(searchedWord);
+            {
+                Set(searchedWord);
+                ViewBag.Words = _wordRepository.Find(searchedWord);
+            }
 
             else
 
@@ -37,15 +40,13 @@ namespace AnagramGenerator.WebApp.Controllers
         }
         public IActionResult SearchPage(string searchWord)
         {
-            Set(searchWord);
-
             return RedirectToAction("Index", new { page = 1, searchedWord = searchWord});
         }
 
 
         public void Set(string value)
         {
-            Response.Cookies.Append("key", value);
+            Response.Cookies.Append("Last", value);
         }
         public void Remove(string key)
         {

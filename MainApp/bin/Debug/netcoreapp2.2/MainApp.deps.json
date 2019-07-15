@@ -549,6 +549,7 @@
       },
       "AnagramGenerator.EF.CodeFirst/1.0.0": {
         "dependencies": {
+          "AnagramGenerator.Contracts": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.6"
         },
         "runtime": {

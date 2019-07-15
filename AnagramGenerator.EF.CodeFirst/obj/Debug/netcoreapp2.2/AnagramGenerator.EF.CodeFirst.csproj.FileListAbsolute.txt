@@ -9,3 +9,6 @@ C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.E
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.EF.CodeFirst\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.pdb
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.EF.CodeFirst\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.dll
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.EF.CodeFirst\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.pdb
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.EF.CodeFirst\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.dll
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.EF.CodeFirst\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.pdb
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.EF.CodeFirst\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.csproj.CopyComplete

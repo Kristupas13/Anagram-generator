@@ -9,10 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AnagramGenerator.WebApp.Controllers
 {
-    public class GetUserInfoController : Controller
+    public class Extras : Controller
     {
         private readonly WordServices _wordServices;
-        public GetUserInfoController(WordServices wordServices)
+        public Extras(WordServices wordServices)
         {
             _wordServices = wordServices;
         }
@@ -25,6 +25,11 @@ namespace AnagramGenerator.WebApp.Controllers
             User log = new User() { UserLogs = _wordServices.GetUserLog(address) };
 
             return View(log);
+        }
+        public IActionResult DeleteTable(string tableName ="")
+        {
+
+            return View();
         }
     }
 }

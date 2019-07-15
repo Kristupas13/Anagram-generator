@@ -56,7 +56,6 @@ namespace AnagramGenerator.DataAccess
                         Date = (DateTime)reader["Date"],
                         SearchedWord = (string)reader["SearchedWord"],
                         Id = (int)reader["Id"],
-                        Anagram = (string)reader["Word"]
                     };
                     userLogs.Add(logModel);
 

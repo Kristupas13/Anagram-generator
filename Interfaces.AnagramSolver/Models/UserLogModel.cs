@@ -10,6 +10,5 @@ namespace AnagramGenerator.Contracts.Models
         public string UserIp { get; set; }
         public string SearchedWord { get; set; }
         public DateTime? Date { get; set; }
-        public string Anagram { get; set; }
     }
 }

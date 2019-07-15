@@ -27,24 +27,14 @@ namespace AnagramGenerator.WebApp.Services
         public IList<CacheModel> CheckCached(string phrase)
         {
             List<CacheModel> cachedWords = new List<CacheModel>();
-            var splited = phrase.Split(" ");
-            foreach(var word in splited)
-            {
-                cachedWords.AddRange(_cacheRepository.CheckCached(word));
-            }
+            cachedWords.AddRange(_cacheRepository.CheckCached(phrase));
             return cachedWords;
         }
-        public void InsertWordToCache(string words, IList<WordModel> anagrams)
+        public void InsertWordToCache(string word, IList<WordModel> anagrams)
         {
-            IList<int> anagramIDs = new List<int>();
-            var splited = words.Split(" ");
-
-            foreach (var item in splited)
+            foreach(var item in anagrams)
             {
-                int wordId = _wordRepository.GetWordID(item);
-                anagramIDs.Add(wordId);
-
-                _cacheRepository.InsertWordToCache(item, anagramIDs);
+                _cacheRepository.InsertWordToCache(word, item.Id);
             }
         }
         public IList<UserLogModel> GetUserLog(string ip)
@@ -97,6 +87,10 @@ namespace AnagramGenerator.WebApp.Services
             }
 
             return wordModels;
+        }
+        public void TruncateTable(string tableName)
+        {
+
         }
     }
 }

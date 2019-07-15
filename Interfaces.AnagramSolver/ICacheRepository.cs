@@ -8,6 +8,6 @@ namespace AnagramGenerator.Contracts
     public interface ICacheRepository
     {
         IList<CacheModel> CheckCached(string word);
-        void InsertWordToCache(string word, IList<int> anagrams);
+        void InsertWordToCache(string word, int anagramID);
     }
 }

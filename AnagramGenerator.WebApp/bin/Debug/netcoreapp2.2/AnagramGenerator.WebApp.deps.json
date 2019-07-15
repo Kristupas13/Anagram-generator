@@ -26,6 +26,7 @@
         "dependencies": {
           "AnagramGenerator.Contracts": "1.0.0",
           "AnagramGenerator.DataAccess": "1.0.0",
+          "AnagramGenerator.EF.CodeFirst": "1.0.0",
           "AnagramGenerator.EF.DatabaseFirst": "1.0.0",
           "AnagramGenerator.Implementations": "1.0.0",
           "Microsoft.AspNetCore.App": "2.2.0",
@@ -607,6 +608,18 @@
         },
         "compile": {
           "AnagramGenerator.DataAccess.dll": {}
+        }
+      },
+      "AnagramGenerator.EF.CodeFirst/1.0.0": {
+        "dependencies": {
+          "AnagramGenerator.Contracts": "1.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.6"
+        },
+        "runtime": {
+          "AnagramGenerator.EF.CodeFirst.dll": {}
+        },
+        "compile": {
+          "AnagramGenerator.EF.CodeFirst.dll": {}
         }
       },
       "AnagramGenerator.EF.DatabaseFirst/1.0.0": {
@@ -3963,6 +3976,11 @@
       "sha512": ""
     },
     "AnagramGenerator.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AnagramGenerator.EF.CodeFirst/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

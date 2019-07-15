@@ -943,6 +943,16 @@
         "compile": {
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
+      },
+      "AnagramGenerator.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/AnagramGenerator.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AnagramGenerator.Contracts.dll": {}
+        }
       }
     }
   },
@@ -3603,10 +3613,16 @@
         "system.threading.tasks.4.0.11.nupkg.sha512",
         "system.threading.tasks.nuspec"
       ]
+    },
+    "AnagramGenerator.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Interfaces.AnagramSolver/AnagramGenerator.Contracts.csproj",
+      "msbuildProject": "../Interfaces.AnagramSolver/AnagramGenerator.Contracts.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "AnagramGenerator.Contracts >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.2.6",
       "Microsoft.EntityFrameworkCore.Tools >= 2.2.6",
       "Microsoft.NETCore.App >= 2.2.0"
@@ -3641,7 +3657,11 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj": {
+              "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

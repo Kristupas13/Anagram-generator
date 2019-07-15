@@ -1,17 +1,17 @@
 ﻿@model User
 
-@foreach(var item in Model.UserLogs)
+@foreach (var item in Model.UserLogs)
 {
     <br />
     @item.Date
     <br />
-    @item.SearchedWord
     <text>
         <font color="grey">
-            has anagram 
+            Searched word: 
         </font>
     </text>
-    @item.Anagram
+    @item.SearchedWord
+
     <br />
-       
+
 }

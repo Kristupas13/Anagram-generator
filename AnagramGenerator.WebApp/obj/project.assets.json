@@ -4773,6 +4773,20 @@
           "bin/placeholder/AnagramGenerator.DataAccess.dll": {}
         }
       },
+      "AnagramGenerator.EF.CodeFirst/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "AnagramGenerator.Contracts": "1.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.6"
+        },
+        "compile": {
+          "bin/placeholder/AnagramGenerator.EF.CodeFirst.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AnagramGenerator.EF.CodeFirst.dll": {}
+        }
+      },
       "AnagramGenerator.EF.DatabaseFirst/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
@@ -13078,6 +13092,11 @@
       "path": "../AnagramGenerator.DataAccess/AnagramGenerator.DataAccess.csproj",
       "msbuildProject": "../AnagramGenerator.DataAccess/AnagramGenerator.DataAccess.csproj"
     },
+    "AnagramGenerator.EF.CodeFirst/1.0.0": {
+      "type": "project",
+      "path": "../AnagramGenerator.EF.CodeFirst/AnagramGenerator.EF.CodeFirst.csproj",
+      "msbuildProject": "../AnagramGenerator.EF.CodeFirst/AnagramGenerator.EF.CodeFirst.csproj"
+    },
     "AnagramGenerator.EF.DatabaseFirst/1.0.0": {
       "type": "project",
       "path": "../AnagramGenerator.EF.DatabaseFirst/AnagramGenerator.EF.DatabaseFirst.csproj",
@@ -13093,6 +13112,7 @@
     ".NETCoreApp,Version=v2.2": [
       "AnagramGenerator.Contracts >= 1.0.0",
       "AnagramGenerator.DataAccess >= 1.0.0",
+      "AnagramGenerator.EF.CodeFirst >= 1.0.0",
       "AnagramGenerator.EF.DatabaseFirst >= 1.0.0",
       "AnagramGenerator.Implementations >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
@@ -13133,6 +13153,9 @@
           "projectReferences": {
             "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.DataAccess\\AnagramGenerator.DataAccess.csproj": {
               "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.DataAccess\\AnagramGenerator.DataAccess.csproj"
+            },
+            "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.EF.CodeFirst\\AnagramGenerator.EF.CodeFirst.csproj": {
+              "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.EF.CodeFirst\\AnagramGenerator.EF.CodeFirst.csproj"
             },
             "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.EF.DatabaseFirst\\AnagramGenerator.EF.DatabaseFirst.csproj": {
               "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.EF.DatabaseFirst\\AnagramGenerator.EF.DatabaseFirst.csproj"

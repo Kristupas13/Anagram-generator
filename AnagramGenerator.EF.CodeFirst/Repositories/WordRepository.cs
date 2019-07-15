@@ -1,7 +1,9 @@
 ﻿using AnagramGenerator.Contracts;
 using AnagramGenerator.Contracts.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
@@ -13,11 +15,13 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
         public WordRepository()
         {
             db = new Solver_DBContext();
+            
         }
         public WordModel GetWordModel(string phrase)
         {
             var q = db.Words.Where(x => x.Word == phrase).Select(x => new WordModel() { Id = x.Id, SortedWord = x.SortedWord, Word = x.Word }).FirstOrDefault();
-
+/*
+            db.Database.ExecuteSqlCommand("TruncateTable @TABLENAME", new SqlParameter("@TABLENAME", "UserLogs"));*/
             return q;
         }
         public WordModel GetWordModel(int ID)

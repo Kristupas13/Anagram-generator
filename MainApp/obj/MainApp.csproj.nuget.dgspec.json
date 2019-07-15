@@ -29,7 +29,11 @@
         },
         "frameworks": {
           "netcoreapp2.2": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj": {
+                "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

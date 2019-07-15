@@ -29,18 +29,16 @@ namespace AnagramGenerator.EF.DatabaseFirst.Repositories
             return q;
         }
 
-        public void InsertWordToCache(string word, IList<int> anagrams)
+        public void InsertWordToCache(string word, int anagramID)
         {
-            foreach (var item in anagrams)
-            {
-                CachedWords cachedWords = new CachedWords()
-                {
-                    AnagramId = item,
+           CachedWords cachedWords = new CachedWords()
+              {
+                    AnagramId = anagramID,
                     SearchedWord = word
-                };
-                db.CachedWords.Add(cachedWords);
-                db.SaveChanges();
-            }
+              };
+              db.CachedWords.Add(cachedWords);
+              db.SaveChanges();
+
         }
 
     }

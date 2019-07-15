@@ -39,7 +39,7 @@ namespace AnagramGenerator.DataAccess
             }
             return anagramsFromCache;
         }
-        public void InsertWordToCache(string phrase, IList<int> anagrams)
+        public void InsertWordToCache(string phrase, int anagramID)
         {
             using (SqlConnection cn = new SqlConnection(connectionString))
             {
@@ -49,11 +49,8 @@ namespace AnagramGenerator.DataAccess
                 cmd.Parameters.Add("@searchedWord", SqlDbType.NVarChar);
                 cmd.Parameters.Add("@anagram", SqlDbType.NVarChar);
                 cmd.Parameters["@searchedWord"].Value = phrase;
-                foreach (var item in anagrams)
-                {
-                    cmd.Parameters["@anagram"].Value = item; // to fix
-                    cmd.ExecuteNonQuery();
-                }
+                cmd.Parameters["@anagram"].Value = anagramID;
+                cmd.ExecuteNonQuery();
                 cn.Close();
             }
         }

@@ -226,8 +226,6 @@ C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.W
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\AnagramGenerator.WebApp.RazorCoreGenerate.cache
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Dictionary\Index.g.cshtml.cs
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Downloads\Index.g.cshtml.cs
-C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\GetUserInfo\GetUserLogs.g.cshtml.cs
-C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\GetUserInfo\Index.g.cshtml.cs
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\PageSearchWords\Delete.g.cshtml.cs
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\PageSearchWords\Details.g.cshtml.cs
@@ -247,3 +245,8 @@ C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.W
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\AnagramGenerator.WebApp.pdb
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.dll
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.DatabaseFirst.pdb
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.dll
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.pdb
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Extras\GetUserLogs.g.cshtml.cs
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Extras\Index.g.cshtml.cs
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Extras\DeleteTable.g.cshtml.cs

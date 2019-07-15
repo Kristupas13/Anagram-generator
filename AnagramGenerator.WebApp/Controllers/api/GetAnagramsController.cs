@@ -7,7 +7,7 @@ using AnagramGenerator.Contracts.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AnagramGenerator.WebApp.Controllers
+namespace AnagramGenerator.WebApp.Controllers.api
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -20,9 +20,17 @@ namespace AnagramGenerator.WebApp.Controllers
         }
 
         [HttpGet("{name}")]
-        public IList<WordModel> Get(string name)
+        public IList<string> Get(string name)
         {
-            IList<WordModel> anagrams = _anagramSolver.GetAnagramsSeperated(name);
+            IList<WordModel> wordModels = _anagramSolver.GetAnagramsSeperated(name);
+
+            IList<string> anagrams = new List<string>();
+
+            foreach(var item in wordModels)
+            {
+                anagrams.Add(item.Word);
+            }
+
             return anagrams;
 
         }

@@ -13,8 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using AnagramGenerator.Contracts;
 using AnagramGenerator.WebApp.Services;
 using AnagramGenerator.Implementations;
-using AnagramGenerator.EF.DatabaseFirst.Repositories;
-using AnagramGenerator.EF.DatabaseFirst;
+using AnagramGenerator.EF.CodeFirst.Repositories;
+using AnagramGenerator.EF.CodeFirst;
 
 namespace AnagramGenerator.WebApp
 {
