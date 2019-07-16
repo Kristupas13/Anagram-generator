@@ -104,5 +104,14 @@ namespace AnagramGenerator.Implementations
             throw new NotImplementedException();
         }
 
+        public void Add(string word)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(WordModel word)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

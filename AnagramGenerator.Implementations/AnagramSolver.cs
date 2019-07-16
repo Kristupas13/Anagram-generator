@@ -23,7 +23,7 @@ namespace AnagramGenerator.Implementations
             List<WordModel> anagrams = new List<WordModel>();
             foreach (var item in seperatedWords)
             {
-                string sortedWord = String.Concat(item.ToLower().OrderBy(c => c));
+                string sortedWord = string.Concat(item.ToLower().OrderBy(c => c));
 
                 IList<WordModel> wordAnagrams = _wordRepository.GetAnagrams(sortedWord);
                 if (wordAnagrams != null)

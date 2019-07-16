@@ -1,11 +1,9 @@
-﻿using AnagramGenerator.Contracts;
-using AnagramGenerator.Contracts.Models;
-using AnagramGenerator.DataAccess;
-using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AnagramGenerator.Contracts;
+using AnagramGenerator.Contracts.Models;
 
 namespace AnagramGenerator.WebApp.Services
 {
@@ -14,14 +12,18 @@ namespace AnagramGenerator.WebApp.Services
         private readonly ICacheRepository _cacheRepository;
         private readonly IUserLogRepository _userLogRepository;
         private readonly IWordRepository _wordRepository;
+        private readonly IManagerRepository _managerRepository;
         private readonly IAnagramSolver _anagramSolver;
+        private readonly ITextRepository _textRepository;
 
-        public WordServices(ICacheRepository cacheRepository, IUserLogRepository userLogRepository, IWordRepository wordRepository, IAnagramSolver anagramSolver)
+        public WordServices(ITextRepository textRepository, ICacheRepository cacheRepository, IUserLogRepository userLogRepository, IWordRepository wordRepository, IManagerRepository managerRepository ,IAnagramSolver anagramSolver)
         {
+            _textRepository = textRepository;
             _cacheRepository = cacheRepository;
             _userLogRepository = userLogRepository;
             _wordRepository = wordRepository;
             _anagramSolver = anagramSolver;
+            _managerRepository = managerRepository;
 
         }
         public IList<CacheModel> CheckCached(string phrase)
@@ -44,34 +46,13 @@ namespace AnagramGenerator.WebApp.Services
         public void InsertToUserLog(string searchedWord, string IpAddress)
         {
          _userLogRepository.InsertToUserLog(searchedWord, IpAddress);
-
-        }
-        public IList<WordModel> GetWordModel(string phrase)
-        {
-            List<WordModel> allWords = new List<WordModel>();
-            var seperatedWords = phrase.Split(" ");
-            foreach(var item in seperatedWords)
-            {
-                WordModel wordModel = _wordRepository.GetWordModel(item);
-                if(wordModel.Word == null)
-                {
-                    wordModel.Id = 0;
-                    wordModel.Word = item;
-                }
-                allWords.Add(wordModel); 
-            }
-            return allWords;
-        }
-        public WordModel IDToWordRelation(int ID)
-        {
-            return _wordRepository.GetWordModel(ID);
         }
         public IList<WordModel> ConvertCachedToWords(IList<CacheModel> cacheModels)
         {
             List<WordModel> wordModels = new List<WordModel>();
             foreach (var item in cacheModels)
             {
-                WordModel wm = IDToWordRelation(item.AnagramId);
+                WordModel wm = _wordRepository.GetWordModel(item.AnagramId);
                 wordModels.Add(wm);
             }
             return wordModels;
@@ -90,7 +71,36 @@ namespace AnagramGenerator.WebApp.Services
         }
         public void TruncateTable(string tableName)
         {
+            _managerRepository.TruncateTable(tableName);
+        }
+        public bool CheckIPLimit(string ip)
+        {
+            return _userLogRepository.UserIPLimit(ip);
+        }
+        public void AddWord(string word, string ip)
+        {
+            bool wordExists = _managerRepository.WordExists(word);
 
+            if(!wordExists)
+            _textRepository.Add(word);
+        }
+        public void RemoveWord(string word, string ip)
+        {
+            bool wordExists = _managerRepository.WordExists(word);
+
+            if (wordExists)
+            {
+                _textRepository.Remove(_wordRepository.GetWordModel(word));
+            }
+      
+        }
+        public IList<string> Find(string word)
+        {
+            return _textRepository.Find(word);
+        }
+        public IList<string> LoadWords(int page)
+        {
+            return _textRepository.LoadWords(page);
         }
     }
 }

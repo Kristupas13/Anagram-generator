@@ -13,7 +13,7 @@ namespace AnagramGenerator.DataAccess
         string connectionString;
         public WordRepository()
         {
-            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=AnagramDatabase";
+            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=Solver_DB";
         }
 
         public WordModel GetWordModel(string phrase)

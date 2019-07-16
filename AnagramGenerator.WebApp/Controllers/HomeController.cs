@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AnagramGenerator.WebApp.Models;
-using AnagramGenerator.Contracts;
 using Microsoft.AspNetCore.Http;
-using System.Data.SqlClient;
-using System.Data;
 using Microsoft.Extensions.Configuration;
 using AnagramGenerator.WebApp.Services;
 using AnagramGenerator.Contracts.Models;
@@ -18,43 +14,43 @@ namespace AnagramGenerator.WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly IConfiguration configuration;
-        private readonly WordServices wordServices;
+        private readonly WordServices _wordService;
         private readonly string connectionString;
           
-        public HomeController(WordServices wordServices, IConfiguration config)
+        public HomeController(WordServices wordService, IConfiguration config)
         {
             configuration = config;
             connectionString = configuration.GetConnectionString("connectionString");
 
-            this.wordServices = wordServices;       
+            _wordService = wordService;       
 
         }
         public IActionResult Index(string phrase = "")
         {
-            AnagramList anagramModel;
+            string ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
 
-            if (!String.IsNullOrWhiteSpace(phrase))
+            AnagramList anagramModel = new AnagramList();
+            IList<WordModel> wordModels = new List<WordModel>();
+            ViewBag.Message = "";
+
+            if (!string.IsNullOrWhiteSpace(phrase))
             {
 
-                IList<CacheModel> cachedWords = wordServices.CheckCached(phrase);
+                bool access = _wordService.CheckIPLimit(ipAddress);
 
-                if(cachedWords.Any())
+                if (access)
                 {
-                    wordServices.InsertToUserLog(phrase, HttpContext.Connection.LocalIpAddress.ToString());
-
-                    anagramModel = new AnagramList() { Anagrams = wordServices.ConvertCachedToWords(cachedWords) };
+                    IList<CacheModel> cachedWords = _wordService.CheckCached(phrase);
+                    _wordService.InsertToUserLog(phrase, ipAddress);
+                    wordModels = cachedWords.Any() ? _wordService.ConvertCachedToWords(cachedWords) : _wordService.FindAnagrams(phrase);
                 }
                 else
                 {
-                    wordServices.InsertToUserLog(phrase, HttpContext.Connection.LocalIpAddress.ToString());
-
-                    anagramModel = new AnagramList(){ Anagrams = wordServices.FindAnagrams(phrase)};             
+                    ViewBag.Message = "Number of requests exceeded. Insert new word to gain access";
                 }
             }
 
-            else
-                anagramModel = new AnagramList() { Anagrams = new List<WordModel>()};
-
+            anagramModel.Anagrams = wordModels;
 
             return View(anagramModel);
         }
@@ -64,30 +60,6 @@ namespace AnagramGenerator.WebApp.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-
-
-
-
-
-
-        public void TruncateTable(string tableName)
-        {
-            string spName = @"dbo.[DeleteTable]";
-            using(SqlConnection cn = new SqlConnection(connectionString))
-            {
-                cn.Open();
-                SqlCommand cmd = new SqlCommand(spName, cn);
-                SqlParameter param1 = new SqlParameter();
-                param1.ParameterName = @"TableName";
-                param1.SqlDbType = SqlDbType.NVarChar;
-                param1.Value = tableName;
-                cmd.Parameters.Add(param1);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.ExecuteNonQuery();
-                cn.Close();
-            }
         }
 
     }

@@ -33,5 +33,10 @@ namespace AnagramGenerator.EF.DatabaseFirst.Repositories
             db.UserLog.Add(userLog);
             db.SaveChanges();
         }
+        public bool UserIPLimit(string ip)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

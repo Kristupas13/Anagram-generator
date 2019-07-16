@@ -9,5 +9,7 @@ namespace AnagramGenerator.Contracts
     {
         void InsertToUserLog(string searchedWord, string IpAddress);
         IList<UserLogModel> GetUserLog(string ip);
+        bool UserIPLimit(string ip);
+
     }
 }

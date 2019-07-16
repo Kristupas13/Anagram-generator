@@ -12,10 +12,10 @@ namespace AnagramGenerator.WebApp.Controllers
 {
     public class DictionaryController : Controller
     {
-        private readonly ITextRepository _wordRepository;
-        public DictionaryController(ITextRepository wordRepository)
+        private readonly WordServices _wordService;
+        public DictionaryController(WordServices wordService)
         {
-            _wordRepository = wordRepository;
+            _wordService = wordService;
         }
 
         public IActionResult Index(int page = 1, string searchedWord="")
@@ -25,13 +25,13 @@ namespace AnagramGenerator.WebApp.Controllers
             if(!String.IsNullOrWhiteSpace(searchedWord))
 
             {
-                Set(searchedWord);
-                ViewBag.Words = _wordRepository.Find(searchedWord);
+                SetCookie(searchedWord);
+                ViewBag.Words = _wordService.Find(searchedWord);
             }
 
             else
 
-            ViewBag.Words = _wordRepository.LoadWords(page);
+            ViewBag.Words = _wordService.LoadWords(page);
 
             model.Page = page;
             model.SearchedWord = searchedWord;
@@ -43,16 +43,35 @@ namespace AnagramGenerator.WebApp.Controllers
             return RedirectToAction("Index", new { page = 1, searchedWord = searchWord});
         }
 
+        public IActionResult Add(string word = "")
+        {
+            if (!string.IsNullOrWhiteSpace(word))
+            {
+                _wordService.AddWord(word, HttpContext.Connection.RemoteIpAddress.ToString());
+                ViewBag.Message = "Word added";
+            }
+            return View();
+        }
 
-        public void Set(string value)
+        public IActionResult Remove(string word = "")
+        {
+            if(!string.IsNullOrWhiteSpace(word))
+            {
+                _wordService.RemoveWord(word, HttpContext.Connection.RemoteIpAddress.ToString());
+                ViewBag.Message = "Word removed";
+            }
+            return View();
+        }
+
+        public void SetCookie(string value)
         {
             Response.Cookies.Append("Last", value);
         }
-        public void Remove(string key)
+        public void RemoveCookie(string key)
         {
             Response.Cookies.Delete(key);
         }
-        public string Get(string key)
+        public string GetCookie(string key)
         {
             return Request.Cookies[key];
         }

@@ -16,7 +16,7 @@ namespace AnagramGenerator.Implementations
 
         public TextWordRepository()
         {
-            Path = @"C:\Users\kristupas\Desktop\UpdatedDataManipulation\Cloned\Anagram-generator\MainApp\zodynas.txt";
+            Path = @"C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\MainApp\zodynas.txt";
             wordsByPart = Load();
         }
         public Dictionary<string, HashSet<string>> Load()
@@ -31,9 +31,9 @@ namespace AnagramGenerator.Implementations
                         string line = sr.ReadLine();
                         char[] delimiterChars = { '\t' };
                         string[] seperatedWords = line.Split(delimiterChars); // 0 - vardininkas, 1 - kalbos dalis, 2 - linksnis, 3 - skaicius
-                        var vardininkas = seperatedWords[0];
-                        var kalbosDalis = seperatedWords[1];
-                        var linksnis = seperatedWords[2];
+                        var vardininkas = seperatedWords[0].ToLower();
+                        var kalbosDalis = seperatedWords[1].ToLower();
+                        var linksnis = seperatedWords[2].ToLower();
                         if (words.ContainsKey(kalbosDalis))
                         {
                             words[kalbosDalis].Add(vardininkas);
@@ -106,6 +106,16 @@ namespace AnagramGenerator.Implementations
         }
 
         public IList<string> LoadWords(int page)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(string word)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(WordModel word)
         {
             throw new NotImplementedException();
         }

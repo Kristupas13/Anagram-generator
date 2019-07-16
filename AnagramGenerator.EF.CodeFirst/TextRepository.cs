@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AnagramGenerator.Contracts;
 using AnagramGenerator.Contracts.Models;
+using AnagramGenerator.EF.CodeFirst.Models;
 
 namespace AnagramGenerator.EF.CodeFirst
 {
@@ -51,6 +52,29 @@ namespace AnagramGenerator.EF.CodeFirst
                 .ToList();
 
             return q;
+        }
+
+        public void Add(string word)
+        {
+            WordEntity wordEntity = new WordEntity()
+            {
+                Word = word,
+                SortedWord = string.Concat(word.ToLower().OrderBy(c => c))
+            };
+
+            db.Words.Add(wordEntity);
+            db.SaveChanges();
+        }
+        public void Remove(WordModel word)
+        {
+            WordEntity wordEntity = new WordEntity()
+            {
+                Id = word.Id,
+                Word = word.Word,
+                SortedWord = word.SortedWord
+            };
+            db.Words.Remove(wordEntity);
+            db.SaveChanges();
         }
 
 

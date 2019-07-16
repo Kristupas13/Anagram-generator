@@ -1319,11 +1319,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.Implementations\\AnagramGenerator.Implementations.csproj",
+      "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\AnagramSolver\\Anagram-generator-master\\AnagramGenerator.Implementations\\AnagramGenerator.Implementations.csproj",
       "projectName": "AnagramGenerator.Implementations",
-      "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.Implementations\\AnagramGenerator.Implementations.csproj",
+      "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramSolver\\Anagram-generator-master\\AnagramGenerator.Implementations\\AnagramGenerator.Implementations.csproj",
       "packagesPath": "C:\\Users\\kristupas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.Implementations\\obj\\",
+      "outputPath": "C:\\Users\\kristupas\\Desktop\\AnagramSolver\\Anagram-generator-master\\AnagramGenerator.Implementations\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1342,8 +1342,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj": {
-              "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj"
+            "C:\\Users\\kristupas\\Desktop\\AnagramSolver\\Anagram-generator-master\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj": {
+              "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramSolver\\Anagram-generator-master\\Interfaces.AnagramSolver\\AnagramGenerator.Contracts.csproj"
             }
           }
         }

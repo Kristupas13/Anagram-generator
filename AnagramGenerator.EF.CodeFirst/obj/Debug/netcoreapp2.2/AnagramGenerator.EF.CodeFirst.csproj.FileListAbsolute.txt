@@ -12,3 +12,17 @@ C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.E
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.EF.CodeFirst\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.dll
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.EF.CodeFirst\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.pdb
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.EF.CodeFirst\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.csproj.CopyComplete
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.deps.json
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.runtimeconfig.json
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.runtimeconfig.dev.json
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.dll
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\bin\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.pdb
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.dll
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.pdb
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.csprojAssemblyReference.cache
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.csproj.CoreCompileInputs.cache
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.AssemblyInfoInputs.cache
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.AssemblyInfo.cs
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.csproj.CopyComplete
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.dll
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.EF.CodeFirst\obj\Debug\netcoreapp2.2\AnagramGenerator.EF.CodeFirst.pdb

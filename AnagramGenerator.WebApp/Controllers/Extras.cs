@@ -11,10 +11,10 @@ namespace AnagramGenerator.WebApp.Controllers
 {
     public class Extras : Controller
     {
-        private readonly WordServices _wordServices;
+        private readonly WordServices _wordService;
         public Extras(WordServices wordServices)
         {
-            _wordServices = wordServices;
+            _wordService = wordServices;
         }
         public IActionResult Index()
         {
@@ -22,12 +22,15 @@ namespace AnagramGenerator.WebApp.Controllers
         }
         public IActionResult GetUserLogs(string address)
         {
-            User log = new User() { UserLogs = _wordServices.GetUserLog(address) };
+            User log = new User() { UserLogs = _wordService.GetUserLog(address) };
 
             return View(log);
         }
         public IActionResult DeleteTable(string tableName ="")
         {
+            if(!string.IsNullOrWhiteSpace(tableName))
+            _wordService.TruncateTable(tableName);
+
 
             return View();
         }

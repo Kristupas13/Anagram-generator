@@ -51,6 +51,7 @@ namespace AnagramGenerator.WebApp
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddScoped<IManagerRepository, ManagerRepository>();
             services.AddScoped<ICacheRepository, CacheRepository>();
             services.AddScoped<IWordRepository, WordRepository>();
             services.AddScoped<IUserLogRepository, UserLogRepository>();

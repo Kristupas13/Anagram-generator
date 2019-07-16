@@ -13,7 +13,7 @@ namespace AnagramGenerator.DataAccess
         private string connectionString;
         public UserLogRepository()
         {
-            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=AnagramDatabase";
+            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=Solver_DB";
         }
         public void InsertToUserLog(string searchedWord, string IpAddress)
         {
@@ -64,6 +64,11 @@ namespace AnagramGenerator.DataAccess
             }
 
             return userLogs;
+        }
+
+        public bool UserIPLimit(string ip)
+        {
+            throw new NotImplementedException();
         }
     }
 }

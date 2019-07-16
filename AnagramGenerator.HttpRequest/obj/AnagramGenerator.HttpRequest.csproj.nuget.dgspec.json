@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.HttpRequest\\AnagramGenerator.HttpRequest.csproj": {}
+    "C:\\Users\\kristupas\\Desktop\\AnagramSolver\\Anagram-generator-master\\AnagramGenerator.HttpRequest\\AnagramGenerator.HttpRequest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.HttpRequest\\AnagramGenerator.HttpRequest.csproj": {
+    "C:\\Users\\kristupas\\Desktop\\AnagramSolver\\Anagram-generator-master\\AnagramGenerator.HttpRequest\\AnagramGenerator.HttpRequest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.HttpRequest\\AnagramGenerator.HttpRequest.csproj",
+        "projectUniqueName": "C:\\Users\\kristupas\\Desktop\\AnagramSolver\\Anagram-generator-master\\AnagramGenerator.HttpRequest\\AnagramGenerator.HttpRequest.csproj",
         "projectName": "AnagramGenerator.HttpRequest",
-        "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.HttpRequest\\AnagramGenerator.HttpRequest.csproj",
+        "projectPath": "C:\\Users\\kristupas\\Desktop\\AnagramSolver\\Anagram-generator-master\\AnagramGenerator.HttpRequest\\AnagramGenerator.HttpRequest.csproj",
         "packagesPath": "C:\\Users\\kristupas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kristupas\\Desktop\\AnagramGenerator\\Anagram-generator\\AnagramGenerator.HttpRequest\\obj\\",
+        "outputPath": "C:\\Users\\kristupas\\Desktop\\AnagramSolver\\Anagram-generator-master\\AnagramGenerator.HttpRequest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

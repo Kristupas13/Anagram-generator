@@ -38,11 +38,6 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 
             var test = query.Select(p => new UserLogModel() { SearchedWord = p.SearchedWord, Date = p.Date, UserIp = ip }).ToList();
 
-            foreach(var item in query)
-            {
-                
-            }
-
 
             return test;
         }
@@ -58,6 +53,11 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
             };
             db.UserLogs.Add(userLog);
             db.SaveChanges();
+        }
+        public bool UserIPLimit(string ip)
+        {
+            var q = db.UserLogs.Select(p => p.UserIp == ip).Skip(3).Any();
+            return !q;
         }
     }
 }

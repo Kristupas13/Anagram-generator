@@ -1,8 +1,6 @@
 /.vs
 AnagramGenerator.DataAccess/obj
 AnagramGenerator.DataAccess/bin
-AnagramGenerator.EntityFramework/obj
-AnagramGenerator.EntityFramework/bin
 AnagramGenerator.HttpRequest/obj
 AnagramGenerator.HttpRequest/bin
 AnagramGenerator.Implementations/obj
@@ -15,3 +13,9 @@ Interfaces.AnagramSolver/obj
 Interfaces.AnagramSolver/bin
 MainApp/obj
 MainApp/bin
+AnagramGenerator.Tests/bin
+AnagramGenerator.Tests/obj
+AnagramGenerator.EF.DatabaseFirst/bin
+AnagramGenerator.EF.DatabaseFirst/obj
+AnagramGenerator.EF.CodeFirst/bin
+AnagramGenerator.EF.CodeFirst/obj

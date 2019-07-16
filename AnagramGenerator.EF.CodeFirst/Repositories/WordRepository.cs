@@ -1,11 +1,6 @@
-﻿using AnagramGenerator.Contracts;
+﻿using System.Linq;
+using AnagramGenerator.Contracts;
 using AnagramGenerator.Contracts.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 
 namespace AnagramGenerator.EF.CodeFirst.Repositories
 {

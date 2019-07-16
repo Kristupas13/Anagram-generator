@@ -65,5 +65,28 @@ namespace AnagramGenerator.EF.DatabaseFirst
             throw new NotImplementedException();
         }
 
+        public void Add(string word)
+        {
+            Words wordEntity = new Words()
+            {
+                Word = word,
+                SortedWord = string.Concat(word.ToLower().OrderBy(c => c))
+            };
+
+            db.Words.Add(wordEntity);
+            db.SaveChanges();
+        }
+
+        public void Remove(WordModel word)
+        {
+            Words wordEntity = new Words()
+            {
+                Id = word.Id,
+                Word = word.Word,
+                SortedWord = word.SortedWord
+            };
+            db.Words.Remove(wordEntity);
+            db.SaveChanges();
+        }
     }
 }

@@ -34,3 +34,15 @@ C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.D
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.DataAccess\obj\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.csproj.CopyComplete
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.DataAccess\obj\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.dll
 C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.DataAccess\obj\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.pdb
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.DataAccess\bin\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.deps.json
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.DataAccess\bin\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.dll
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.DataAccess\bin\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.pdb
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.DataAccess\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.dll
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.DataAccess\bin\Debug\netcoreapp2.2\AnagramGenerator.Contracts.pdb
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.DataAccess\obj\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.csprojAssemblyReference.cache
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.DataAccess\obj\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.DataAccess\obj\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.AssemblyInfoInputs.cache
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.DataAccess\obj\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.AssemblyInfo.cs
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.DataAccess\obj\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.csproj.CopyComplete
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.DataAccess\obj\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.dll
+C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.DataAccess\obj\Debug\netcoreapp2.2\AnagramGenerator.DataAccess.pdb
