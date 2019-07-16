@@ -10,11 +10,11 @@ namespace AnagramGenerator.EF.CodeFirst
 {
     public class TextRepository : ITextRepository
     {
-        readonly Solver_DBContext db;
+        readonly CFDB_Context db;
 
         public TextRepository()
         {
-            db = new Solver_DBContext();
+            db = new CFDB_Context();
         }
         public List<string> Find(string wordPart)
         {

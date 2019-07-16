@@ -13,7 +13,7 @@ namespace AnagramGenerator.DataAccess
         private string connectionString;
         public UserLogRepository()
         {
-            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=Solver_DB";
+            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB";
         }
         public void InsertToUserLog(string searchedWord, string IpAddress)
         {

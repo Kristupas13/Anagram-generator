@@ -9,6 +9,8 @@ namespace AnagramGenerator.EF.CodeFirst.Models
         public int Id { get; set; }
         public int Counter { get; set; }
 
-        public UserLogEntity IpAddress { get; set; }
+        public int UserId { get; set; }
+
+        public virtual UserLogEntity User { get; set; }
     }
 }

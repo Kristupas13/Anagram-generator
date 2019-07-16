@@ -12,7 +12,7 @@ namespace AnagramGenerator.DataAccess
         private string connectionString;
         public ManagerRepository()
         {
-            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=Solver_DB";
+            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB";
         }
         public void TruncateTable(string tableName)
         {

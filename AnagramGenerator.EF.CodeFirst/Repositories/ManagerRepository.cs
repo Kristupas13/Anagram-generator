@@ -10,10 +10,10 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class ManagerRepository : IManagerRepository
     {
-        Solver_DBContext db;
+        CFDB_Context db;
         public ManagerRepository()
         {
-            db = new Solver_DBContext();
+            db = new CFDB_Context();
         }
         public void TruncateTable(string tableName)
         {

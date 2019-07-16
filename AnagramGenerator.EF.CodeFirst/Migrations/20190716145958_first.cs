@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AnagramGenerator.EF.CodeFirst.Migrations
 {
-    public partial class firstMigration : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,6 +38,26 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Modifications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Counter = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Modifications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Modifications_UserLogs_UserId",
+                        column: x => x.UserId,
+                        principalTable: "UserLogs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CachedWords",
                 columns: table => new
                 {
@@ -61,6 +81,11 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                 name: "IX_CachedWords_AnagramId",
                 table: "CachedWords",
                 column: "AnagramId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Modifications_UserId",
+                table: "Modifications",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -69,10 +94,13 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                 name: "CachedWords");
 
             migrationBuilder.DropTable(
-                name: "UserLogs");
+                name: "Modifications");
 
             migrationBuilder.DropTable(
                 name: "Words");
+
+            migrationBuilder.DropTable(
+                name: "UserLogs");
         }
     }
 }

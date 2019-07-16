@@ -6,10 +6,10 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class WordRepository : IWordRepository
     {
-        readonly Solver_DBContext db;
+        readonly CFDB_Context db;
         public WordRepository()
         {
-            db = new Solver_DBContext();
+            db = new CFDB_Context();
             
         }
         public WordModel GetWordModel(string phrase)

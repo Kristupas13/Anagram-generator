@@ -4,16 +4,14 @@ using AnagramGenerator.EF.CodeFirst;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AnagramGenerator.EF.CodeFirst.Migrations
 {
-    [DbContext(typeof(Solver_DBContext))]
-    [Migration("20190714093712_firstMigration")]
-    partial class firstMigration
+    [DbContext(typeof(CFDB_Context))]
+    partial class CFDB_ContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,6 +34,23 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                     b.HasIndex("AnagramId");
 
                     b.ToTable("CachedWords");
+                });
+
+            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.ModificationEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Counter");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Modifications");
                 });
 
             modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.UserLogEntity", b =>
@@ -75,6 +90,14 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                     b.HasOne("AnagramGenerator.EF.CodeFirst.Models.WordEntity", "Anagram")
                         .WithMany("CachedEntity")
                         .HasForeignKey("AnagramId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.ModificationEntity", b =>
+                {
+                    b.HasOne("AnagramGenerator.EF.CodeFirst.Models.UserLogEntity", "User")
+                        .WithMany("ModificationEntity")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

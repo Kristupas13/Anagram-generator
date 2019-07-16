@@ -12,7 +12,7 @@ namespace AnagramGenerator.DataAccess
         private string connectionString;
         public CacheRepository()
         {
-            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=Solver_DB";
+            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB";
         }
         public IList<CacheModel> CheckCached(string word)
          {

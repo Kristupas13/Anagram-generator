@@ -23,7 +23,7 @@ namespace MainApp
             string phrase = string.Join(" ", args);
 
 
-            using(var db = new Solver_DBContext())
+            using(var db = new CFDB_Context())
             {
                 db.Words.Add(new WordEntity { Word = "labas", SortedWord = "aabls" });
                 db.SaveChanges();

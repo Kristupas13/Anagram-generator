@@ -15,7 +15,7 @@ namespace AnagramGenerator.Implementations
         readonly string connectionString;
         public SQLWordRepository()
         {
-            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=AnagramDatabase";
+            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB";
         }
         public List<string> Find(string wordPart)
         {

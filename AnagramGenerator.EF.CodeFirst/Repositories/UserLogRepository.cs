@@ -11,10 +11,10 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class UserLogRepository : IUserLogRepository
     {
-        Solver_DBContext db;
+        CFDB_Context db;
         public UserLogRepository()
         {
-            db = new Solver_DBContext();
+            db = new CFDB_Context();
         }
         public IList<UserLogModel> GetUserLog(string ip)
         {

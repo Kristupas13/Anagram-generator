@@ -10,10 +10,10 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class CacheRepository : ICacheRepository
     {
-        readonly Solver_DBContext db;
+        readonly CFDB_Context db;
         public CacheRepository()
         {
-            db = new Solver_DBContext();
+            db = new CFDB_Context();
 
         }
         public IList<CacheModel> CheckCached(string word)

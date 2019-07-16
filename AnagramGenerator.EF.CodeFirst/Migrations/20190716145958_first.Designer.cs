@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AnagramGenerator.EF.CodeFirst.Migrations
 {
-    [DbContext(typeof(Solver_DBContext))]
-    [Migration("20190715134647_sp-DeleteTable2")]
-    partial class spDeleteTable2
+    [DbContext(typeof(CFDB_Context))]
+    [Migration("20190716145958_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,6 +36,23 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                     b.HasIndex("AnagramId");
 
                     b.ToTable("CachedWords");
+                });
+
+            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.ModificationEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Counter");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Modifications");
                 });
 
             modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.UserLogEntity", b =>
@@ -75,6 +92,14 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                     b.HasOne("AnagramGenerator.EF.CodeFirst.Models.WordEntity", "Anagram")
                         .WithMany("CachedEntity")
                         .HasForeignKey("AnagramId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.ModificationEntity", b =>
+                {
+                    b.HasOne("AnagramGenerator.EF.CodeFirst.Models.UserLogEntity", "User")
+                        .WithMany("ModificationEntity")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
