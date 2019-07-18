@@ -1,4 +1,4 @@
-﻿using AnagramGenerator.Contracts;
+﻿using AnagramGenerator.EF.CodeFirst.Interfaces;
 using AnagramGenerator.EF.CodeFirst.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -21,12 +21,7 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
             db.Database.ExecuteSqlCommand("TruncateTable @TABLENAME", new SqlParameter("@TABLENAME", tableName));
         }
 
-        public bool WordExists(string word)
-        {
-            var q = db.Words.Where(p => p.Word == word).Any();
 
-            return q;
-        }
 
     }
 }

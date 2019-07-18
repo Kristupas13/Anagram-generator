@@ -9,12 +9,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using AnagramGenerator.Contracts;
 using AnagramGenerator.WebApp.Services;
-using AnagramGenerator.Implementations;
 using AnagramGenerator.EF.CodeFirst.Repositories;
-using AnagramGenerator.EF.CodeFirst;
+using AnagramGenerator.EF.CodeFirst.Services;
+using AnagramGenerator.EF.CodeFirst.Interfaces;
 
 namespace AnagramGenerator.WebApp
 {
@@ -55,13 +53,14 @@ namespace AnagramGenerator.WebApp
             services.AddScoped<ICacheRepository, CacheRepository>();
             services.AddScoped<IWordRepository, WordRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAnagramSolver, AnagramSolver>();
             services.AddScoped<IUserLogRepository, UserLogRepository>();
             services.AddScoped<ITextRepository, TextRepository>();
-            services.AddScoped<IAnagramSolver, AnagramSolver>();
             services.AddScoped<IRequestRepository, RequestRepository>();
 
-            services.AddScoped<WordService>();
-            services.AddScoped<UserService>();
+            services.AddScoped<IModificationService, ModificationService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRequestService, RequestService>();
 
 
         }

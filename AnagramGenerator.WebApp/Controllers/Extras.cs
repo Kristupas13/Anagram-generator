@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AnagramGenerator.Contracts.Models;
+using AnagramGenerator.EF.CodeFirst.Services;
 using AnagramGenerator.WebApp.Models;
 using AnagramGenerator.WebApp.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,10 @@ namespace AnagramGenerator.WebApp.Controllers
 {
     public class Extras : Controller
     {
-        private readonly WordService _wordService;
-        private readonly UserService _responseService;
-        private readonly RequestService _requestService;
-        public Extras(WordService wordServices, UserService responseService, RequestService requestService)
+        private readonly IModificationService _wordService;
+        private readonly IUserService _responseService;
+        private readonly IRequestService _requestService;
+        public Extras(IModificationService wordServices, IUserService responseService, IRequestService requestService)
         {
             _wordService = wordServices;
             _responseService = responseService;

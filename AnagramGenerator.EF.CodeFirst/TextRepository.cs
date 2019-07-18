@@ -7,7 +7,7 @@ using AnagramGenerator.Contracts.Models;
 using AnagramGenerator.EF.CodeFirst.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AnagramGenerator.EF.CodeFirst
+namespace AnagramGenerator.EF.CodeFirst.Interfaces
 {
     public class TextRepository : ITextRepository
     {
@@ -40,6 +40,7 @@ namespace AnagramGenerator.EF.CodeFirst
             var q = db.Words
                 .Skip((page - 1) * 100)
                 .Take(100)
+                .OrderBy(p => p.Word)
                 .Select(p => p.Word)
                 .ToList();
 
@@ -91,7 +92,6 @@ namespace AnagramGenerator.EF.CodeFirst
             db.Entry(newWordEntity).Property(x => x.Word).IsModified = true;
             db.Entry(newWordEntity).Property(x => x.SortedWord).IsModified = true;
             db.SaveChanges();
-
 
         }
 

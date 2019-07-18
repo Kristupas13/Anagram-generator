@@ -1,10 +1,10 @@
-﻿using AnagramGenerator.Contracts;
-using AnagramGenerator.Contracts.Models;
+﻿using AnagramGenerator.Contracts.Models;
 using AnagramGenerator.EF.CodeFirst.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AnagramGenerator.EF.CodeFirst.Interfaces;
 
 namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
@@ -16,17 +16,42 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
             db = new CFDB_AnagramSolverContext();
 
         }
+
+        public int Add(CachedEntity cacheModel)
+        {
+            db.CachedWords.Add(cacheModel);
+            db.SaveChanges();
+          
+            return cacheModel.Id;
+        }
+
+        public CachedEntity Get(int cacheId)
+        {
+            return db.CachedWords.Find(cacheId);
+        }
+
+        public IList<CachedEntity> GetAll()
+        {
+            return db.CachedWords.ToList();
+        }
+
+        public CachedEntity Update(CachedEntity cachedEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Contains(CachedEntity cachedEntity)
+        {
+            return db.CachedWords.Contains(cachedEntity);
+        }
+
+
+
+
+
         public IList<CacheModel> GetCachedWordsByRequestId(int requestId)
         {
             var q = db.CachedWords.Where(p => p.RequestId == requestId).Select(p => new CacheModel { Id = p.Id, RequestId = p.RequestId, AnagramId = (int)p.AnagramId }).ToList();
-            /*      var q = db.Words
-                      .Join(db.CachedWords,
-                      w => w.Id,
-                      cw => cw.AnagramId,
-                      (w, cw) => new { wm = w, cm = cw })
-                      .Where(p => p.cm.SearchedWord == word)
-                      .Select(a => new CacheModel() { Id = a.cm.Id, SearchedWord = word, AnagramId = a.wm.Id }).ToList();*/
-
             return q;
         }
 
@@ -40,6 +65,11 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
             db.CachedWords.Add(cachedWords);
             db.SaveChanges();
 
+        }
+
+        public bool WordExists(int requestId)
+        {
+            return db.CachedWords.Any(p => p.RequestId == requestId);
         }
 
     }

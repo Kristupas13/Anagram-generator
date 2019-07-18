@@ -34,5 +34,10 @@ namespace AnagramGenerator.EF.DatabaseFirst.Repositories
 
             return wordID;
         }
+
+        public bool WordExists(string word)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

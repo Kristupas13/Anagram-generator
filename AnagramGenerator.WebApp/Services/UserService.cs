@@ -1,24 +1,22 @@
-﻿using AnagramGenerator.Contracts;
-using AnagramGenerator.Contracts.Models;
+﻿using AnagramGenerator.Contracts.Models;
+using AnagramGenerator.EF.CodeFirst.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AnagramGenerator.EF.CodeFirst.Interfaces;
+using AnagramGenerator.EF.CodeFirst.Models;
 
 namespace AnagramGenerator.WebApp.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        private readonly IManagerRepository _managerRepository;
         private readonly IUserLogRepository _userLogRepository;
-        private readonly ICacheRepository _cacheRepository;
         private readonly IUserRepository _userRepository;
 
-        public UserService(IManagerRepository managerRepository, IUserLogRepository userLogRepository, ICacheRepository cacheRepository, IUserRepository userRepository)
+        public UserService(IUserLogRepository userLogRepository, IUserRepository userRepository)
         {
-            _managerRepository = managerRepository;
             _userLogRepository = userLogRepository;
-            _cacheRepository = cacheRepository;
             _userRepository = userRepository;
         }
 
@@ -38,9 +36,32 @@ namespace AnagramGenerator.WebApp.Services
 
         public void InsertToUserLog(int requestWordId, string IpAddress)
         {
-            _userRepository.Decrement(IpAddress);
-            _userLogRepository.InsertToUserLog(requestWordId, IpAddress);
-        }
 
+
+
+            UserLogEntity userLogEntity = new UserLogEntity()
+            {
+                Date = DateTime.Now,
+                RequestId = requestWordId,
+                UserId = _userRepository.GetAll().Single(p => p.Ip == IpAddress).Id,
+                UserIp = IpAddress
+            };
+
+            _userLogRepository.Add(userLogEntity);
+            DecrementCounter(IpAddress);
+
+        }
+        public void IncrementCounter(string ip)
+        {
+            UserEntity user = _userRepository.GetAll().Where(p => p.Ip == ip).Single();
+            user.Counter++;
+            _userRepository.Update(user);
+        }
+        public void DecrementCounter(string ip)
+        {
+            UserEntity user = _userRepository.GetAll().Where(p => p.Ip == ip).Single();
+            user.Counter--;
+            _userRepository.Update(user);
+        }
     }
 }

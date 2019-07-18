@@ -1,6 +1,8 @@
 ﻿using System.Linq;
-using AnagramGenerator.Contracts;
+using AnagramGenerator.EF.CodeFirst.Interfaces;
 using AnagramGenerator.Contracts.Models;
+using AnagramGenerator.EF.CodeFirst.Models;
+using System.Collections.Generic;
 
 namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
@@ -12,6 +14,37 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
             db = new CFDB_AnagramSolverContext();
             
         }
+
+        public IList<WordEntity> GetAll()
+        {
+            return db.Words.ToList();
+        }
+
+        public WordEntity Get(int wordId)
+        {
+            return db.Words.Find(wordId);
+        }
+
+        public int Add(WordEntity wordEntity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public WordEntity Update(WordEntity wordEntity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool Contains(WordEntity requestEntity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+
+
+
+
+
         public WordModel ToWordModel(string phrase)
         {
             var q = db.Words.Where(x => x.Word == phrase).Select(x => new WordModel() { Id = x.Id, SortedWord = x.SortedWord, Word = x.Word }).FirstOrDefault();
@@ -32,5 +65,12 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 
             return wordID;
         }
+        public bool WordExists(string word)
+        {
+            var q = db.Words.Where(p => p.Word == word).Any();
+
+            return q;
+        }
+
     }
 }

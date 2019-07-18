@@ -84,5 +84,10 @@ namespace AnagramGenerator.DataAccess
             }
             return wm;
         }
+
+        public bool WordExists(string word)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

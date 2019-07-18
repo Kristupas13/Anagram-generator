@@ -7,15 +7,18 @@ using AnagramGenerator.WebApp.Models;
 using AnagramGenerator.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using AnagramGenerator.WebApp.Services;
+using AnagramGenerator.EF.CodeFirst.Services;
 
 namespace AnagramGenerator.WebApp.Controllers
 {
     public class DictionaryController : Controller
     {
-        private readonly WordService _wordService;
-        public DictionaryController(WordService wordService)
+        private readonly IModificationService _wordService;
+        private readonly IUserService _userService;
+        public DictionaryController(IModificationService wordService, IUserService userService)
         {
             _wordService = wordService;
+            _userService = userService;
         }
 
         public IActionResult Index(int page = 1, string searchedWord="")
@@ -47,8 +50,17 @@ namespace AnagramGenerator.WebApp.Controllers
         {
             if (!string.IsNullOrWhiteSpace(word))
             {
-                _wordService.AddWord(word, HttpContext.Connection.RemoteIpAddress.ToString());
-                ViewBag.Message = "Word added";
+                string ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                bool addedCorrectly = _wordService.AddWord(word, ipAddress);
+
+                if(addedCorrectly)
+                {
+                    _userService.IncrementCounter(ipAddress);
+                    ViewBag.Message = "Word added";
+                }
+                else
+                ViewBag.Message = "Error occured";
+
             }
             return View();
         }
@@ -57,8 +69,33 @@ namespace AnagramGenerator.WebApp.Controllers
         {
             if(!string.IsNullOrWhiteSpace(word))
             {
-                _wordService.RemoveWord(word, HttpContext.Connection.RemoteIpAddress.ToString());
-                ViewBag.Message = "Word removed";
+                string ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+
+                bool removedCorrectly = _wordService.RemoveWord(word, ipAddress);
+                if(removedCorrectly)
+                {
+                    _userService.DecrementCounter(ipAddress);
+                    ViewBag.Message = "Word removed";
+                }
+                else
+                ViewBag.Message = "Error occured";
+            }
+            return View();
+        }
+        public IActionResult Edit(string oldWord = "", string newWord = " ")
+        {
+            if (!(string.IsNullOrWhiteSpace(oldWord) && string.IsNullOrWhiteSpace(newWord)))
+            {
+                string ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+
+                bool editedCorrectly = _wordService.EditWord(oldWord, newWord, ipAddress);
+                if (editedCorrectly)
+                {
+                    _userService.IncrementCounter(ipAddress);
+                    ViewBag.Message = "Word edited";
+                }
+
+                ViewBag.Message = "Error occured";
             }
             return View();
         }

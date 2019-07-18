@@ -1,4 +1,4 @@
-﻿using AnagramGenerator.Contracts;
+﻿using AnagramGenerator.EF.CodeFirst.Interfaces;
 using AnagramGenerator.Contracts.Models;
 using AnagramGenerator.EF.CodeFirst.Models;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -16,11 +16,48 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
         {
             db = new CFDB_AnagramSolverContext();
         }
+
+        public int Add(UserLogEntity userLogEntity)
+        {
+            db.UserLogs.Add(userLogEntity);
+            db.SaveChanges();
+            return userLogEntity.Id;
+        }
+
+        public UserLogEntity Get(int userLogId)
+        {
+            return db.UserLogs.Find(userLogId);
+        }
+
+        public IList<UserLogEntity> GetAll()
+        {
+            return db.UserLogs.ToList();
+        }
+
         public IList<UserLogModel> GetUserLog(string ip)
         {
 
             throw new NotImplementedException();
         }
+
+        public bool Contains(UserLogEntity userLogEntity)
+        {
+            return db.UserLogs.Contains(userLogEntity);
+        }
+
+        public UserLogEntity Update(UserLogEntity userLogEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+
+
+
+
+
 
         public void InsertToUserLog(int requestWordId, string IpAddress)
         {
@@ -35,6 +72,9 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
             db.UserLogs.Add(userLogEntity);
             db.SaveChanges();
         }
+
+
+
         public bool UserIPLimit(string ip)
         {
             var q = db.UserLogs.Select(p => p.UserIp == ip).Skip(3).Any();

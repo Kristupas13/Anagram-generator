@@ -40,5 +40,10 @@ namespace AnagramGenerator.EF.DatabaseFirst.Repositories
               db.SaveChanges();*/
 
         }
+
+        public bool WordExists(int requestId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

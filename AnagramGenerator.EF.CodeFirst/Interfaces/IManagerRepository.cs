@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AnagramGenerator.Contracts
+namespace AnagramGenerator.EF.CodeFirst.Interfaces
 {
     public interface IManagerRepository
     {

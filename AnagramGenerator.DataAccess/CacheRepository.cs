@@ -54,5 +54,10 @@ namespace AnagramGenerator.DataAccess
                 cn.Close();
             }
         }
+
+        public bool WordExists(int requestId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
