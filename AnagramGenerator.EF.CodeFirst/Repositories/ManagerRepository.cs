@@ -1,4 +1,5 @@
 ﻿using AnagramGenerator.Contracts;
+using AnagramGenerator.EF.CodeFirst.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class ManagerRepository : IManagerRepository
     {
-        CFDB_Context db;
+        CFDB_AnagramSolverContext db;
         public ManagerRepository()
         {
-            db = new CFDB_Context();
+            db = new CFDB_AnagramSolverContext();
         }
         public void TruncateTable(string tableName)
         {

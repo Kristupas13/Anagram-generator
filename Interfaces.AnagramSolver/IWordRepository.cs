@@ -7,7 +7,7 @@ namespace AnagramGenerator.Contracts
 {
     public interface IWordRepository
     {
-        WordModel GetWordModel(string phrase);
+        WordModel ToWordModel(string phrase);
         WordModel GetWordModel(int ID);
         int GetWordID(string word);
     }

@@ -119,5 +119,10 @@ namespace AnagramGenerator.Implementations
         {
             throw new NotImplementedException();
         }
+
+        public void Edit(WordModel word, string newWord)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

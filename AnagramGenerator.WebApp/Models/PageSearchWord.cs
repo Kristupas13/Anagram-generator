@@ -10,5 +10,7 @@ namespace AnagramGenerator.WebApp.Models
         public int Id { get; set; }
         public int Page { get; set; }
         public string SearchedWord { get; set; }
+
+        public IList<string> PageWords { get; set; }
     }
 }

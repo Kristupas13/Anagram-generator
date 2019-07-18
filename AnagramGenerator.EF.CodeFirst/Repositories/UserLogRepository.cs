@@ -11,47 +11,28 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class UserLogRepository : IUserLogRepository
     {
-        CFDB_Context db;
+        CFDB_AnagramSolverContext db;
         public UserLogRepository()
         {
-            db = new CFDB_Context();
+            db = new CFDB_AnagramSolverContext();
         }
         public IList<UserLogModel> GetUserLog(string ip)
         {
-            /* var q = db.UserLogs.Where(p => p.UserIp == ip).Select(p => new UserLogModel() { UserIp = ip, SearchedWord = p.SearchedWord, Id = p.Id, Date = p.Date }).ToList();
 
-
-                        SELECT UserIp, Date, cw.SearchedWord, Word
-                          FROM Words w
-                          inner join CachedWords cw
-                             on w.Id = cw.AnagramID
-                             inner join UserLogs u
-                               on u.UserIP = '::1'
-                                  WHERE cw.SearchedWord = u.SearchedWord
-                                   ORDER BY Date  */
-
-            var query = from words in db.Words
-                        join cachedWords in db.CachedWords on words.Id equals cachedWords.AnagramId
-                        from logs in db.UserLogs
-                        where logs.UserIp == ip && logs.SearchedWord == cachedWords.SearchedWord
-                        select new { logs.UserIp, logs.Date, words.Word, logs.SearchedWord };
-
-            var test = query.Select(p => new UserLogModel() { SearchedWord = p.SearchedWord, Date = p.Date, UserIp = ip }).ToList();
-
-
-            return test;
+            throw new NotImplementedException();
         }
 
-        public void InsertToUserLog(string searchedWord, string IpAddress)
+        public void InsertToUserLog(int requestWordId, string IpAddress)
         {
-
-            UserLogEntity userLog = new UserLogEntity()
+            UserLogEntity userLogEntity = new UserLogEntity()
             {
+                UserIp = IpAddress,
+                RequestId = requestWordId,
                 Date = DateTime.Now,
-                SearchedWord = searchedWord,
-                UserIp = IpAddress
+                UserId = db.Users.Where(p => p.Ip == IpAddress).Select(p => p.Id).FirstOrDefault(),
             };
-            db.UserLogs.Add(userLog);
+
+            db.UserLogs.Add(userLogEntity);
             db.SaveChanges();
         }
         public bool UserIPLimit(string ip)

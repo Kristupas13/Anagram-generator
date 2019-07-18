@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AnagramGenerator.EF.CodeFirst.Migrations
 {
-    [DbContext(typeof(CFDB_Context))]
-    [Migration("20190716145958_first")]
+    [DbContext(typeof(CFDB_AnagramSolverContext))]
+    [Migration("20190717112301_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,16 +29,31 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
 
                     b.Property<int>("AnagramId");
 
-                    b.Property<string>("SearchedWord");
+                    b.Property<int>("RequestId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AnagramId");
 
+                    b.HasIndex("RequestId");
+
                     b.ToTable("CachedWords");
                 });
 
-            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.ModificationEntity", b =>
+            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.RequestEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Word");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RequestWords");
+                });
+
+            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.UserEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,13 +61,11 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
 
                     b.Property<int>("Counter");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("Ip");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Modifications");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.UserLogEntity", b =>
@@ -63,11 +76,17 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
 
                     b.Property<DateTime?>("Date");
 
-                    b.Property<string>("SearchedWord");
+                    b.Property<int>("RequestId");
+
+                    b.Property<int>("UserId");
 
                     b.Property<string>("UserIp");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RequestId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserLogs");
                 });
@@ -93,12 +112,22 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                         .WithMany("CachedEntity")
                         .HasForeignKey("AnagramId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AnagramGenerator.EF.CodeFirst.Models.RequestEntity", "Request")
+                        .WithMany("CachedEntity")
+                        .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.ModificationEntity", b =>
+            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.UserLogEntity", b =>
                 {
-                    b.HasOne("AnagramGenerator.EF.CodeFirst.Models.UserLogEntity", "User")
-                        .WithMany("ModificationEntity")
+                    b.HasOne("AnagramGenerator.EF.CodeFirst.Models.RequestEntity", "Request")
+                        .WithMany("UserLogEntity")
+                        .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AnagramGenerator.EF.CodeFirst.Models.UserEntity", "User")
+                        .WithMany("UserLogEntity")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

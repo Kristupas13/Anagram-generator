@@ -11,6 +11,7 @@ namespace AnagramGenerator.Contracts
     {
         void Add(string word);
         void Remove(WordModel word);
+        void Edit(WordModel word, string newWord);
         Dictionary<string, HashSet<string>> Load();
         List<string> GetWords();
         List<string> Find(string wordPart);

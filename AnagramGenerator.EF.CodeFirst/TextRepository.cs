@@ -5,16 +5,17 @@ using System.Text;
 using AnagramGenerator.Contracts;
 using AnagramGenerator.Contracts.Models;
 using AnagramGenerator.EF.CodeFirst.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AnagramGenerator.EF.CodeFirst
 {
     public class TextRepository : ITextRepository
     {
-        readonly CFDB_Context db;
+        readonly CFDB_AnagramSolverContext db;
 
         public TextRepository()
         {
-            db = new CFDB_Context();
+            db = new CFDB_AnagramSolverContext();
         }
         public List<string> Find(string wordPart)
         {
@@ -76,7 +77,23 @@ namespace AnagramGenerator.EF.CodeFirst
             db.Words.Remove(wordEntity);
             db.SaveChanges();
         }
+        public void Edit(WordModel word, string newWord)
+        {
+            WordEntity newWordEntity = new WordEntity()
+            {
+                Id = word.Id,
+                Word = newWord,
+                SortedWord = string.Concat(newWord.ToLower().OrderBy(x => x))
+            };
 
+
+            db.Attach(newWordEntity);
+            db.Entry(newWordEntity).Property(x => x.Word).IsModified = true;
+            db.Entry(newWordEntity).Property(x => x.SortedWord).IsModified = true;
+            db.SaveChanges();
+
+
+        }
 
         public Dictionary<string, HashSet<string>> GetDictionary()
         {
@@ -87,6 +104,7 @@ namespace AnagramGenerator.EF.CodeFirst
         {
             throw new NotImplementedException();
         }
+
 
     }
 }

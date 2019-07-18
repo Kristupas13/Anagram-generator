@@ -15,7 +15,7 @@ namespace AnagramGenerator.EF.DatabaseFirst.Repositories
         {
             db = new AnagramDatabaseContext();
         }
-        public WordModel GetWordModel(string phrase)
+        public WordModel ToWordModel(string phrase)
         {
             var q = db.Words.Where(x => x.Word == phrase).Select(x => new WordModel() { Id = x.Id, SortedWord = x.SortedWord, Word = x.Word }).FirstOrDefault();
 

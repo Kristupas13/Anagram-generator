@@ -88,5 +88,10 @@ namespace AnagramGenerator.EF.DatabaseFirst
             db.Words.Remove(wordEntity);
             db.SaveChanges();
         }
+
+        public void Edit(WordModel word, string newWord)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace AnagramGenerator.Contracts
         void TruncateTable(string tableName);
         bool WordExists(string word);
 
+
     }
 }

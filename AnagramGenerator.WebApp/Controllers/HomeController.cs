@@ -14,16 +14,21 @@ namespace AnagramGenerator.WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly IConfiguration configuration;
-        private readonly WordServices _wordService;
+        private readonly WordService _wordService;
+        private readonly UserService _userService;
+        private readonly CacheService _cacheService;
+        private readonly RequestService _requestService;
         private readonly string connectionString;
           
-        public HomeController(WordServices wordService, IConfiguration config)
+        public HomeController(WordService wordService, UserService userService,CacheService cacheService, RequestService requestService, IConfiguration config)
         {
             configuration = config;
             connectionString = configuration.GetConnectionString("connectionString");
 
-            _wordService = wordService;       
-
+            _wordService = wordService;
+            _userService = userService;
+            _cacheService = cacheService;
+            _requestService = requestService;
         }
         public IActionResult Index(string phrase = "")
         {
@@ -33,16 +38,25 @@ namespace AnagramGenerator.WebApp.Controllers
             IList<WordModel> wordModels = new List<WordModel>();
             ViewBag.Message = "";
 
+           // _userService.
+
             if (!string.IsNullOrWhiteSpace(phrase))
             {
 
-                bool access = _wordService.CheckIPLimit(ipAddress);
+                bool access = _userService.CheckIPLimit(ipAddress);
 
                 if (access)
                 {
-                    IList<CacheModel> cachedWords = _wordService.CheckCached(phrase);
-                    _wordService.InsertToUserLog(phrase, ipAddress);
-                    wordModels = cachedWords.Any() ? _wordService.ConvertCachedToWords(cachedWords) : _wordService.FindAnagrams(phrase);
+                    RequestModel request = _requestService.RequestedWord(phrase);
+
+                    IList<CacheModel> cachedWords = _cacheService.GetCachedByRequestId(request.Id);
+                 
+                    wordModels = cachedWords.Any() ? _requestService.ConvertCacheModelToWordModel(cachedWords) : _requestService.FindAnagrams(request.Word);
+
+
+                    _cacheService.InsertWordToCache(request.Id, wordModels);
+
+                    _userService.InsertToUserLog(request.Id, ipAddress);
                 }
                 else
                 {

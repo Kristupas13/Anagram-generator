@@ -18,10 +18,10 @@ namespace AnagramGenerator.Sql
             List<string> allWords = wordRepository.GetWords();
             allWords = allWords.Distinct().ToList();
 
-            string connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB";
+            string connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB_AnagramSolver";
 
           //  ManageDataBase.DeleteAll(connectionString);
-          //  ManageDataBase.Insert(allWords, connectionString);
+      //     ManageDataBase.Insert(allWords, connectionString);
 
         }
     }

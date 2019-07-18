@@ -13,9 +13,9 @@ namespace AnagramGenerator.DataAccess
         private string connectionString;
         public UserLogRepository()
         {
-            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB";
+            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB_AnagramSolver";
         }
-        public void InsertToUserLog(string searchedWord, string IpAddress)
+        public void InsertToUserLog(int requestedWordId, string IpAddress)
         {
             using (SqlConnection cn = new SqlConnection(connectionString))
             {
@@ -23,10 +23,10 @@ namespace AnagramGenerator.DataAccess
                 cn.Open();
                 SqlCommand cmd = new SqlCommand("INSERT INTO UserLog(UserIP, SearchedWord, Date) VALUES (@userIP, @searchedWord, @Date)", cn);
                 cmd.Parameters.Add("@userIP", SqlDbType.NVarChar);
-                cmd.Parameters.Add("@searchedWord", SqlDbType.NVarChar);
+                cmd.Parameters.Add("@requestedWordId", SqlDbType.Int);
                 cmd.Parameters.Add("@Date", SqlDbType.SmallDateTime);
                 cmd.Parameters["@userIP"].Value = IpAddress;
-                cmd.Parameters["@searchedWord"].Value = searchedWord;
+                cmd.Parameters["@requestedWordId"].Value = requestedWordId;
                 cmd.Parameters["@Date"].Value = DateTime.Now;
                 cmd.ExecuteNonQuery();
                 cn.Close();

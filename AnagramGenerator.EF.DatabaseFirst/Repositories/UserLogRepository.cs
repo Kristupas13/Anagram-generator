@@ -21,17 +21,17 @@ namespace AnagramGenerator.EF.DatabaseFirst.Repositories
             return q;
         }
 
-        public void InsertToUserLog(string searchedWord, string IpAddress)
+        public void InsertToUserLog(int requestWordId, string IpAddress)
         {
 
-            UserLog userLog = new UserLog()
+         /*   UserLog userLog = new UserLog()
             {
                 Date = DateTime.Now,
                 SearchedWord = searchedWord,
                 UserIp = IpAddress
             }; 
             db.UserLog.Add(userLog);
-            db.SaveChanges();
+            db.SaveChanges();*/
         }
         public bool UserIPLimit(string ip)
         {

@@ -6,13 +6,13 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class WordRepository : IWordRepository
     {
-        readonly CFDB_Context db;
+        readonly CFDB_AnagramSolverContext db;
         public WordRepository()
         {
-            db = new CFDB_Context();
+            db = new CFDB_AnagramSolverContext();
             
         }
-        public WordModel GetWordModel(string phrase)
+        public WordModel ToWordModel(string phrase)
         {
             var q = db.Words.Where(x => x.Word == phrase).Select(x => new WordModel() { Id = x.Id, SortedWord = x.SortedWord, Word = x.Word }).FirstOrDefault();
 /*

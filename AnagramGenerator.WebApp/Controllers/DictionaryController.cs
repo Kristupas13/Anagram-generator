@@ -12,8 +12,8 @@ namespace AnagramGenerator.WebApp.Controllers
 {
     public class DictionaryController : Controller
     {
-        private readonly WordServices _wordService;
-        public DictionaryController(WordServices wordService)
+        private readonly WordService _wordService;
+        public DictionaryController(WordService wordService)
         {
             _wordService = wordService;
         }
@@ -21,17 +21,17 @@ namespace AnagramGenerator.WebApp.Controllers
         public IActionResult Index(int page = 1, string searchedWord="")
         {
             var model = new PageSearchWord();
+            
 
             if(!String.IsNullOrWhiteSpace(searchedWord))
 
             {
                 SetCookie(searchedWord);
-                ViewBag.Words = _wordService.Find(searchedWord);
+                model.PageWords = _wordService.Find(searchedWord);
             }
 
             else
-
-            ViewBag.Words = _wordService.LoadWords(page);
+            model.PageWords = _wordService.LoadWords(page);
 
             model.Page = page;
             model.SearchedWord = searchedWord;

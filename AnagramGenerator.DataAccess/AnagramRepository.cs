@@ -13,10 +13,10 @@ namespace AnagramGenerator.DataAccess
         string connectionString;
         public WordRepository()
         {
-            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB";
+            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB_AnagramSolver";
         }
 
-        public WordModel GetWordModel(string phrase)
+        public WordModel ToWordModel(string phrase)
         {
             WordModel wm = new WordModel();
 

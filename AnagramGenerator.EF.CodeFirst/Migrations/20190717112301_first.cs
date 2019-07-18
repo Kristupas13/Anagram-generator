@@ -9,18 +9,30 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "UserLogs",
+                name: "RequestWords",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserIp = table.Column<string>(nullable: true),
-                    SearchedWord = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: true)
+                    Word = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserLogs", x => x.Id);
+                    table.PrimaryKey("PK_RequestWords", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Ip = table.Column<string>(nullable: true),
+                    Counter = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -38,21 +50,29 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Modifications",
+                name: "UserLogs",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Counter = table.Column<int>(nullable: false),
+                    UserIp = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: true),
+                    RequestId = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Modifications", x => x.Id);
+                    table.PrimaryKey("PK_UserLogs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Modifications_UserLogs_UserId",
+                        name: "FK_UserLogs_RequestWords_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "RequestWords",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserLogs_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "UserLogs",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -63,7 +83,7 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    SearchedWord = table.Column<string>(nullable: true),
+                    RequestId = table.Column<int>(nullable: false),
                     AnagramId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -75,6 +95,12 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                         principalTable: "Words",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CachedWords_RequestWords_RequestId",
+                        column: x => x.RequestId,
+                        principalTable: "RequestWords",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -83,8 +109,18 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                 column: "AnagramId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Modifications_UserId",
-                table: "Modifications",
+                name: "IX_CachedWords_RequestId",
+                table: "CachedWords",
+                column: "RequestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserLogs_RequestId",
+                table: "UserLogs",
+                column: "RequestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserLogs_UserId",
+                table: "UserLogs",
                 column: "UserId");
         }
 
@@ -94,13 +130,16 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                 name: "CachedWords");
 
             migrationBuilder.DropTable(
-                name: "Modifications");
+                name: "UserLogs");
 
             migrationBuilder.DropTable(
                 name: "Words");
 
             migrationBuilder.DropTable(
-                name: "UserLogs");
+                name: "RequestWords");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

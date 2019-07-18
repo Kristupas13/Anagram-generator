@@ -7,7 +7,7 @@ namespace AnagramGenerator.Contracts
 {
     public interface IUserLogRepository
     {
-        void InsertToUserLog(string searchedWord, string IpAddress);
+        void InsertToUserLog(int requestWordId, string IpAddress);
         IList<UserLogModel> GetUserLog(string ip);
         bool UserIPLimit(string ip);
 

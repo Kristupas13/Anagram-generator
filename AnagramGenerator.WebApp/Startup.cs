@@ -54,10 +54,15 @@ namespace AnagramGenerator.WebApp
             services.AddScoped<IManagerRepository, ManagerRepository>();
             services.AddScoped<ICacheRepository, CacheRepository>();
             services.AddScoped<IWordRepository, WordRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserLogRepository, UserLogRepository>();
             services.AddScoped<ITextRepository, TextRepository>();
             services.AddScoped<IAnagramSolver, AnagramSolver>();
-            services.AddScoped<WordServices>();
+            services.AddScoped<IRequestRepository, RequestRepository>();
+
+            services.AddScoped<WordService>();
+            services.AddScoped<UserService>();
+
 
         }
 

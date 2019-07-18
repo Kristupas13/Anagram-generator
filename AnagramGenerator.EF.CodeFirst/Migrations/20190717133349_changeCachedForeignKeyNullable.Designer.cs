@@ -4,14 +4,16 @@ using AnagramGenerator.EF.CodeFirst;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AnagramGenerator.EF.CodeFirst.Migrations
 {
-    [DbContext(typeof(CFDB_Context))]
-    partial class CFDB_ContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(CFDB_AnagramSolverContext))]
+    [Migration("20190717133349_changeCachedForeignKeyNullable")]
+    partial class changeCachedForeignKeyNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,18 +27,33 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AnagramId");
+                    b.Property<int?>("AnagramId");
 
-                    b.Property<string>("SearchedWord");
+                    b.Property<int>("RequestId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AnagramId");
 
+                    b.HasIndex("RequestId");
+
                     b.ToTable("CachedWords");
                 });
 
-            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.ModificationEntity", b =>
+            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.RequestEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Word");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RequestWords");
+                });
+
+            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.UserEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,13 +61,11 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
 
                     b.Property<int>("Counter");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("Ip");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Modifications");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.UserLogEntity", b =>
@@ -61,11 +76,17 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
 
                     b.Property<DateTime?>("Date");
 
-                    b.Property<string>("SearchedWord");
+                    b.Property<int>("RequestId");
+
+                    b.Property<int>("UserId");
 
                     b.Property<string>("UserIp");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RequestId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserLogs");
                 });
@@ -89,14 +110,23 @@ namespace AnagramGenerator.EF.CodeFirst.Migrations
                 {
                     b.HasOne("AnagramGenerator.EF.CodeFirst.Models.WordEntity", "Anagram")
                         .WithMany("CachedEntity")
-                        .HasForeignKey("AnagramId")
+                        .HasForeignKey("AnagramId");
+
+                    b.HasOne("AnagramGenerator.EF.CodeFirst.Models.RequestEntity", "Request")
+                        .WithMany("CachedEntity")
+                        .HasForeignKey("RequestId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.ModificationEntity", b =>
+            modelBuilder.Entity("AnagramGenerator.EF.CodeFirst.Models.UserLogEntity", b =>
                 {
-                    b.HasOne("AnagramGenerator.EF.CodeFirst.Models.UserLogEntity", "User")
-                        .WithMany("ModificationEntity")
+                    b.HasOne("AnagramGenerator.EF.CodeFirst.Models.RequestEntity", "Request")
+                        .WithMany("UserLogEntity")
+                        .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("AnagramGenerator.EF.CodeFirst.Models.UserEntity", "User")
+                        .WithMany("UserLogEntity")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

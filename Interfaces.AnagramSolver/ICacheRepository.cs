@@ -7,7 +7,7 @@ namespace AnagramGenerator.Contracts
 {
     public interface ICacheRepository
     {
-        IList<CacheModel> CheckCached(string word);
-        void InsertWordToCache(string word, int anagramID);
+        IList<CacheModel> GetCachedWordsByRequestId(int requestId);
+        void InsertWordToCache(int requestId, int anagramID);
     }
 }

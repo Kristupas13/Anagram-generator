@@ -12,9 +12,9 @@ namespace AnagramGenerator.DataAccess
         private string connectionString;
         public CacheRepository()
         {
-            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB";
+            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB_AnagramSolver";
         }
-        public IList<CacheModel> CheckCached(string word)
+        public IList<CacheModel> GetCachedWordsByRequestId(int id)
          {
 
             IList<CacheModel> anagramsFromCache = new List<CacheModel>();
@@ -22,15 +22,15 @@ namespace AnagramGenerator.DataAccess
             using (SqlConnection cn = new SqlConnection(connectionString))
             {
                 cn.Open();
-                SqlCommand cmd = new SqlCommand("Select w.Id FROM Words as w, CachedWords as cw WHERE cw.SearchedWord = @word AND cw.AnagramID = w.ID", cn);
-                cmd.Parameters.Add("@word", SqlDbType.NVarChar);
-                cmd.Parameters["@word"].Value = word;
+                SqlCommand cmd = new SqlCommand("Select w.Id FROM Words as w, CachedWords as cw WHERE cw.RequestId = @id AND cw.AnagramID = w.ID", cn);
+                cmd.Parameters.Add("@id", SqlDbType.Int);
+                cmd.Parameters["@id"].Value = id;
                 SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                     var v = new CacheModel
                     {
-                        SearchedWord = word,
+                        RequestId = id,
                         AnagramId = (int)reader["w.Id"]
                         };
 
@@ -39,16 +39,16 @@ namespace AnagramGenerator.DataAccess
             }
             return anagramsFromCache;
         }
-        public void InsertWordToCache(string phrase, int anagramID)
+        public void InsertWordToCache(int requestId, int anagramID)
         {
             using (SqlConnection cn = new SqlConnection(connectionString))
             {
 
                 cn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO CachedWords(SearchedWord, AnagramID) VALUES (@searchedWord, (SELECT Id FROM Words WHERE Word = @anagram))", cn);
-                cmd.Parameters.Add("@searchedWord", SqlDbType.NVarChar);
+                SqlCommand cmd = new SqlCommand("INSERT INTO CachedWords(SearchedWord, AnagramID) VALUES (@requestId, (SELECT Id FROM Words WHERE Word = @anagram))", cn);
+                cmd.Parameters.Add("@requestId", SqlDbType.Int);
                 cmd.Parameters.Add("@anagram", SqlDbType.NVarChar);
-                cmd.Parameters["@searchedWord"].Value = phrase;
+                cmd.Parameters["@requestId"].Value = requestId;
                 cmd.Parameters["@anagram"].Value = anagramID;
                 cmd.ExecuteNonQuery();
                 cn.Close();

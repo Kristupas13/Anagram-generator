@@ -16,6 +16,12 @@ namespace AnagramGenerator.EF.DatabaseFirst.Repositories
         {
             db = new AnagramDatabaseContext();
         }
+
+        public void NewUser(string ip)
+        {
+            throw new NotImplementedException();
+        }
+
         public void TruncateTable(string tableName)
         {
             db.Database.ExecuteSqlCommand("TruncateTable @TABLENAME", new SqlParameter("@TABLENAME", tableName));

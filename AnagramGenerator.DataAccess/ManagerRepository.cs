@@ -12,8 +12,14 @@ namespace AnagramGenerator.DataAccess
         private string connectionString;
         public ManagerRepository()
         {
-            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB";
+            connectionString = "Server=(localdb)\\MSSQLLocalDB; Database=CFDB_AnagramSolver";
         }
+
+        public void NewUser(string ip)
+        {
+            throw new NotImplementedException();
+        }
+
         public void TruncateTable(string tableName)
         {
             string spName = @"dbo.[DeleteTable]";
