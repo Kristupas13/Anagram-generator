@@ -11,7 +11,7 @@ namespace AnagramGenerator.EF.CodeFirst.Services
 
         IList<UserLogModel> GetUserLog(string ip);
 
-        void InsertToUserLog(int requestWordId, string IpAddress);
+        void InsertToUserLog(string requestWord, string IpAddress);
 
         void IncrementCounter(string ip);
 

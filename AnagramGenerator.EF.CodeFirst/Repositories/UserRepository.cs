@@ -27,6 +27,10 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
         {
             return _db.Users.Find(userId);
         }
+        public UserEntity GetByIp(string userIp)
+        {
+            return _db.Users.SingleOrDefault(p => p.Ip == userIp);
+        }
         public int Add(UserEntity userEntity)
         {
             _db.Users.Add(userEntity);

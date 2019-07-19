@@ -11,29 +11,15 @@ namespace AnagramGenerator.WebApp.Services
 {
     public class RequestService : IRequestService
     {
-        private readonly IRequestRepository _requestRepository;
-        private readonly IWordRepository _wordRepository;
         private readonly IAnagramSolver _anagramSolver;
         private readonly IManagerRepository _managerRepository;
         private readonly ICacheRepository _cacheRepository;
-        public RequestService(IRequestRepository requestRepository, IWordRepository wordRepository, IAnagramSolver anagramSolver, IManagerRepository managerRepository, ICacheRepository cacheRepository)
+        public RequestService(IAnagramSolver anagramSolver, IManagerRepository managerRepository, ICacheRepository cacheRepository)
         {
-            _requestRepository = requestRepository;
-            _wordRepository = wordRepository;
             _anagramSolver = anagramSolver;
             _managerRepository = managerRepository;
             _cacheRepository = cacheRepository;
         }
-        public RequestModel AddRequestModel(string word)
-        {
-            RequestModel requestModel = new RequestModel()
-            {
-                Word = word
-            };
-            requestModel.Id = _requestRepository.Add(new RequestEntity() { Word = word});
-            return requestModel;
-        }
-
         public IList<string> DetectAnagrams(string requestWord)
         {
             IList<string> words =  _anagramSolver.GetAnagramsSeperated(requestWord);

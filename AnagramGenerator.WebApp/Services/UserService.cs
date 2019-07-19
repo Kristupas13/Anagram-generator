@@ -13,11 +13,14 @@ namespace AnagramGenerator.WebApp.Services
     {
         private readonly IUserLogRepository _userLogRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IRequestRepository _requestRepository;
 
-        public UserService(IUserLogRepository userLogRepository, IUserRepository userRepository)
+
+        public UserService(IUserLogRepository userLogRepository, IUserRepository userRepository, IRequestRepository requestRepository)
         {
             _userLogRepository = userLogRepository;
             _userRepository = userRepository;
+            _requestRepository = requestRepository;
         }
 
         public bool CheckIPLimit(string ip)
@@ -29,9 +32,9 @@ namespace AnagramGenerator.WebApp.Services
             {
                 userEntity = new UserEntity()
                 {
-                    Ip = ip
+                    Ip = ip,
+                    Counter = 4,
                 };
-
                 _userRepository.Add(userEntity);
             }
 
@@ -46,20 +49,20 @@ namespace AnagramGenerator.WebApp.Services
             return _userLogRepository.GetAll().Where(p => p.User.Ip == ip).Select(p => new UserLogModel() { Date = p.Date, Id = p.Id, RequestId = p.RequestId, UserIp = p.UserIp }).ToList();
         }
 
-        public void InsertToUserLog(int requestWordId, string IpAddress)
+        public void InsertToUserLog(string requestWord, string IpAddress)
         {
-
 
 
             UserLogEntity userLogEntity = new UserLogEntity()
             {
                 Date = DateTime.Now,
-                RequestId = requestWordId,
-                UserId = _userRepository.GetAll().Single(p => p.Ip == IpAddress).Id,
+                RequestId = _requestRepository.GetByWord(requestWord).Id,
+                UserId = _userRepository.GetByIp(IpAddress).Id,
                 UserIp = IpAddress
             };
 
             _userLogRepository.Add(userLogEntity);
+
             DecrementCounter(IpAddress);
 
         }

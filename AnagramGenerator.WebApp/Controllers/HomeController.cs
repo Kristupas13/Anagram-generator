@@ -56,7 +56,7 @@ namespace AnagramGenerator.WebApp.Interfaces
                     _modificationService.InsertWordToCache(phrase, anagrams);
 
 
-                    /* _userService.InsertToUserLog(request.Id, ipAddress);*/
+                     _userService.InsertToUserLog(phrase, ipAddress);
                 }
                 else
                 {

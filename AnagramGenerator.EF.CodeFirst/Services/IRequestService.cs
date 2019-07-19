@@ -14,6 +14,5 @@ namespace AnagramGenerator.EF.CodeFirst.Services
 
         IList<string> GetAnagramsFromCache(string word);
 
-        RequestModel AddRequestModel(string word);
     }
 }
