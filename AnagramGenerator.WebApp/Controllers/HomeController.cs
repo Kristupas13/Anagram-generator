@@ -32,30 +32,31 @@ namespace AnagramGenerator.WebApp.Interfaces
         }
         public IActionResult Index(string phrase = "")
         {
-            string ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+            AnagramList anagramList = new AnagramList();
+            IList<string> anagrams = new List<string>();
 
-            AnagramList anagramModel = new AnagramList();
-            IList<WordModel> wordModels = new List<WordModel>();
+            string ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
             ViewBag.Message = "";
 
 
             if (!string.IsNullOrWhiteSpace(phrase))
             {
-
+         
                 bool access = _userService.CheckIPLimit(ipAddress);
 
                 if (access)
                 {
-                    RequestModel request = _requestService.GetRequestModel(phrase);
+                    anagrams = _requestService.GetAnagramsFromCache(phrase);
 
-                    IList<CacheModel> cachedWords = _requestService.GetCachedByRequestId(request.Id);
-                 
-                    wordModels = cachedWords.Any() ? _requestService.ConvertCacheModelToWordModel(cachedWords) : _requestService.DetectAnagrams(request.Word);
+                    if (anagrams == null)
+                    {
+                        anagrams = _requestService.DetectAnagrams(phrase);
+                    }
+
+                    _modificationService.InsertWordToCache(phrase, anagrams);
 
 
-                    _modificationService.InsertWordToCache(request.Id, wordModels);
-
-                    _userService.InsertToUserLog(request.Id, ipAddress);
+                    /* _userService.InsertToUserLog(request.Id, ipAddress);*/
                 }
                 else
                 {
@@ -63,9 +64,9 @@ namespace AnagramGenerator.WebApp.Interfaces
                 }
             }
 
-            anagramModel.Anagrams = wordModels;
+            anagramList.Anagrams = anagrams;
 
-            return View(anagramModel);
+            return View(anagramList);
         }
 
 

@@ -13,6 +13,8 @@ using AnagramGenerator.WebApp.Services;
 using AnagramGenerator.EF.CodeFirst.Repositories;
 using AnagramGenerator.EF.CodeFirst.Services;
 using AnagramGenerator.EF.CodeFirst.Interfaces;
+using AnagramGenerator.EF.CodeFirst;
+using Microsoft.EntityFrameworkCore;
 
 namespace AnagramGenerator.WebApp
 {
@@ -48,6 +50,10 @@ namespace AnagramGenerator.WebApp
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+
+            services.AddDbContext<CFDB_AnagramSolverContext>(options =>
+            options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("connectionString")));
 
             services.AddScoped<IManagerRepository, ManagerRepository>();
             services.AddScoped<ICacheRepository, CacheRepository>();

@@ -11,15 +11,15 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
 {
     public class TextRepository : ITextRepository
     {
-        readonly CFDB_AnagramSolverContext db;
+       private readonly CFDB_AnagramSolverContext _db;
 
-        public TextRepository()
+        public TextRepository(CFDB_AnagramSolverContext db)
         {
-            db = new CFDB_AnagramSolverContext();
+            _db = db;
         }
         public List<string> Find(string wordPart)
         {
-            var q = db.Words
+            var q = _db.Words
                 .Where(p => p.Word.Contains(wordPart))
                 .Select(p => p.Word)
                 .ToList();
@@ -29,7 +29,7 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
 
         public IList<WordModel> GetAnagrams(string sortedWord)
         {
-            var q = db.Words
+            var q = _db.Words
                 .Where(p => p.SortedWord == sortedWord)
                 .Select(p => new WordModel() { Id = p.Id, SortedWord = p.SortedWord, Word = p.Word }).ToList();
 
@@ -37,7 +37,7 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
         }
         public IList<string> LoadWords(int page)
         {
-            var q = db.Words
+            var q = _db.Words
                 .Skip((page - 1) * 100)
                 .Take(100)
                 .OrderBy(p => p.Word)
@@ -49,7 +49,7 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
 
         public List<string> GetWords()
         {
-            var q = db.Words
+            var q = _db.Words
                 .Select(p => p.Word)
                 .ToList();
 
@@ -64,8 +64,8 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
                 SortedWord = string.Concat(word.ToLower().OrderBy(c => c))
             };
 
-            db.Words.Add(wordEntity);
-            db.SaveChanges();
+            _db.Words.Add(wordEntity);
+            _db.SaveChanges();
         }
         public void Remove(WordModel word)
         {
@@ -75,8 +75,8 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
                 Word = word.Word,
                 SortedWord = word.SortedWord
             };
-            db.Words.Remove(wordEntity);
-            db.SaveChanges();
+            _db.Words.Remove(wordEntity);
+            _db.SaveChanges();
         }
         public void Edit(WordModel word, string newWord)
         {
@@ -88,10 +88,10 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
             };
 
 
-            db.Attach(newWordEntity);
-            db.Entry(newWordEntity).Property(x => x.Word).IsModified = true;
-            db.Entry(newWordEntity).Property(x => x.SortedWord).IsModified = true;
-            db.SaveChanges();
+            _db.Attach(newWordEntity);
+            _db.Entry(newWordEntity).Property(x => x.Word).IsModified = true;
+            _db.Entry(newWordEntity).Property(x => x.SortedWord).IsModified = true;
+            _db.SaveChanges();
 
         }
 
@@ -105,6 +105,19 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
             throw new NotImplementedException();
         }
 
+        public void Add(WordEntity wordEntity)
+        {
+            throw new NotImplementedException();
+        }
 
+        public void Remove(WordEntity wordEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(WordEntity word)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

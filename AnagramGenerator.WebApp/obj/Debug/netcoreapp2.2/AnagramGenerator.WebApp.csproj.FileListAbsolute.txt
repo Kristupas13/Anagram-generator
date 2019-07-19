@@ -302,3 +302,5 @@ C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerat
 C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\AnagramGenerator.WebApp.pdb
 C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Dictionary\Add.g.cshtml.cs
 C:\Users\kristupas\Desktop\AnagramSolver\Anagram-generator-master\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Dictionary\Remove.g.cshtml.cs
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Dictionary\Add.g.cshtml.cs
+C:\Users\kristupas\Desktop\AnagramGenerator\Anagram-generator\AnagramGenerator.WebApp\obj\Debug\netcoreapp2.2\Razor\Views\Dictionary\Remove.g.cshtml.cs

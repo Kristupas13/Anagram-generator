@@ -8,21 +8,24 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class WordRepository : IWordRepository
     {
-        readonly CFDB_AnagramSolverContext db;
-        public WordRepository()
+        private readonly CFDB_AnagramSolverContext _db;
+        public WordRepository(CFDB_AnagramSolverContext db)
         {
-            db = new CFDB_AnagramSolverContext();
-            
+            _db = db;            
         }
 
         public IList<WordEntity> GetAll()
         {
-            return db.Words.ToList();
+            return _db.Words.ToList();
         }
 
         public WordEntity Get(int wordId)
         {
-            return db.Words.Find(wordId);
+            return _db.Words.Find(wordId);
+        }
+        public WordEntity GetByWord(string word)
+        {
+            return _db.Words.SingleOrDefault(p => p.Word == word);
         }
 
         public int Add(WordEntity wordEntity)
@@ -32,7 +35,11 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 
         public WordEntity Update(WordEntity wordEntity)
         {
-            throw new System.NotImplementedException();
+            WordEntity word = _db.Words.Single(p => p.Id == wordEntity.Id);
+            word.Word = wordEntity.Word;
+            word.SortedWord = wordEntity.SortedWord;
+            _db.SaveChanges();
+            return word;
         }
 
         public bool Contains(WordEntity requestEntity)
@@ -47,27 +54,27 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 
         public WordModel ToWordModel(string phrase)
         {
-            var q = db.Words.Where(x => x.Word == phrase).Select(x => new WordModel() { Id = x.Id, SortedWord = x.SortedWord, Word = x.Word }).FirstOrDefault();
+            var q = _db.Words.Where(x => x.Word == phrase).Select(x => new WordModel() { Id = x.Id, SortedWord = x.SortedWord, Word = x.Word }).FirstOrDefault();
 /*
             db.Database.ExecuteSqlCommand("TruncateTable @TABLENAME", new SqlParameter("@TABLENAME", "UserLogs"));*/
             return q;
         }
         public WordModel GetWordModel(int ID)
         {
-            var q = db.Words.Where(x => x.Id == ID).Select(x => new WordModel() { Id = x.Id, SortedWord = x.SortedWord, Word = x.Word }).FirstOrDefault();
+            var q = _db.Words.Where(x => x.Id == ID).Select(x => new WordModel() { Id = x.Id, SortedWord = x.SortedWord, Word = x.Word }).FirstOrDefault();
 
             return q;
         }
         public int GetWordID(string word)
         {
-            int wordID = db.Words.Where(x => x.Word == word).Select(x => x.Id).FirstOrDefault();
+            int wordID = _db.Words.Where(x => x.Word == word).Select(x => x.Id).FirstOrDefault();
 
 
             return wordID;
         }
         public bool WordExists(string word)
         {
-            var q = db.Words.Where(p => p.Word == word).Any();
+            var q = _db.Words.Where(p => p.Word == word).Any();
 
             return q;
         }

@@ -11,14 +11,14 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class ManagerRepository : IManagerRepository
     {
-        CFDB_AnagramSolverContext db;
-        public ManagerRepository()
+        private readonly CFDB_AnagramSolverContext _db;
+        public ManagerRepository(CFDB_AnagramSolverContext db)
         {
-            db = new CFDB_AnagramSolverContext();
+            _db = db;
         }
         public void TruncateTable(string tableName)
         {
-            db.Database.ExecuteSqlCommand("TruncateTable @TABLENAME", new SqlParameter("@TABLENAME", tableName));
+            _db.Database.ExecuteSqlCommand("TruncateTable @TABLENAME", new SqlParameter("@TABLENAME", tableName));
         }
 
 

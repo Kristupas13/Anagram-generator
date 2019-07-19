@@ -12,12 +12,7 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
         UserLogEntity Get(int userLogId);
         int Add(UserLogEntity userLogEntity);
         UserLogEntity Update(UserLogEntity userLogEntity);
-        bool Contains(UserLogEntity requestEntity);
 
-
-        void InsertToUserLog(int requestWordId, string IpAddress);
-        IList<UserLogModel> GetUserLog(string ip);
-        bool UserIPLimit(string ip);
 
     }
 }

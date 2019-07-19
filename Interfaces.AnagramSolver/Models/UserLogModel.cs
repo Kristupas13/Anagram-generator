@@ -8,7 +8,7 @@ namespace AnagramGenerator.Contracts.Models
     {
         public int Id { get; set; }
         public string UserIp { get; set; }
-        public string SearchedWord { get; set; }
+        public int RequestId { get; set; }
         public DateTime? Date { get; set; }
     }
 }

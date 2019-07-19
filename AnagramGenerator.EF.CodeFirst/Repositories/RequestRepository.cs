@@ -10,26 +10,26 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class RequestRepository : IRequestRepository // IBaseRepository<T> : where T is Entity
     {
-        CFDB_AnagramSolverContext db;
-        public RequestRepository()
+        private readonly CFDB_AnagramSolverContext _db;
+        public RequestRepository(CFDB_AnagramSolverContext db)
         {
-            db = new CFDB_AnagramSolverContext();
+            _db = db;
         }
 
         public IList<RequestEntity> GetAll()
         {
-            return db.RequestWords.ToList();
+            return _db.RequestWords.ToList();
         }
 
         public RequestEntity Get(int requestId)
         {
-            return db.RequestWords.Find(requestId);
+            return _db.RequestWords.Find(requestId);
         }
 
         public int Add(RequestEntity requestEntity)
         {
-            db.RequestWords.Add(requestEntity);
-            db.SaveChanges();
+            _db.RequestWords.Add(requestEntity);
+            _db.SaveChanges();
             return requestEntity.Id;
         }
 
@@ -41,44 +41,12 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 
         public bool Contains(RequestEntity requestEntity)
         {
-            return db.RequestWords.Contains(requestEntity);
+            return _db.RequestWords.Contains(requestEntity);
         }
 
-        public RequestEntity Get(string requestWord)
+        public RequestEntity GetByWord(string requestWord)
         {
-            return db.RequestWords.SingleOrDefault(p => p.Word == requestWord);
-        }
-
-
-
-
-        public void Add(string word)
-        {
-            RequestEntity requestEntity = new RequestEntity()
-            {
-                Word = word
-            };
-            db.RequestWords.Add(requestEntity);
-            db.SaveChanges();
-        }
-
-        public int GetID(string word)
-        {
-            return db.RequestWords.Where(p => p.Word == word).Select(p => p.Id).FirstOrDefault();
-        }
-        public bool Exists(string word)
-        {
-            return db.RequestWords.Where(p => p.Word == word).Any();
-        }
-
-        public RequestModel ToModel(string word)
-        {
-            return db.RequestWords.Where(p => p.Word == word).Select(p => new RequestModel() { Id = p.Id, Word = p.Word}).FirstOrDefault();
-        }
-
-        public RequestModel ToModel(int id)
-        {
-            return db.RequestWords.Where(p => p.Id == id).Select(p => new RequestModel() { Id = p.Id, Word = p.Word }).FirstOrDefault();
+            return _db.RequestWords.SingleOrDefault(p => p.Word == requestWord);
         }
     }
 }

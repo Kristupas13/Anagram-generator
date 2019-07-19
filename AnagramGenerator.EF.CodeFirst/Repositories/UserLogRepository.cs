@@ -11,27 +11,27 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class UserLogRepository : IUserLogRepository
     {
-        CFDB_AnagramSolverContext db;
-        public UserLogRepository()
+        private readonly CFDB_AnagramSolverContext _db;
+        public UserLogRepository(CFDB_AnagramSolverContext db)
         {
-            db = new CFDB_AnagramSolverContext();
+            _db = db;
         }
 
         public int Add(UserLogEntity userLogEntity)
         {
-            db.UserLogs.Add(userLogEntity);
-            db.SaveChanges();
+            _db.UserLogs.Add(userLogEntity);
+            _db.SaveChanges();
             return userLogEntity.Id;
         }
 
         public UserLogEntity Get(int userLogId)
         {
-            return db.UserLogs.Find(userLogId);
+            return _db.UserLogs.Find(userLogId);
         }
 
         public IList<UserLogEntity> GetAll()
         {
-            return db.UserLogs.ToList();
+            return _db.UserLogs.ToList();
         }
 
         public IList<UserLogModel> GetUserLog(string ip)
@@ -42,7 +42,7 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 
         public bool Contains(UserLogEntity userLogEntity)
         {
-            return db.UserLogs.Contains(userLogEntity);
+            return _db.UserLogs.Contains(userLogEntity);
         }
 
         public UserLogEntity Update(UserLogEntity userLogEntity)
@@ -50,35 +50,5 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
             throw new NotImplementedException();
         }
 
-
-
-
-
-
-
-
-
-
-        public void InsertToUserLog(int requestWordId, string IpAddress)
-        {
-            UserLogEntity userLogEntity = new UserLogEntity()
-            {
-                UserIp = IpAddress,
-                RequestId = requestWordId,
-                Date = DateTime.Now,
-                UserId = db.Users.Where(p => p.Ip == IpAddress).Select(p => p.Id).FirstOrDefault(),
-            };
-
-            db.UserLogs.Add(userLogEntity);
-            db.SaveChanges();
-        }
-
-
-
-        public bool UserIPLimit(string ip)
-        {
-            var q = db.UserLogs.Select(p => p.UserIp == ip).Skip(3).Any();
-            return !q;
-        }
     }
 }

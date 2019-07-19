@@ -42,7 +42,7 @@ namespace AnagramGenerator.DataAccess
 
                 cn.Open();
                 SqlCommand cmd = new SqlCommand(
-                    "SELECT UserIp, Date, cw.SearchedWord, Word, w.ID FROM Words w inner join CachedWords cw on w.Id = cw.AnagramID inner join UserLog u on u.UserIP = @word ORDER BY Date",
+                    "SELECT UserIp, Date, cw.UserId, Word, w.ID FROM Words w inner join CachedWords cw on w.Id = cw.AnagramID inner join UserLog u on u.UserIP = @word ORDER BY Date",
                     cn);
                 cmd.Parameters.Add("@word", SqlDbType.NVarChar);
                 cmd.Parameters["@word"].Value = ip;
@@ -54,7 +54,6 @@ namespace AnagramGenerator.DataAccess
                     {
                         UserIp = ip,
                         Date = (DateTime)reader["Date"],
-                        SearchedWord = (string)reader["SearchedWord"],
                         Id = (int)reader["Id"],
                     };
                     userLogs.Add(logModel);

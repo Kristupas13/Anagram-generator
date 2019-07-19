@@ -8,6 +8,6 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
     public interface IAnagramSolver
     {
       /*   IList<string> GetAnagrams(string myWords);*/
-        IList<WordModel> GetAnagramsSeperated(string myWords);
+        IList<string> GetAnagramsSeperated(string myWords);
     }
 }

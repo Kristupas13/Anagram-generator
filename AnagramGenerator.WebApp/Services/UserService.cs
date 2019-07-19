@@ -22,16 +22,28 @@ namespace AnagramGenerator.WebApp.Services
 
         public bool CheckIPLimit(string ip)
         {
-            if (!_userRepository.UserExists(ip))
+
+            UserEntity userEntity = _userRepository.GetByIp(ip);
+
+            if (userEntity == null)
             {
-                _userRepository.AddUser(ip);
+                userEntity = new UserEntity()
+                {
+                    Ip = ip
+                };
+
+                _userRepository.Add(userEntity);
             }
 
-            return _userRepository.CheckIpLimit(ip);
+            bool grantAccess = _userRepository.GetByIp(ip).Counter > 0;
+
+             return grantAccess;
         }
+
+
         public IList<UserLogModel> GetUserLog(string ip)
         {
-            return _userLogRepository.GetUserLog(ip);
+            return _userLogRepository.GetAll().Where(p => p.User.Ip == ip).Select(p => new UserLogModel() { Date = p.Date, Id = p.Id, RequestId = p.RequestId, UserIp = p.UserIp }).ToList();
         }
 
         public void InsertToUserLog(int requestWordId, string IpAddress)

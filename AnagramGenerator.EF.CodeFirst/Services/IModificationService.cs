@@ -19,6 +19,6 @@ namespace AnagramGenerator.EF.CodeFirst.Services
 
         bool WordExists(string word);
 
-        void InsertWordToCache(int requestId, IList<WordModel> anagrams);
+        void InsertWordToCache(string requestWord, IList<string> anagrams);
     }
 }

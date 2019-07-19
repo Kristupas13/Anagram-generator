@@ -9,7 +9,7 @@ namespace AnagramGenerator.WebApp.Models
 {
     public class AnagramList
     {
-        public IList<WordModel> Anagrams { get; set; }
+        public IList<string> Anagrams { get; set; }
 
     }
 }

@@ -9,16 +9,17 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class AnagramSolver : IAnagramSolver
     {
-        CFDB_AnagramSolverContext db;
-        public AnagramSolver()
+        private readonly CFDB_AnagramSolverContext _db;
+        public AnagramSolver(CFDB_AnagramSolverContext db)
         {
-            db = new CFDB_AnagramSolverContext();
+            _db = db;
         }
-        public IList<WordModel> GetAnagramsSeperated(string myWord)
+        public IList<string> GetAnagramsSeperated(string myWord)
         {
-         var q = db.Words
-        .Where(p => p.SortedWord == myWord)
-        .Select(p => new WordModel() { Id = p.Id, SortedWord = p.SortedWord, Word = p.Word }).ToList();
+            string sortedInputWord = string.Concat(myWord.ToLower().OrderBy(x => x));
+         var q = _db.Words
+        .Where(p => p.SortedWord == sortedInputWord)
+        .Select(p => p.Word).ToList();
             return q;
         }
     }

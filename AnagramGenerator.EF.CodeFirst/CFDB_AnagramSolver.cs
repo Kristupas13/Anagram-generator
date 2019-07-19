@@ -14,8 +14,15 @@ namespace AnagramGenerator.EF.CodeFirst
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data source=(localdb)\\MSSQLLocalDB.;Initial Catalog=CFDB_AnagramSolver;Integrated Security=True");
-            base.OnConfiguring(optionsBuilder);
+            if(!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Data source=(localdb)\\MSSQLLocalDB.;Initial Catalog=CFDB_AnagramSolver;Integrated Security=True");
+             //   base.OnConfiguring(optionsBuilder);
+            }
+
         }
+        public CFDB_AnagramSolverContext(DbContextOptions<CFDB_AnagramSolverContext> options)
+           : base(options)
+        { }
     }
 }

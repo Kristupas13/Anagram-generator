@@ -1,4 +1,5 @@
 ﻿using AnagramGenerator.Contracts.Models;
+using AnagramGenerator.EF.CodeFirst.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,9 +9,11 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
 {
     public interface ITextRepository
     {
-        void Add(string word);
-        void Remove(WordModel word);
-        void Edit(WordModel word, string newWord);
+        void Add(WordEntity wordEntity);
+        void Remove(WordEntity wordEntity);
+        void Update(WordEntity word);
+
+
         Dictionary<string, HashSet<string>> Load();
         List<string> GetWords();
         List<string> Find(string wordPart);

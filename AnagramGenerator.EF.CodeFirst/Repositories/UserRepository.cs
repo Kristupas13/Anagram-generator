@@ -10,82 +10,44 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        CFDB_AnagramSolverContext db;
+        private readonly CFDB_AnagramSolverContext _db;
 
-        public UserRepository()
+        public UserRepository(CFDB_AnagramSolverContext db)
         {
-            db = new CFDB_AnagramSolverContext();
+            _db = db;
         }
 
 
         public IList<UserEntity> GetAll()
         {
-            return db.Users.ToList();
+            return _db.Users.ToList();
         }
 
         public UserEntity Get(int userId)
         {
-            return db.Users.Find(userId);
+            return _db.Users.Find(userId);
         }
-
         public int Add(UserEntity userEntity)
         {
-            db.Users.Add(userEntity);
-            db.SaveChanges();
+            _db.Users.Add(userEntity);
+            _db.SaveChanges();
             return userEntity.Id;
         }
 
         public UserEntity Update(UserEntity userEntity)
         {
-            UserEntity user = db.Users.Single(p => p.Id == userEntity.Id);
+            UserEntity user = _db.Users.Single(p => p.Id == userEntity.Id);
             user.Ip = userEntity.Ip;
             user.Counter = userEntity.Counter;
-            db.SaveChanges();
+            _db.SaveChanges();
             return user;
-
-        }
-
-
-        public bool Contains(UserEntity userEntity)
-        {
-            return db.Users.Contains(userEntity);
         }
 
 
 
-
-
-        public bool UserExists(string ip)
+        public UserEntity GetByIp(string ip)
         {
-            return db.Users.Where(p => p.Ip == ip).Any();
-        }
-        public void AddUser(string ip)
-        {
-            UserEntity user = new UserEntity()
-            {
-                Ip = ip
-            };
-            db.Users.Add(user);
-            db.SaveChanges();
-        }
-
-        public bool CheckIpLimit(string ip)
-        {
-            return db.Users.Where(p => p.Ip == ip).Any(p => p.Counter > 0);
-        }
-
-        public void Increment(string ip)
-        {
-            UserEntity user = db.Users.Single(p => p.Ip == ip);
-            user.Counter++;
-            db.SaveChanges();
-        }
-
-        public void Decrement(string ip)
-        {
-            UserEntity user = db.Users.Single(p => p.Ip == ip);
-            user.Counter--;
-            db.SaveChanges();
+            return _db.Users.Where(q => q.Ip.Equals(ip)).FirstOrDefault();
         }
 
     }

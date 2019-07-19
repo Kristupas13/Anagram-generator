@@ -17,7 +17,7 @@ namespace AnagramGenerator.EF.DatabaseFirst.Repositories
         }
         public IList<UserLogModel> GetUserLog(string ip)
         {
-            var q = db.UserLog.Where(p => p.UserIp == ip).Select(p => new UserLogModel() { UserIp = ip, SearchedWord = p.SearchedWord, Id = p.Id, Date = p.Date }).ToList();
+            var q = db.UserLog.Where(p => p.UserIp == ip).Select(p => new UserLogModel() { UserIp = ip, Id = p.Id, Date = p.Date }).ToList();
             return q;
         }
 

@@ -10,17 +10,9 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
     {
         IList<RequestEntity> GetAll();
         RequestEntity Get(int requestId);
-        RequestEntity Get(string requestWord);
+        RequestEntity GetByWord(string requestWord);
         int Add(RequestEntity requestEntity);
         RequestEntity Update(RequestEntity requestEntity);
 
-        bool Contains(RequestEntity requestEntity);
-
-
-
-
-        bool Exists(string word);
-        RequestModel ToModel(string word);
-        RequestModel ToModel(int  id);
     }
 }

@@ -14,50 +14,66 @@ namespace AnagramGenerator.WebApp.Services
         private readonly IWordRepository _wordRepository;
         private readonly ITextRepository _textRepository;
         private readonly ICacheRepository _cacheRepository;
+        private readonly IRequestRepository _requestRepository;
 
 
-        public ModificationService(ITextRepository textRepository, IWordRepository wordRepository, ICacheRepository cacheRepository) 
+
+        public ModificationService(ITextRepository textRepository, IWordRepository wordRepository, ICacheRepository cacheRepository, IRequestRepository requestRepository) 
         {
             _textRepository = textRepository;
             _wordRepository = wordRepository;
             _cacheRepository = cacheRepository;
+            _requestRepository = requestRepository;
 
         }
         public bool AddWord(string word, string ip)
         {
-            bool wordExists = _wordRepository.WordExists(word);
+            bool wordExists = _wordRepository.GetAll().Where(p => p.Word == word).Any();
 
             if(!wordExists)
             {
-                _textRepository.Add(word);
+                WordEntity wordEntity = new WordEntity()
+                {
+                    Word = word,
+                    SortedWord = string.Concat(word.ToLower().OrderBy(p => p))
+                };
+                _textRepository.Add(wordEntity);
                 return true;
-            }
-            
+            }           
             return false;
         }
         public bool RemoveWord(string word, string ip)
         {
-            bool wordExists = _wordRepository.WordExists(word);
+            bool wordExists = _wordRepository.GetAll().Where(p => p.Word == word).Any();
 
             if (wordExists)
             {
-                _textRepository.Remove(_wordRepository.ToWordModel(word));
+                int wordId = _wordRepository.GetAll().Where(p => p.Word == word).Select(p => p.Id).Single();
+
+                WordEntity wordEntity = _wordRepository.Get(wordId);
+
+                _textRepository.Remove(wordEntity);
+
                 return true;
             }
             return false;
         }
+
         public bool EditWord(string oldWord, string newWord, string ip)
         {
-            bool wordExists = _wordRepository.WordExists(oldWord);
-            bool newWordExists = _wordRepository.WordExists(newWord);
+            bool wordExists = !_wordRepository.GetAll().Where(p => p.Word == oldWord).Any();
+            bool newWordExists = !_wordRepository.GetAll().Where(p => p.Word == newWord).Any();
 
-            if(wordExists && !newWordExists)
+    /*        if(wordExists && !newWordExists)
             {
+
+
                 _textRepository.Edit(_wordRepository.ToWordModel(oldWord), newWord);
                 return true;
-            }
+            } */
             return false;
         }
+
         public IList<string> Find(string word)
         {
             return _textRepository.Find(word);
@@ -67,20 +83,21 @@ namespace AnagramGenerator.WebApp.Services
             return _textRepository.LoadWords(page);
         }
         public bool WordExists(string word)
-        {
+        {/*
             bool wordExists = _wordRepository.WordExists(word);
-            return wordExists;
+            return wordExists;*/
+            return false;
         }
-        public void InsertWordToCache(int requestId, IList<WordModel> anagrams)
+        public void InsertWordToCache(string requestWord, IList<string> anagrams)
         {
-            if (!(_cacheRepository.GetAll().Any(p => p.RequestId == requestId)))
+            if (!(_cacheRepository.GetAll().Any(p => p.Request.Word == requestWord)))
             {
                 foreach (var item in anagrams)
                 {
                     CachedEntity cachedEntity = new CachedEntity()
                     {
-                        RequestId = requestId,
-                        AnagramId = item.Id
+                        RequestId = _requestRepository.GetByWord(requestWord).Id,
+                        AnagramId = _wordRepository.GetByWord(item).Id,
                     };
                     _cacheRepository.Add(cachedEntity);
                 }

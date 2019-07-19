@@ -24,23 +24,6 @@ namespace AnagramGenerator.WebApp.Services
             _managerRepository = managerRepository;
             _cacheRepository = cacheRepository;
         }
-        public RequestModel GetRequestModel(string word)
-        {
-            RequestModel requestModel = new RequestModel()
-            {
-                Word = word
-            };
-            requestModel = RequestModelContainsWord(word) ? GetExistingRequestModel(word) : AddRequestModel(word);
-            return requestModel;
-        }
-        public bool RequestModelContainsWord(string word)
-        {
-            return _requestRepository.GetAll().Any(p => p.Word == word);
-        }
-        public RequestModel GetExistingRequestModel(string word)
-        {
-            return _requestRepository.GetAll().Where(p => p.Word == word).Select(p => new RequestModel() { Id = p.Id, Word = p.Word }).SingleOrDefault();
-        }
         public RequestModel AddRequestModel(string word)
         {
             RequestModel requestModel = new RequestModel()
@@ -48,48 +31,26 @@ namespace AnagramGenerator.WebApp.Services
                 Word = word
             };
             requestModel.Id = _requestRepository.Add(new RequestEntity() { Word = word});
-
             return requestModel;
         }
 
-        public IList<WordModel> ConvertCacheModelToWordModel(IList<CacheModel> cacheModels)
+        public IList<string> DetectAnagrams(string requestWord)
         {
+            IList<string> words =  _anagramSolver.GetAnagramsSeperated(requestWord);
 
-            List<WordModel> wordModels = new List<WordModel>();
-            foreach (var item in cacheModels)
-            {               
-                WordEntity wordEntity = _wordRepository.Get(item.AnagramId);
-
-                WordModel wordModel = new WordModel()
-                {
-                    Id = wordEntity.Id,
-                    Word = wordEntity.Word,
-                    SortedWord = wordEntity.SortedWord,
-                };
-                wordModels.Add(wordModel);
-            }
-            return wordModels;
+            return words;
         }
 
-        public IList<WordModel> DetectAnagrams(string requestWord)
-        {
-            IList<WordModel> wordModels = new List<WordModel>();
-
-            string sortedWord = string.Concat(requestWord.ToLower().OrderBy(x => x));
-
-            wordModels = _anagramSolver.GetAnagramsSeperated(sortedWord);
-
-            return wordModels;
-        }
         public void TruncateTable(string tableName)
         {
             _managerRepository.TruncateTable(tableName);
         }
-        public IList<CacheModel> GetCachedByRequestId(int requestId)
+        public IList<string> GetAnagramsFromCache(string word)
         {
-            IList<CacheModel> cachedWords = _cacheRepository.GetAll().Where(p => p.RequestId == requestId).Select(p => new CacheModel() { Id = p.Id, RequestId = p.RequestId, AnagramId = (int)p.AnagramId }).ToList();
 
-            return cachedWords;
+            IList<string> words = _cacheRepository.GetAll().Where(p => p.Request.Word == word).Select(p => p.Anagram.Word).ToList();
+
+            return words;
         }
 
     }
