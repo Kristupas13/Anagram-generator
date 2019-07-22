@@ -12,96 +12,69 @@ namespace AnagramGenerator.WebApp.Services
     public class ModificationService : IModificationService
     {
         private readonly IWordRepository _wordRepository;
-        private readonly ITextRepository _textRepository;
-        private readonly ICacheRepository _cacheRepository;
-        private readonly IRequestRepository _requestRepository;
+        private readonly IManagerRepository _managerRepository;
 
 
 
-        public ModificationService(ITextRepository textRepository, IWordRepository wordRepository, ICacheRepository cacheRepository, IRequestRepository requestRepository) 
+        public ModificationService(IManagerRepository managerRepository, IWordRepository wordRepository) 
         {
-            _textRepository = textRepository;
+            _managerRepository = managerRepository;
             _wordRepository = wordRepository;
-            _cacheRepository = cacheRepository;
-            _requestRepository = requestRepository;
+        }
+        public bool AddWord(string word)
+        {
+            WordEntity wordEntity = _wordRepository.GetByWord(word);
+
+            if (wordEntity != null)
+                return false;
+
+            wordEntity = new WordEntity()
+            {
+                Word = word,
+                SortedWord = string.Concat(word.ToLower().OrderBy(x => x))
+            };
+            _wordRepository.Add(wordEntity);
+
+            return true;
 
         }
-        public bool AddWord(string word, string ip)
+        public bool RemoveWord(string word)
         {
-            bool wordExists = _wordRepository.GetAll().Where(p => p.Word == word).Any();
+            WordEntity wordEntity = _wordRepository.GetByWord(word);
 
-            if(!wordExists)
-            {
-                WordEntity wordEntity = new WordEntity()
-                {
-                    Word = word,
-                    SortedWord = string.Concat(word.ToLower().OrderBy(p => p))
-                };
-                _textRepository.Add(wordEntity);
-                return true;
-            }           
-            return false;
+            if (wordEntity == null)
+                return false;
+
+
+            _wordRepository.Remove(wordEntity);
+            return true;
+            
         }
-        public bool RemoveWord(string word, string ip)
+
+        public bool EditWord(string oldWord, string newWord)
         {
-            bool wordExists = _wordRepository.GetAll().Where(p => p.Word == word).Any();
+            WordEntity oldWordEntity = _wordRepository.GetByWord(oldWord);
 
-            if (wordExists)
+
+
+            if(oldWordEntity == null)
             {
-                int wordId = _wordRepository.GetAll().Where(p => p.Word == word).Select(p => p.Id).Single();
-
-                WordEntity wordEntity = _wordRepository.Get(wordId);
-
-                _textRepository.Remove(wordEntity);
-
-                return true;
+                return false;
             }
-            return false;
+
+            oldWordEntity.Word = newWord;
+            oldWordEntity.SortedWord = string.Concat(newWord.ToLower().OrderBy(x => x));
+
+            _wordRepository.Update(oldWordEntity);
+
+            return true;         
         }
 
-        public bool EditWord(string oldWord, string newWord, string ip)
+ 
+        public void TruncateTable(string tableName)
         {
-            bool wordExists = !_wordRepository.GetAll().Where(p => p.Word == oldWord).Any();
-            bool newWordExists = !_wordRepository.GetAll().Where(p => p.Word == newWord).Any();
-
-    /*        if(wordExists && !newWordExists)
-            {
-
-
-                _textRepository.Edit(_wordRepository.ToWordModel(oldWord), newWord);
-                return true;
-            } */
-            return false;
+            _managerRepository.TruncateTable(tableName);
         }
 
-        public IList<string> Find(string word)
-        {
-            return _textRepository.Find(word);
-        }
-        public IList<string> LoadWords(int page)
-        {
-            return _textRepository.LoadWords(page);
-        }
-        public bool WordExists(string word)
-        {/*
-            bool wordExists = _wordRepository.WordExists(word);
-            return wordExists;*/
-            return false;
-        }
-        public void InsertWordToCache(string requestWord, IList<string> anagrams)
-        {
-            if (!(_cacheRepository.GetAll().Any(p => p.Request.Word == requestWord)))
-            {
-                foreach (var item in anagrams)
-                {
-                    CachedEntity cachedEntity = new CachedEntity()
-                    {
-                        RequestId = _requestRepository.GetByWord(requestWord).Id,
-                        AnagramId = _wordRepository.GetByWord(item).Id,
-                    };
-                    _cacheRepository.Add(cachedEntity);
-                }
-            }
-        }
     }
 }

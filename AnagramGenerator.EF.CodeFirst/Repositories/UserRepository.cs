@@ -17,7 +17,6 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
             _db = db;
         }
 
-
         public IList<UserEntity> GetAll()
         {
             return _db.Users.ToList();
@@ -31,6 +30,10 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
         {
             return _db.Users.SingleOrDefault(p => p.Ip == userIp);
         }
+        public IList<string> GetAllListOfIps()
+        {
+            return _db.Users.Select(p => p.Ip).ToList();
+        }
         public int Add(UserEntity userEntity)
         {
             _db.Users.Add(userEntity);
@@ -40,19 +43,9 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 
         public UserEntity Update(UserEntity userEntity)
         {
-            UserEntity user = _db.Users.Single(p => p.Id == userEntity.Id);
-            user.Ip = userEntity.Ip;
-            user.Counter = userEntity.Counter;
+            _db.Users.Update(userEntity);
             _db.SaveChanges();
-            return user;
+            return userEntity;
         }
-
-
-
-        public UserEntity GetByIp(string ip)
-        {
-            return _db.Users.Where(q => q.Ip.Equals(ip)).FirstOrDefault();
-        }
-
     }
 }

@@ -1,16 +1,45 @@
-﻿@model User
+﻿@model UserSearchInformation
 
-@foreach (var item in Model.UserLogs)
-{
-    <br />
-    @item.Date
-    <br />
-    <text>
-        <font color="grey">
-            Searched word: 
-        </font>
-    </text>
+@{int counter = 1; }
 
-    <br />
 
-}
+
+<table class="table table-hover" width="1000">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">User Ip</th>
+            <th scope="col">Date</th>
+            <th scope="col">Requested word</th>
+            <th scope="col">Anagrams</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.UserLogs)
+        {
+            <tr class="table-dark">
+
+                <th scope="row">@counter</th>
+                <td>@item.UserIp</td>
+                <td>@item.Date</td>
+                <td>@item.RequestedWord</td>
+                <td>
+                    <select>
+                        @foreach (var word in item.Anagrams)
+                        {
+
+                            <option value="@word">@word</option>
+
+                        }
+                    </select>
+                </td>
+            </tr>
+            counter++;
+            <br />
+        }
+    </tbody>
+</table>
+
+
+

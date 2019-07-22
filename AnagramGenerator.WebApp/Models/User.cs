@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AnagramGenerator.WebApp.Models
 {
-    public class User
+    public class UserSearchInformation
     {
-        public IList<UserLogModel> UserLogs { get; set; }
+        public IList<UserInfoModel> UserLogs { get; set; }
     }
 }

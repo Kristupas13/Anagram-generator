@@ -44,9 +44,26 @@ namespace AnagramGenerator.WebApp.Services
         }
 
 
-        public IList<UserLogModel> GetUserLog(string ip)
+        public IList<UserLogModel> GetUserLogListByIp(string ip)
         {
-            return _userLogRepository.GetAll().Where(p => p.User.Ip == ip).Select(p => new UserLogModel() { Date = p.Date, Id = p.Id, RequestId = p.RequestId, UserIp = p.UserIp }).ToList();
+            IList<UserLogModel> userLogs = new List<UserLogModel>();
+
+            IList<UserLogEntity> logEntities = _userLogRepository.GetUserLogListByIp(ip);
+
+            foreach(var log in logEntities)
+            {
+                UserLogModel logModel = new UserLogModel()
+                {
+                    Id = log.Id,
+                    Date = log.Date,
+                    RequestedWord = log.Request.Word,
+                    UserIp = log.User.Ip
+                };
+
+                userLogs.Add(logModel);
+            }
+
+            return userLogs;
         }
 
         public void InsertToUserLog(string requestWord, string IpAddress)
@@ -63,18 +80,51 @@ namespace AnagramGenerator.WebApp.Services
 
             _userLogRepository.Add(userLogEntity);
 
-            DecrementCounter(IpAddress);
 
         }
+        public IList<UserInfoModel> GetUserInformation(string ip)
+        {
+            UserEntity user = _userRepository.GetByIp(ip);
+            if (user == null)
+                return new List<UserInfoModel>();
+
+            
+
+            IList<UserInfoModel> listOfUserInformation = new List<UserInfoModel>();
+            foreach(var userLog in user.UserLogEntity)
+            {
+
+                UserInfoModel infoModel = new UserInfoModel()
+                {
+                    UserIp = user.Ip,
+                    Date = (DateTime)userLog.Date,
+                    RequestedWord = userLog.Request.Word,
+                    Anagrams = userLog.Request.CachedEntity.Select(p => p.Anagram.Word).ToList()
+                };
+
+                listOfUserInformation.Add(infoModel);
+            }
+
+            return listOfUserInformation;
+        }
+
+        public IList<string> GetAllAddresses()
+        {
+            var IPAddresses = _userRepository.GetAllListOfIps();
+
+            return IPAddresses;
+        }
+
         public void IncrementCounter(string ip)
         {
-            UserEntity user = _userRepository.GetAll().Where(p => p.Ip == ip).Single();
+            UserEntity user = _userRepository.GetByIp(ip);
             user.Counter++;
             _userRepository.Update(user);
         }
+
         public void DecrementCounter(string ip)
         {
-            UserEntity user = _userRepository.GetAll().Where(p => p.Ip == ip).Single();
+            UserEntity user = _userRepository.GetByIp(ip);
             user.Counter--;
             _userRepository.Update(user);
         }

@@ -32,9 +32,12 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 
         public IList<CachedEntity> GetAll()
         {
-            var a = _db.CachedWords.ToList();
-            var b = _db.RequestWords.Where(x => x.Id == 4).FirstOrDefault();
             return _db.CachedWords.ToList();
+        }
+
+        public IList<CachedEntity> GetCacheListByRequestWord(string word)
+        {
+            return _db.CachedWords.Where(p => p.Request.Word == word).ToList();
         }
 
         public CachedEntity Update(CachedEntity cachedEntity)

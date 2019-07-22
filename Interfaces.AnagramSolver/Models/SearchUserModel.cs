@@ -4,11 +4,11 @@ using System.Text;
 
 namespace AnagramGenerator.Contracts.Models
 {
-    public class UserLogModel
+    public class UserInfoModel
     {
-        public int Id { get; set; }
         public string UserIp { get; set; }
+        public DateTime Date { get; set; }
         public string RequestedWord { get; set; }
-        public DateTime? Date { get; set; }
+        public IList<string> Anagrams { get; set; }
     }
 }

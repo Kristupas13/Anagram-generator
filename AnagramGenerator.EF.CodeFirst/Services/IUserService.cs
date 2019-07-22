@@ -9,9 +9,13 @@ namespace AnagramGenerator.EF.CodeFirst.Services
     {
         bool CheckIPLimit(string ip);
 
-        IList<UserLogModel> GetUserLog(string ip);
+        IList<UserLogModel> GetUserLogListByIp(string ip);
 
         void InsertToUserLog(string requestWord, string IpAddress);
+
+        IList<UserInfoModel> GetUserInformation(string ip);
+
+        IList<string> GetAllAddresses();
 
         void IncrementCounter(string ip);
 

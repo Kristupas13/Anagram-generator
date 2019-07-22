@@ -8,6 +8,6 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
     {
         void TruncateTable(string tableName);
 
-
+        IList<string> LoadWords(int page);
     }
 }

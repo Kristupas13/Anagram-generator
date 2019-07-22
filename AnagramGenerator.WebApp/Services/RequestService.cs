@@ -12,13 +12,13 @@ namespace AnagramGenerator.WebApp.Services
     public class RequestService : IRequestService
     {
         private readonly IAnagramSolver _anagramSolver;
+        private readonly IWordRepository _wordRepository;
         private readonly IManagerRepository _managerRepository;
-        private readonly ICacheRepository _cacheRepository;
-        public RequestService(IAnagramSolver anagramSolver, IManagerRepository managerRepository, ICacheRepository cacheRepository)
+        public RequestService(IAnagramSolver anagramSolver, IWordRepository wordRepository , IManagerRepository managerRepository)
         {
-            _anagramSolver = anagramSolver;
             _managerRepository = managerRepository;
-            _cacheRepository = cacheRepository;
+            _wordRepository = wordRepository;
+            _anagramSolver = anagramSolver;
         }
         public IList<string> DetectAnagrams(string requestWord)
         {
@@ -27,16 +27,22 @@ namespace AnagramGenerator.WebApp.Services
             return words;
         }
 
-        public void TruncateTable(string tableName)
+        public IList<string> Find(string word)
         {
-            _managerRepository.TruncateTable(tableName);
+            IList<string> wordsToDesplay = new List<string>();
+
+
+           // wordsToDesplay = _wordRepository.GetAll().Where(p => p.Word == word).Select(p => p.Word).ToList();
+           // huge memory leak
+
+            wordsToDesplay = _wordRepository.GetListByPartWord(word).Select(p => p.Word).ToList();
+
+            return wordsToDesplay;
         }
-        public IList<string> GetAnagramsFromCache(string word)
+
+        public IList<string> LoadWords(int page)
         {
-
-            IList<string> words = _cacheRepository.GetAll().Where(p => p.Request.Word == word).Select(p => p.Anagram.Word).ToList();
-
-            return words;
+            return _managerRepository.LoadWords(page);
         }
 
     }

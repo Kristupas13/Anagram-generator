@@ -17,7 +17,7 @@ namespace AnagramGenerator.EF.CodeFirst
             if(!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer("Data source=(localdb)\\MSSQLLocalDB.;Initial Catalog=CFDB_AnagramSolver;Integrated Security=True");
-             //   base.OnConfiguring(optionsBuilder);
+                base.OnConfiguring(optionsBuilder);
             }
 
         }

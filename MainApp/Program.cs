@@ -23,17 +23,6 @@ namespace MainApp
             string phrase = string.Join(" ", args);
 
 
-            using(var db = new CFDB_AnagramSolverContext())
-            {
-                db.Words.Add(new WordEntity { Word = "labas", SortedWord = "aabls" });
-                db.SaveChanges();
-
-                foreach(var word in db.Words)
-                {
-                    Console.WriteLine(word.Word);
-                }
-            }
-
 
    /*         //    IFileRepository textFileLoader = new TextFileRepository();      // testing
             IWordRepository wordRepository = new SQLWordRepository();

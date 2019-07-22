@@ -11,8 +11,9 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
         IList<WordEntity> GetAll();
         WordEntity Get(int wordId);
         WordEntity GetByWord(string word);
-
+        IList<WordEntity> GetListByPartWord(string partWord);
         int Add(WordEntity wordEntity);
         WordEntity Update(WordEntity wordEntity);
+        void Remove(WordEntity wordEntity);
     }
 }

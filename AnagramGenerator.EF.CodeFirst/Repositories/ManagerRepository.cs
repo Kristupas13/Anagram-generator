@@ -21,7 +21,17 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
             _db.Database.ExecuteSqlCommand("TruncateTable @TABLENAME", new SqlParameter("@TABLENAME", tableName));
         }
 
+        public IList<string> LoadWords(int page)
+        {
+            var loadedWords =_db.Words
+                                    .Skip((page - 1) * 100)
+                                    .Take(100)
+                                    .OrderBy(p => p.Word)
+                                    .Select(p => p.Word)
+                                    .ToList();
 
+            return loadedWords;
+        }
 
     }
 }

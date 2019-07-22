@@ -7,18 +7,12 @@ namespace AnagramGenerator.EF.CodeFirst.Services
 {
     public interface IModificationService
     {
-        bool AddWord(string word, string ip);
+        bool AddWord(string word);
 
-        bool RemoveWord(string word, string ip);
+        bool RemoveWord(string word);
 
-        bool EditWord(string oldWord, string newWord, string ip);
+        bool EditWord(string oldWord, string newWord);
 
-        IList<string> Find(string word);
-
-        IList<string> LoadWords(int page);
-
-        bool WordExists(string word);
-
-        void InsertWordToCache(string requestWord, IList<string> anagrams);
+        void TruncateTable(string tableName);
     }
 }

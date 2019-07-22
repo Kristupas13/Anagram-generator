@@ -35,13 +35,8 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
 
         public RequestEntity Update(RequestEntity requestEntity)
         {
-            throw new NotImplementedException();
-        }
-
-
-        public bool Contains(RequestEntity requestEntity)
-        {
-            return _db.RequestWords.Contains(requestEntity);
+            _db.Update(requestEntity);
+            return requestEntity;
         }
 
         public RequestEntity GetByWord(string requestWord)

@@ -34,15 +34,10 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
             return _db.UserLogs.ToList();
         }
 
-        public IList<UserLogModel> GetUserLog(string ip)
+        public IList<UserLogEntity> GetUserLogListByIp(string ip)
         {
 
-            throw new NotImplementedException();
-        }
-
-        public bool Contains(UserLogEntity userLogEntity)
-        {
-            return _db.UserLogs.Contains(userLogEntity);
+            return _db.UserLogs.Where(p => p.User.Ip == ip).ToList();
         }
 
         public UserLogEntity Update(UserLogEntity userLogEntity)

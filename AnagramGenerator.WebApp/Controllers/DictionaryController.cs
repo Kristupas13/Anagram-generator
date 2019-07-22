@@ -13,28 +13,29 @@ namespace AnagramGenerator.WebApp.Controllers
 {
     public class DictionaryController : Controller
     {
-        private readonly IModificationService _wordService;
+        private readonly IModificationService _modificationService;
+        private readonly IRequestService _requestService;
         private readonly IUserService _userService;
-        public DictionaryController(IModificationService wordService, IUserService userService)
+        public DictionaryController(IModificationService modificationService,  IUserService userService, IRequestService requestService)
         {
-            _wordService = wordService;
+            _requestService = requestService;
+            _modificationService = modificationService;
             _userService = userService;
         }
 
         public IActionResult Index(int page = 1, string searchedWord="")
         {
             var model = new PageSearchWord();
-            
 
-            if(!String.IsNullOrWhiteSpace(searchedWord))
+            if(!string.IsNullOrWhiteSpace(searchedWord))
 
             {
                 SetCookie(searchedWord);
-                model.PageWords = _wordService.Find(searchedWord);
+                model.PageWords = _requestService.Find(searchedWord);
             }
 
             else
-            model.PageWords = _wordService.LoadWords(page);
+            model.PageWords = _requestService.LoadWords(page);
 
             model.Page = page;
             model.SearchedWord = searchedWord;
@@ -51,7 +52,8 @@ namespace AnagramGenerator.WebApp.Controllers
             if (!string.IsNullOrWhiteSpace(word))
             {
                 string ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-                bool addedCorrectly = _wordService.AddWord(word, ipAddress);
+
+                bool addedCorrectly = _modificationService.AddWord(word);
 
                 if(addedCorrectly)
                 {
@@ -71,7 +73,7 @@ namespace AnagramGenerator.WebApp.Controllers
             {
                 string ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
 
-                bool removedCorrectly = _wordService.RemoveWord(word, ipAddress);
+                bool removedCorrectly = _modificationService.RemoveWord(word);
                 if(removedCorrectly)
                 {
                     _userService.DecrementCounter(ipAddress);
@@ -88,7 +90,8 @@ namespace AnagramGenerator.WebApp.Controllers
             {
                 string ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
 
-                bool editedCorrectly = _wordService.EditWord(oldWord, newWord, ipAddress);
+                bool editedCorrectly = _modificationService.EditWord(oldWord, newWord);
+
                 if (editedCorrectly)
                 {
                     _userService.IncrementCounter(ipAddress);

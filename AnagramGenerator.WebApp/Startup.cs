@@ -61,12 +61,12 @@ namespace AnagramGenerator.WebApp
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAnagramSolver, AnagramSolver>();
             services.AddScoped<IUserLogRepository, UserLogRepository>();
-            services.AddScoped<ITextRepository, TextRepository>();
             services.AddScoped<IRequestRepository, RequestRepository>();
 
             services.AddScoped<IModificationService, ModificationService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRequestService, RequestService>();
+            services.AddScoped<ICacheService, CacheService>();
 
 
         }

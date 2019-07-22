@@ -10,9 +10,9 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
     {
         IList<RequestEntity> GetAll();
         RequestEntity Get(int requestId);
-        RequestEntity GetByWord(string requestWord);
         int Add(RequestEntity requestEntity);
         RequestEntity Update(RequestEntity requestEntity);
 
+        RequestEntity GetByWord(string requestWord);
     }
 }

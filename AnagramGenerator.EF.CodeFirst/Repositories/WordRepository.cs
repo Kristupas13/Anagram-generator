@@ -27,57 +27,29 @@ namespace AnagramGenerator.EF.CodeFirst.Repositories
         {
             return _db.Words.SingleOrDefault(p => p.Word == word);
         }
+        public IList<WordEntity> GetListByPartWord(string partWord)
+        {
+            return _db.Words.Where(p => p.Word.Contains(partWord)).ToList();
+        }
+
 
         public int Add(WordEntity wordEntity)
         {
-            throw new System.NotImplementedException();
+           _db.Words.Add(wordEntity);
+            _db.SaveChanges();
+            return wordEntity.Id;
         }
 
         public WordEntity Update(WordEntity wordEntity)
         {
-            WordEntity word = _db.Words.Single(p => p.Id == wordEntity.Id);
-            word.Word = wordEntity.Word;
-            word.SortedWord = wordEntity.SortedWord;
+            _db.Words.Update(wordEntity);
             _db.SaveChanges();
-            return word;
+            return wordEntity;
         }
 
-        public bool Contains(WordEntity requestEntity)
+        public void Remove(WordEntity requestEntity)
         {
-            throw new System.NotImplementedException();
+            _db.Remove(requestEntity);
         }
-
-
-
-
-
-
-        public WordModel ToWordModel(string phrase)
-        {
-            var q = _db.Words.Where(x => x.Word == phrase).Select(x => new WordModel() { Id = x.Id, SortedWord = x.SortedWord, Word = x.Word }).FirstOrDefault();
-/*
-            db.Database.ExecuteSqlCommand("TruncateTable @TABLENAME", new SqlParameter("@TABLENAME", "UserLogs"));*/
-            return q;
-        }
-        public WordModel GetWordModel(int ID)
-        {
-            var q = _db.Words.Where(x => x.Id == ID).Select(x => new WordModel() { Id = x.Id, SortedWord = x.SortedWord, Word = x.Word }).FirstOrDefault();
-
-            return q;
-        }
-        public int GetWordID(string word)
-        {
-            int wordID = _db.Words.Where(x => x.Word == word).Select(x => x.Id).FirstOrDefault();
-
-
-            return wordID;
-        }
-        public bool WordExists(string word)
-        {
-            var q = _db.Words.Where(p => p.Word == word).Any();
-
-            return q;
-        }
-
     }
 }

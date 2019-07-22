@@ -9,12 +9,9 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
     public interface ICacheRepository
     {
         IList<CachedEntity> GetAll();
+        IList<CachedEntity> GetCacheListByRequestWord(string word);
         CachedEntity Get(int cacheId);
         int Add(CachedEntity cachedEntity);
         CachedEntity Update(CachedEntity cachedEntity);
-
-
-   
-
     }
 }

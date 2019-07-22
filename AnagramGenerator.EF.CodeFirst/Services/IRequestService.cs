@@ -9,10 +9,7 @@ namespace AnagramGenerator.EF.CodeFirst.Services
     {
 
         IList<string> DetectAnagrams(string requestWord);
-
-        void TruncateTable(string tableName);
-
-        IList<string> GetAnagramsFromCache(string word);
-
+        IList<string> LoadWords(int page);
+        IList<string> Find(string word);
     }
 }

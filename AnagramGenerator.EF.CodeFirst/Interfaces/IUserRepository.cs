@@ -10,6 +10,7 @@ namespace AnagramGenerator.EF.CodeFirst.Interfaces
         IList<UserEntity> GetAll();
         UserEntity Get(int userId);
         UserEntity GetByIp(string ip);
+        IList<string> GetAllListOfIps();
         int Add(UserEntity userEntity);
         UserEntity Update(UserEntity userEntity);
 

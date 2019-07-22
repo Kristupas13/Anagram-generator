@@ -16,28 +16,30 @@ namespace AnagramGenerator.WebApp.Interfaces
     public class HomeController : Controller
     {
         private readonly IConfiguration configuration;
-        private readonly IModificationService _modificationService;
+
         private readonly IUserService _userService;
         private readonly IRequestService _requestService;
+        private readonly ICacheService _cacheService;
+
         private readonly string connectionString;
           
-        public HomeController(IModificationService modificationService, IUserService userService, IRequestService requestService, IConfiguration config)
+        public HomeController(IUserService userService, IRequestService requestService, ICacheService cacheService, IConfiguration config)
         {
             configuration = config;
             connectionString = configuration.GetConnectionString("connectionString");
 
-            _modificationService = modificationService;
             _userService = userService;
             _requestService = requestService;
+            _cacheService = cacheService;
         }
         public IActionResult Index(string phrase = "")
         {
             AnagramList anagramList = new AnagramList();
+
             IList<string> anagrams = new List<string>();
 
             string ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
             ViewBag.Message = "";
-
 
             if (!string.IsNullOrWhiteSpace(phrase))
             {
@@ -46,17 +48,20 @@ namespace AnagramGenerator.WebApp.Interfaces
 
                 if (access)
                 {
-                    anagrams = _requestService.GetAnagramsFromCache(phrase);
 
-                    if (anagrams == null)
+                  
+                    anagrams = _cacheService.GetAnagramsFromCache(phrase);
+
+                    if (anagrams.Count() == 0)
                     {
                         anagrams = _requestService.DetectAnagrams(phrase);
                     }
 
-                    _modificationService.InsertWordToCache(phrase, anagrams);
-
-
+                     _cacheService.InsertWordToCache(phrase, anagrams);
+                    
                      _userService.InsertToUserLog(phrase, ipAddress);
+
+                     _userService.DecrementCounter(ipAddress);
                 }
                 else
                 {
