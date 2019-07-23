@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AnagramGenerator.WebApp.Controllers.api
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class GetAnagramsController : ControllerBase
     {
@@ -20,20 +20,11 @@ namespace AnagramGenerator.WebApp.Controllers.api
             _requestService = requestService;
         }
 
-        [HttpGet("{name}")]
-        public IList<string> Get(string name)
+        [HttpGet("{word}")]
+        public IList<string> Get(string word)
         {
-            IList<string> wordModels = _requestService.DetectAnagrams(name);
-
-            IList<string> anagrams = new List<string>();
-
-            foreach(var item in wordModels)
-            {
-                anagrams.Add(item);
-            }
-
+            IList<string> anagrams = _requestService.DetectAnagrams(word);
             return anagrams;
-
         }
 
     }

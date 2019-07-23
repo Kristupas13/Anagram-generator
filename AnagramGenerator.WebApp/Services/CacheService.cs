@@ -59,7 +59,7 @@ namespace AnagramGenerator.WebApp.Services
 
             var words = _cacheRepository.GetCacheListByRequestWord(word);
 
-            if (word == null)
+            if (words == null)
                 return new List<string>();
 
             IList<string> wordsFromCache = words.Select(p => p.Anagram.Word).ToList();

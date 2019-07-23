@@ -62,6 +62,7 @@ namespace AnagramGenerator.WebApp
             services.AddScoped<IAnagramSolver, AnagramSolver>();
             services.AddScoped<IUserLogRepository, UserLogRepository>();
             services.AddScoped<IRequestRepository, RequestRepository>();
+            services.AddCors();
 
             services.AddScoped<IModificationService, ModificationService>();
             services.AddScoped<IUserService, UserService>();
@@ -88,6 +89,9 @@ namespace AnagramGenerator.WebApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseCors(
+               options => options.AllowAnyOrigin().AllowAnyMethod()
+               );
 
             app.UseMvc(routes =>
             {

@@ -37,11 +37,15 @@ namespace AnagramGenerator.Tests.Services
 
             _wordRepository.GetByWord(RequestedWord).ReturnsNull();
 
+            _wordRepository.Add(Arg.Is<WordEntity>(q => q.Word.Equals(RequestedWord))).Returns(1);
+
             var result = _modificationService.AddWord(RequestedWord);
 
-
-            _wordRepository.Received().GetByWord(RequestedWord);
             result.ShouldBeTrue();
+
+            _wordRepository.Received().Add(Arg.Is<WordEntity>(q => q.Word.Equals(RequestedWord)));
+            _wordRepository.Received().GetByWord(RequestedWord);
+           
         }
 
         [Test]

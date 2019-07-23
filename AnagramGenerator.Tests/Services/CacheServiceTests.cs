@@ -74,6 +74,23 @@ namespace AnagramGenerator.Tests.Services
             _cacheRepository.Received().GetCacheListByRequestWord(RequestedWord);
         }
         [Test]
+        public void GetAnagramsFromCache_ShouldReturnEmptyListIfWordHasNoAnagrams()
+        {
+            RequestedWord = "labas";
+            ExpectedList = new List<string>() { };
+
+            _cacheRepository.GetCacheListByRequestWord(RequestedWord).ReturnsNull();
+
+            //////////////////////////////////
+            //////////////////////////////////
+
+            var result = _cacheService.GetAnagramsFromCache(RequestedWord);
+
+            result.ShouldBeEmpty();
+
+            _cacheRepository.Received().GetCacheListByRequestWord(RequestedWord);
+        }
+        [Test]
         public void GetAnagramsFromCache_ShouldReturnEmptyIfNothingIsPassed()
         {
             RequestedWord = "";

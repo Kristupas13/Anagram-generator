@@ -39,6 +39,8 @@ namespace AnagramGenerator.WebApp.Interfaces
             IList<string> anagrams = new List<string>();
 
             string ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+
+
             ViewBag.Message = "";
 
             if (!string.IsNullOrWhiteSpace(phrase))
